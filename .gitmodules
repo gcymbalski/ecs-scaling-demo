@@ -1,0 +1,3 @@
+[submodule "lib/trivial_service"]
+	path = lib/trivial_service
+	url = https://github.com/DanKerns/trivial_service
