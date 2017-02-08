@@ -23,4 +23,8 @@ For simplicity, I am using my workstation running OSX for development, working p
 
 The primary technologies I will be using are SparkleFormation, a DSL for managing CloudFormation-like stacks on various cloud providers, and Packer, a tool for generating images programmatically and flexibly.
 
+## Artificial Testing
 
+Using ApacheBench, we can test whether or not we are capable of reaching the desired throughput. We'll support wrapping this nicely to run from the user's workstation, but this means that the possibility of false negatives are raised (since not being able to hit 50reqs/sec from any arbitrary node could be caused by, for example, a poor user-side connection). Still, a positive is a good indicator.
+
+Since the load balancers offered by AWS, GCE, and others give us a lot of freebies, we can easily observe request throughput service-side, as well.
