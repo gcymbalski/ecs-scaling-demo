@@ -1,0 +1,15 @@
+For this assignment, you will take a simple client-server application that we provide, devise a strategy for implementing it on a public cloud, automate that implementation and share your designs and artifacts.
+ 
+Specifically, you will:
+Use the application at https://github.com/DanKerns/trivial_service.  You will need to read the documentation to see how the application works and how it is to be configured. You many not change the code in the application.
+The provided web server has a maximum throughput of 10-requests-per-second while the backend server can handle thousands. Your architecture will internally use multiple web servers to achieve at least 50-requests-per-second. Your architecture must present itself on a single IP address or DNS name.
+Your architecture must scale with load. That is, when there is little load you should reduce resource usage and as load increases you should add more web server resources.
+Your architecture must use containers.  That is, the web server and the backend server must each reside in a container.
+You will write a simple load test using the ‘ab' (apache bench) command.  Example 'ab -r -n 1500 -c 5 http://<my_service>/'
+Your service will be installed/uninstalled in an automated way. You can use homegrown tools, platform provided tools (ex: CloudFormation), or third party tools (ex: Chef, Puppet or Ansible).  In all cases, you need to include your configuration files and/or scripts.
+Your deliverables are:
+•         A design document describing your approach including it’s strengths and weaknesses.
+•         Your configuration files and scripts for installation and teardown of the service.
+•         A document describing the installation, operation and tear-down of the service such that I can reproduce it.  You should NOT share your secret credentials with me.
+•         A log file showing the installation from the command-line.
+•         A log file showing the output of ‘ab’.
