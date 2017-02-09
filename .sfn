@@ -1,0 +1,48 @@
+# This is an auto-generated configuration file for
+# the sfn CLI. To view all available configuration
+# options, please see:
+# http://www.sparkleformation.io/docs/sfn/configuration.html
+Configuration.new do
+  #   Set style of stack nesting
+  apply_nesting 'deep'
+  #   Enable processing of SparkleFormation templates
+  processing true
+  #   Provider specific options used when creating
+  #   new stacks. Options defined here are AWS specific.
+  options do
+    on_failure 'nothing'
+    notification_topics []
+    capabilities ['CAPABILITY_IAM']
+    tags do
+      creator ENV['USER']
+    end
+  end
+  #   Name of bucket in object store to hold nested
+  #   stack templates
+  # nesting_bucket 'BUCKET_NAME'
+  #   Prefix used on generated template path prior to storage
+  #   in the object store
+  # nesting_prefix 'nested-templates'
+  #   Remote provider credentials
+  credentials do
+    #  Remote provider name (:aws, :azure, :google, :open_stack, :rackspace, :terraform)
+    provider :aws
+    #  AWS credentials information
+    aws_access_key_id ENV['AWS_ACCESS_KEY_ID']
+    aws_secret_access_key ENV['AWS_SECRET_ACCESS_KEY']
+    aws_region ENV['AWS_REGION']
+    aws_bucket_region ENV['AWS_REGION']
+    #  Google Cloud Deployment Manager credentials
+    google_service_account_email ENV['GOOGLE_SERVICE_ACCOUNT_EMAIL']
+    google_service_account_private_key ENV['GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY']
+    google_project ENV['GOOGLE_PROJECT']
+    #  Terraform credentials information
+    #  Valid driver names: :tfe, :boule, :local
+    terraform_driver :local
+    terraform_tfe_endpoint ENV['TFE_URL']
+    terraform_tfe_token ENV['TFE_TOKEN']
+    terraform_boule_endpoint ENV['BOULE_URL']
+    terraform_local_directory './terraform-stacks'
+    terraform_local_scrub_destroyed false
+  end
+end
