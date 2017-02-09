@@ -1,0 +1,24 @@
+SITE
+  remote: https://supermarket.getchef.com/api/v1
+  specs:
+    compat_resource (12.16.3)
+
+GIT
+  remote: https://github.com/NOX73/chef-golang
+  ref: 1.7.1
+  sha: f22e2af9c20b4252015a04b32a454fa569543be5
+  specs:
+    golang (1.7.1)
+
+GIT
+  remote: https://github.com/chef-cookbooks/docker
+  ref: v2.14.3
+  sha: 4ee6eabb58fe116e7b8b063b352626a91de3cfac
+  specs:
+    docker (2.14.3)
+      compat_resource (>= 12.16.2)
+
+DEPENDENCIES
+  docker (>= 0)
+  golang (>= 0)
+

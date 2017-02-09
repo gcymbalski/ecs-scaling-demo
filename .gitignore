@@ -1,1 +1,4 @@
+.*.swp
 .clustercfg
+container_images/chef/cookbooks
+container_images/chef/tmp

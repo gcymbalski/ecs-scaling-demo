@@ -1,0 +1,4 @@
+site "https://supermarket.getchef.com/api/v1"
+
+cookbook 'golang', github: 'NOX73/chef-golang', ref: '1.7.1'
+cookbook 'docker', github: 'chef-cookbooks/docker', ref: 'v2.14.3'
