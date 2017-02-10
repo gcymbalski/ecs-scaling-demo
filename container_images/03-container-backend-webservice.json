@@ -1,4 +1,9 @@
 {
+  "variables": {
+    "login_server":"{{env `DOCKER_LOGIN_SERVER`}}",
+    "aws_access_key": "{{env `AWS_ACCESS_KEY_ID`}}",
+    "aws_secret_key": "{{env `AWS_SECRET_ACCESS_KEY`}}"
+  },
   "builders": [
     {
       "type": "docker",
@@ -33,10 +38,17 @@
     }
   ],
   "post-processors": [
-    {
+   [ {
       "type": "docker-tag",
-      "repository": "cluster/backend",
+      "repository": "{{user `login_server`}}/backend",
       "tag": "0.1"
+    },
+    {
+      "type": "docker-push",
+      "aws_access_key":"{{user `aws_access_key`}}",
+      "aws_secret_key":"{{user `aws_secret_key`}}",
+      "ecr_login": true,
+      "login_server": "https://{{user `login_server`}}"
     }
-  ]
+  ]]
 }

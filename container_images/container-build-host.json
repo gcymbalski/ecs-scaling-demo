@@ -1,0 +1,42 @@
+{
+  "variables": {
+    "aws_access_key": "{{env `AWS_ACCESS_KEY_ID`}}",
+    "aws_secret_key": "{{env `AWS_SECRET_ACCESS_KEY`}}",
+    "aws_region": "{{env `AWS_REGION`}}",
+    "aws_ami": "{{env `AWS_AMI_ID`}}",
+    "aws_vpc": "{{env `AWS_VPC_ID`}}",
+    "aws_subnet": "{{env `AWS_SUBNET_ID`}}",
+    "ssh_username": "root"
+  },
+  "builders": [
+    {
+      "type": "amazon-ebs",
+      "region": "{{user `aws_region`}}",
+      "access_key": "{{user `aws_access_key`}}",
+      "secret_key": "{{user `aws_secret_key`}}",
+      "instance_type": "t2.medium",
+      "source_ami": "{{user `aws_ami`}}",
+      "ssh_username": "{{user `ssh_username`}}",
+      "ami_name":"packer-intermediate {{timestamp}}"
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "chef-solo",
+      "cookbook_paths": [
+        "chef/cookbooks"
+      ],
+      "json": {
+      },
+      "run_list": [
+        "docker"
+      ]
+    }
+  ],
+  "post-processors": [
+    {
+	"type": "artifice",
+	"files": ["complete.txt"]
+    }
+  ]
+}

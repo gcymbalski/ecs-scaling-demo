@@ -1,4 +1,9 @@
 {
+  "variables": {
+    "login_server":"{{env `DOCKER_LOGIN_SERVER`}}",
+    "aws_access_key": "{{env `AWS_ACCESS_KEY_ID`}}",
+    "aws_secret_key": "{{env `AWS_SECRET_ACCESS_KEY`}}"
+  },
   "builders": [
     {
       "type": "docker",
@@ -17,8 +22,8 @@
     },
     {
       "type": "file",
-      "source": "../lib/trivial_service/www/www.go",
-      "destination": "/frontend/www.go"
+      "source": "../lib/trivial_service/frontend/www.go",
+      "destination": "/frontend/frontend.go"
     },
     {
       "type": "file",
@@ -28,15 +33,22 @@
     {
       "type": "shell",
       "inline": [
-	". /etc/profile && cd /frontend && go build www.go && chmod +x /etc/service/frontend/run"
+	". /etc/profile && cd /frontend && go build frontend.go && chmod +x /etc/service/frontend/run"
       ]
     }
   ],
   "post-processors": [
-    {
+   [ {
       "type": "docker-tag",
-      "repository": "cluster/frontend",
+      "repository": "{{user `login_server`}}/frontend",
       "tag": "0.1"
+    },
+    {
+      "type": "docker-push",
+      "aws_access_key":"{{user `aws_access_key`}}",
+      "aws_secret_key":"{{user `aws_secret_key`}}",
+      "ecr_login": true,
+      "login_server": "https://{{user `login_server`}}"
     }
-  ]
+  ]]
 }
