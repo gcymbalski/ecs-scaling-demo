@@ -53,17 +53,45 @@ namespace :cluster do
     writecfg(cfg)
   end
 
+  desc 'Build artifacts remotely for cluster'
+  task :remote_artifacts, [ :force ] do |_t, args|
+    cf = Aws::CloudFormation::Client.new
+    if cf.describe_stacks(stack_name: vpc_name).stacks.empty?
+      Rake::Task['cluster:init'].invoke
+    end
+    repo = "tmp/repo.tgz"
+    archive = system("git archive HEAD -o tmp/repo.tgz")
+    unless archive
+      puts "Unable to run git archive; is something broken?"
+      exit -1
+    end
+    opts = ('-debug' if DEBUG)
+    vpcstack = cf.describe_stacks(stack_name: vpc_name).stacks.first.to_h
+
+    vpc_id   = vpcstack[:outputs].select do |k|
+	k[:output_key] == 'VpcId'
+	end.first[:output_value]
+
+    subnets = vpcstack[:outputs].select do |k|
+	k[:output_key] =~ /Public.*Subnet/
+	end.first[:output_value]
+
+    ENV['AWS_VPC_ID'] = vpc_id
+    ENV['AWS_SUBNET'] = subnet_id
+    status = system("cd container_images && packer build #{opts} container-host.json")
+  end
+
   desc 'Build images for cluster'
   task :artifacts, [ :force ] do |_t, args|
     # wrap Packer's build of the images we need, pushing to ECR
     #  - note that this is the only stage that specifically requires running on Linux, grr
+    checkvars
     cf = Aws::CloudFormation::Client.new
     if cf.describe_stacks(stack_name: vpc_name).stacks.empty?
       Rake::Task['cluster:init'].invoke
     end
     docker_endpoint = `aws ecr get-login`.split.last.slice(8..-1) #chop off https://
     ENV['DOCKER_LOGIN_SERVER'] = docker_endpoint
-    checkvars
     puts 'Generating images, please wait...'
     opts = ('-debug' if DEBUG)
     cfg = readcfg
