@@ -4,7 +4,7 @@
 - Packer for building container images (install from your package manager or https://www.packer.io/downloads.html - fortunately, it's just a binary that needs to be in your $PATH)
 - apachebench for testing cluster performance (install from your package manager [apache2-utils on Debian] or `brew install homebrew/apache/ab` if you're on OSX using Homebrew )
 Other Reqs
-- Have an AWS account with your local environment variables of AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, and AWS_DEFAULT_REGION set appropriately. You'll get yelled at if they aren't filled out. 
+- Have an AWS account with your local environment variables of AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, and AWS_DEFAULT_REGION set appropriately. You'll get yelled at if they aren't filled out. Make sure these match your AWS profile if you've configured the CLI for other stuff, too.
 
 #Major Caveat
 Due to a somewhat critical but actively-worked-on problem with Packer's driver for building Docker container images, we have to build images directly on a Docker-enabled host; that is, it doesn't use API calls but some magic, wrapping the CLI and talking to the unix socket. Future incarnations of the driver should resolve this and enable building directly on a remote Docker host- see https://github.com/mitchellh/packer/pull/4186 . While I could drive SSH and do some magic, it'd probably wind up brittle enough to be not too helpful.

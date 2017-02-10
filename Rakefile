@@ -1,6 +1,9 @@
 require 'json'
+require 'aws-sdk'
+
 CFGFILE = '.clustercfg'.freeze
 DEBUG = ENV['DEBUG'] ? true : false
+vpc_name = 'cluster-vpc'
 
 def readcfg
   if File.exist?(CFGFILE)
@@ -42,7 +45,11 @@ namespace :cluster do
     Rake::Task['cluster:preflight'].invoke
     # call first-stage sparkle templates
     cfg = readcfg
-
+    status = system("sfn create -d #{vpc_name} --file sparkleformation/vpc.rb")
+    unless status
+      puts "Failed generating our VPC!"
+      exit -1 
+    end
     writecfg(cfg)
   end
 
@@ -50,6 +57,12 @@ namespace :cluster do
   task :artifacts, [ :force ] do |_t, args|
     # wrap Packer's build of the images we need, pushing to ECR
     #  - note that this is the only stage that specifically requires running on Linux, grr
+    cf = Aws::CloudFormation::Client.new
+    if cf.describe_stacks(stack_name: vpc_name).stacks.empty?
+      Rake::Task['cluster:init'].invoke
+    end
+    docker_endpoint = `aws ecr get-login`.split.last.slice(8..-1) #chop off https://
+    ENV['DOCKER_LOGIN_SERVER'] = docker_endpoint
     checkvars
     puts 'Generating images, please wait...'
     opts = ('-debug' if DEBUG)
@@ -77,10 +90,24 @@ namespace :cluster do
 
   desc 'Build cluster services'
   task :build do
-    checkvars
     # use aforegenerated images to actually launch our cluster
-    cfg = readcfg
+    cf = Aws::CloudFormation::Client.new
+    if cf.describe_stacks(stack_name: vpc_name).stacks.empty?
+      Rake::Task['cluster:init'].invoke
+    end
+    vpcstack = cf.describe_stacks(stack_name: vpc_name).stacks.first.to_h
 
+    vpc_id   = vpcstack[:outputs].select do |k|
+	k[:output_key] == 'VpcId'
+	end.first[:output_value]
+
+    subnets = vpcstack[:outputs].select do |k|
+	k[:output_key] =~ /Public.*Subnet/
+	end
+    subnet_vars = subnets.collect{|x| "#{x[:output_key]}:#{x[:output_value]}"}.join(',')
+
+    cfg = readcfg
+    status = system("sfn create -m vpc_id:#{vpc_id} -d ecs --file sparkleformation/ecs.rb")
     writecfg(cfg)
   end
 
@@ -89,7 +116,7 @@ namespace :cluster do
     checkvars
     # kill the whole thing
     cfg = readcfg
-
+    status = system("sfn destroy #{vpc_name}")
     writecfg(cfg)
   end
 end

@@ -2,6 +2,8 @@ SITE
   remote: https://supermarket.getchef.com/api/v1
   specs:
     compat_resource (12.16.3)
+    yum-epel (2.1.1)
+      compat_resource (>= 12.16.3)
 
 GIT
   remote: https://github.com/NOX73/chef-golang
@@ -11,14 +13,23 @@ GIT
     golang (1.7.1)
 
 GIT
-  remote: https://github.com/chef-cookbooks/docker
-  ref: v2.14.3
-  sha: 4ee6eabb58fe116e7b8b063b352626a91de3cfac
+  remote: https://github.com/sous-chefs/ruby_build
+  ref: v1.0.0
+  sha: 6548a9a622af846fc6ea3e0f7255ba42fa662cdb
   specs:
-    docker (2.14.3)
-      compat_resource (>= 12.16.2)
+    ruby_build (1.0.0)
+      yum-epel (>= 0.0.0)
+
+GIT
+  remote: https://github.com/sous-chefs/ruby_rbenv
+  ref: v1.1.0
+  sha: 025b504f5743ce798831ea90c1d954bb4c623c97
+  specs:
+    ruby_rbenv (1.1.0)
+      ruby_build (>= 0.0.0)
 
 DEPENDENCIES
-  docker (>= 0)
   golang (>= 0)
+  ruby_build (>= 0)
+  ruby_rbenv (>= 0)
 

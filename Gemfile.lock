@@ -5,9 +5,13 @@ GEM
       public_suffix (~> 2.0, >= 2.0.2)
     attribute_struct (0.3.4)
       bogo (>= 0.1.31, < 0.3.0)
+    aws-sdk (2.7.5)
+      aws-sdk-resources (= 2.7.5)
     aws-sdk-core (2.7.5)
       aws-sigv4 (~> 1.0)
       jmespath (~> 1.0)
+    aws-sdk-resources (2.7.5)
+      aws-sdk-core (= 2.7.5)
     aws-sigv4 (1.0.0)
     bogo (0.2.8)
       hashie
@@ -225,7 +229,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  aws-sdk-core
+  aws-sdk
   chef
   librarian-chef
   rake

@@ -1,2 +1,2 @@
 #!/bin/sh
-exec /frontend/www >>/var/log/frontend.log 2>&1
+exec /frontend/frontend >>/var/log/frontend.log 2>&1
