@@ -31,6 +31,7 @@
    {
       "type": "shell",
       "inline": [
+	  "sudo bash -c \"echo \\\"127.0.0.1   $(hostname)\\\" >> /etc/hostname\"",
           "sudo apt-get -y update",
 	  "sudo apt-get -y install docker.io awscli curl",
 	  "curl https://releases.hashicorp.com/packer/0.12.2/packer_0.12.2_linux_amd64.zip | zcat > packer; chmod +x packer; sudo mv packer /usr/local/bin",
@@ -46,8 +47,7 @@
 	"rbenv": {
 	    "rubies": ["2.3.3"],
 	    "global": "2.3.3",
-	    "gems": {"2.3.3": [{"name":"bundler"}]},
-	    "plugins": [{"name": "rbenv-gem-rehash", "git_url": "https://github.com/rbenv/rbenv-gem-rehash.git", "git_ref": "v1.0.0"}]
+	    "gems": {"2.3.3": [{"name":"bundler"}]}
 	}
       },
       "run_list": [

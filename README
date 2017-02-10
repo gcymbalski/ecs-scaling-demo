@@ -33,7 +33,8 @@ With the above out of the way, getting a cluster bootstrapped should hopefully b
 
 Best of all, minimal traffic is used on the terminal used to do this. Everything bandwidth-intense happens in AWS.
 
-#To operate
+#Operation of Your Cluster
+
 This is all driven by Rake, a Ruby-driven Make-like framework for simplifying tasks. This being Ruby, we also version control things with Bundler. Long story short, we run 'bundle exec rake' to run 'rake'. Or do what I do and `alias ber='bundle exec rake'`. 
 
 Fortunately, you can start at any of the above steps you want and the right thing will just happen. So, if you want to see the output of ApacheBench, just run the following:
@@ -50,3 +51,10 @@ bundle exec rake cluster:build		  #build out the rest of the services
 bundle exec rake cluster:terminate	  #destroy everything we just made
 ``` 
 
+These tasks are, fortunately, more or less stateless to the user- as long as you're operating your cluster from the same git commmits, anyway.
+
+#Room for Improvement
+
+- For one, while I think this is a decent start to something that could probably be more resiliant if not for all the Amazon in it, it doesn't include the kind of day-to-day tooling that makes a project efficient, like single-keystroke version bumping of artifacts, along with understanding their dependency graph and how to know when to cut and possibly promote a version.
+- It also doesn't have automated tests written. For the most part, the pieces are so functionally separated and specialized that I just have to test that the pieces going in don't gum up the works. Speaking of...
+- The lack of the above means 'CI' is more like me trying to get to 'rake test:throughput' with flying colors

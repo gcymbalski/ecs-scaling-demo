@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'minitar-cli'
 gem 'pry'
 gem 'chef'
 gem 'librarian-chef'
