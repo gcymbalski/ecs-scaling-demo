@@ -1,9 +1,10 @@
 require 'json'
 require 'aws-sdk'
+require 'pry'
 
 CFGFILE = '.clustercfg'.freeze
 DEBUG = ENV['DEBUG'] ? true : false
-vpc_name = 'cluster-vpc'
+VPC_NAME = 'cluster-vpc'.freeze
 
 def readcfg
   if File.exist?(CFGFILE)
@@ -45,7 +46,7 @@ namespace :cluster do
     Rake::Task['cluster:preflight'].invoke
     # call first-stage sparkle templates
     cfg = readcfg
-    status = system("sfn create -d #{vpc_name} --file sparkleformation/vpc.rb")
+    status = system("sfn create -d #{VPC_NAME} --file sparkleformation/vpc.rb")
     unless status
       puts "Failed generating our VPC!"
       exit -1 
@@ -56,7 +57,7 @@ namespace :cluster do
   desc 'Build artifacts remotely for cluster'
   task :remote_artifacts, [ :force ] do |_t, args|
     cf = Aws::CloudFormation::Client.new
-    if cf.describe_stacks(stack_name: vpc_name).stacks.empty?
+    if cf.describe_stacks(stack_name: VPC_NAME).stacks.empty?
       Rake::Task['cluster:init'].invoke
     end
     repo = "tmp/repo.tgz"
@@ -66,19 +67,19 @@ namespace :cluster do
       exit -1
     end
     opts = ('-debug' if DEBUG)
-    vpcstack = cf.describe_stacks(stack_name: vpc_name).stacks.first.to_h
+    vpcstack = cf.describe_stacks(stack_name: VPC_NAME).stacks.first.to_h
 
     vpc_id   = vpcstack[:outputs].select do |k|
 	k[:output_key] == 'VpcId'
 	end.first[:output_value]
 
-    subnets = vpcstack[:outputs].select do |k|
+    subnet_id = vpcstack[:outputs].select do |k|
 	k[:output_key] =~ /Public.*Subnet/
 	end.first[:output_value]
 
     ENV['AWS_VPC_ID'] = vpc_id
     ENV['AWS_SUBNET'] = subnet_id
-    status = system("cd container_images && packer build #{opts} container-host.json")
+    status = system("cd container_images && packer build #{opts} container-build-host.json")
   end
 
   desc 'Build images for cluster'
@@ -87,7 +88,7 @@ namespace :cluster do
     #  - note that this is the only stage that specifically requires running on Linux, grr
     checkvars
     cf = Aws::CloudFormation::Client.new
-    if cf.describe_stacks(stack_name: vpc_name).stacks.empty?
+    if cf.describe_stacks(stack_name: VPC_NAME).stacks.empty?
       Rake::Task['cluster:init'].invoke
     end
     docker_endpoint = `aws ecr get-login`.split.last.slice(8..-1) #chop off https://
@@ -120,10 +121,10 @@ namespace :cluster do
   task :build do
     # use aforegenerated images to actually launch our cluster
     cf = Aws::CloudFormation::Client.new
-    if cf.describe_stacks(stack_name: vpc_name).stacks.empty?
+    if cf.describe_stacks(stack_name: VPC_NAME).stacks.empty?
       Rake::Task['cluster:init'].invoke
     end
-    vpcstack = cf.describe_stacks(stack_name: vpc_name).stacks.first.to_h
+    vpcstack = cf.describe_stacks(stack_name: VPC_NAME).stacks.first.to_h
 
     vpc_id   = vpcstack[:outputs].select do |k|
 	k[:output_key] == 'VpcId'
@@ -144,7 +145,7 @@ namespace :cluster do
     checkvars
     # kill the whole thing
     cfg = readcfg
-    status = system("sfn destroy #{vpc_name}")
+    status = system("sfn destroy #{VPC_NAME}")
     writecfg(cfg)
   end
 end
@@ -158,6 +159,12 @@ namespace :test do
       puts 'Cannot find ApacheBench (ab) in your PATH, please install it'
       exit -1
     end
+    cf = Aws::CloudFormation::Client.new
+    if cf.describe_stacks(stack_name: VPC_NAME).stacks.empty?
+      Rake::Task['cluster:init'].invoke
+    end
+    vpcstack = cf.describe_stacks(stack_name: VPC_NAME).stacks.first.to_h
+    binding.pry
     # wrap apachebench here
     cfg = readcfg
 
