@@ -41,7 +41,7 @@
    [ {
       "type": "docker-tag",
       "repository": "{{user `login_server`}}/backend",
-      "tag": "0.1"
+      "tag": "0.2"
     },
     {
       "type": "docker-push",

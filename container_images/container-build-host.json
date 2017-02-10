@@ -3,7 +3,7 @@
     "aws_access_key": "{{env `AWS_ACCESS_KEY_ID`}}",
     "aws_secret_key": "{{env `AWS_SECRET_ACCESS_KEY`}}",
     "aws_region": "{{env `AWS_REGION`}}",
-    "aws_ami": "{{env `AWS_AMI_ID`}}",
+    "aws_ami": "ami-d206bdb2",
     "aws_vpc": "{{env `AWS_VPC_ID`}}",
     "aws_subnet": "{{env `AWS_SUBNET_ID`}}",
     "ssh_username": "ubuntu"
@@ -14,7 +14,7 @@
       "region": "{{user `aws_region`}}",
       "access_key": "{{user `aws_access_key`}}",
       "secret_key": "{{user `aws_secret_key`}}",
-      "instance_type": "t2.medium",
+      "instance_type": "m3.medium",
       "source_ami": "{{user `aws_ami`}}",
       "ssh_username": "{{user `ssh_username`}}",
       "subnet_id": "{{user `aws_subnet`}}",
@@ -38,7 +38,7 @@
       "json": {
 	"rbenv": {
 	    "rubies": ["2.3.3"],
-	    "gems": {"2.3.3": ["bundler"]}
+	    "gems": {"2.3.3": [{"name":"bundler"}]}
 	}
       },
       "run_list": [
@@ -48,14 +48,26 @@
    },
    {
      "type": "file",
-     "source": "repo.tgz",
-     "dest": "/root/repo.tgz"
+     "source": "../tmp/repo.tgz",
+     "destination": "/home/ubuntu/repo.tgz"
+   },
+   {
+     "type": "shell",
+     "inline": [
+	  "export AWS_ACCESS_KEY_ID={{user `aws_access_key`}}; export AWS_SECRET_ACCESS_KEY={{user ``aws_secret_key``}}; export AWS_REGION={{user ``aws_region``}}; cd /home/ubuntu; tar xzvf repo.tgz --one-top-level; cd repo; bundle; bundle exec rake build:artifacts; touch /tmp/done"
+	]
+   },
+   {
+     "type": "file",
+     "source": "/tmp/done",
+     "destination": "/tmp/done",
+     "direction": "download"
    }
   ],
   "post-processors": [
     {
 	"type": "artifice",
-	"files": ["complete.txt"]
+	"files": ["/tmp/done"]
     }
   ]
 }
