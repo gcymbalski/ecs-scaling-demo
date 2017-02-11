@@ -4,7 +4,8 @@ require 'pry'
 
 CFGFILE = '.clustercfg'.freeze
 DEBUG = ENV['DEBUG'] ? true : false
-VPC_NAME = 'cluster-vpc'.freeze
+VPC_NAME = 'service-cluster'.freeze
+ENV['AWS_DEFAULT_REGION']=ENV['AWS_REGION']
 
 def readcfg
   if File.exist?(CFGFILE)
@@ -46,10 +47,27 @@ namespace :cluster do
     Rake::Task['cluster:preflight'].invoke
     # call first-stage sparkle templates
     cfg = readcfg
-    status = system("sfn create -d #{VPC_NAME} --file sparkleformation/vpc.rb")
-    unless status
-      puts "Failed generating our VPC!"
-      exit -1 
+    cf = Aws::CloudFormation::Client.new
+    if cf.describe_stacks(stack_name: VPC_NAME).stacks.empty?
+      status = system("sfn create -d #{VPC_NAME} --file sparkleformation/vpc.rb")
+      unless status
+        puts "Failed generating our VPC!"
+        exit -1 
+      end
+    end
+        
+    vpcstack = cf.describe_stacks(stack_name: VPC_NAME).stacks.first.to_h
+
+    vpc_id   = vpcstack[:outputs].select do |k|
+	k[:output_key] == 'VpcId'
+	end.first[:output_value]
+
+    if cf.describe_stacks(stack_name: 'ecs').stacks.empty?
+      status = system("sfn create -m vpc_id:#{vpc_id} -d ecs --file sparkleformation/ecs.rb")
+      unless status
+        puts "Failed generating our ECS stack!"
+        exit -1 
+      end
     end
     writecfg(cfg)
   end
@@ -96,6 +114,7 @@ namespace :cluster do
     puts 'Generating images, please wait...'
     opts = ('-debug' if DEBUG)
     cfg = readcfg
+    cfg['artifacts'] ||= {}
     %w(
       01-container-base.json
       02-container-golang.json
@@ -136,7 +155,8 @@ namespace :cluster do
     subnet_vars = subnets.collect{|x| "#{x[:output_key]}:#{x[:output_value]}"}.join(',')
 
     cfg = readcfg
-    status = system("sfn create -m vpc_id:#{vpc_id} -d ecs --file sparkleformation/ecs.rb")
+    # XXX future stack update that 
+#    status = system("sfn create -m vpc_id:#{vpc_id} -d ecs --file sparkleformation/ecs.rb")
     writecfg(cfg)
   end
 
@@ -145,7 +165,7 @@ namespace :cluster do
     checkvars
     # kill the whole thing
     cfg = readcfg
-    status = system("sfn destroy #{VPC_NAME}")
+    status = system("sfn destroy ecs && sfn destroy #{VPC_NAME}")
     writecfg(cfg)
   end
 end

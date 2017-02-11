@@ -1,6 +1,6 @@
 .*.swp
 .clustercfg
+container_images/*.pem
 container_images/chef/cookbooks
 container_images/chef/tmp
-repo.tgz
 tmp

@@ -22,7 +22,7 @@
     },
     {
       "type": "file",
-      "source": "../lib/trivial_service/frontend/www.go",
+      "source": "../lib/trivial_service/www/www.go",
       "destination": "/frontend/frontend.go"
     },
     {

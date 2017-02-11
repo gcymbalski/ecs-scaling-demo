@@ -1,6 +1,5 @@
 # Initial Design Thoughts
-
-- Fairly straightforward fault-tolerant and auto-scaling (more on that later) two-tier application with no other external dependencies (like auth, logging, databases- yay)
+- Fairly straightforward fault-tolerant* and auto-scaling** two-tier application with no other external dependencies (like auth, logging, databases- yay)
 - Requires building and deploying both upstream applications and their build dependencies (i.e. Go) as well as container images:
   - Reasonably resolved by using Hashicorp's Packer to generate an intermediate image for building Go applications
     - Chef has well-maintained packages for cross-platform management of building Go development environments
@@ -17,7 +16,7 @@ My familiarity is with AWS, which makes me roughly envision this problem as a tw
 
 Another major concern is the decision to simply deploy containers that were also used to build the software being deployed- meaning there's some cruft that's not operationally necessary (and potentially even a liability). Plus, that means you're now tied to your container deployment technology for deployments rather than something more portable like system packages. Given additional infrastructure, I'd prefer the build infrastructure generate platform-specific packages (I use fpm for simplicity) from a standardized build environment image (or image set). Packages can be then checked in and made available to environment-specific repositories, making it easier to do promotional tests by virtue of more atomic change management. Best of all, if there are upstream dependencies in what our base image is (for example, I am a big fan of phusion's baseimage-docker project, which packages a more container-friendly small Ubuntu variant), we don't need to necessarily repeat the entire build chain to get a fresh, deployable image- all we need is to install the package we already have onto our updated container base (or switch to a new base entirely now that we're agnostic about it). 
 
-## Implementation Concerns
+##  Concerns
 
 For simplicity, I am using my workstation running a modern Debian variant for development, working primarily in cross-platform tooling when possible. I'll be calling out dependencies and providing links to all tools required/used, including specific version information (e.g. using submodules for upstream deps, or Gemfiles that are more specific than usual).
 

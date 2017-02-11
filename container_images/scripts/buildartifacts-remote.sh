@@ -8,5 +8,4 @@ if ! ( [ $RETURN == 0 ] || [ $RETURN == 1 ] ); then # XXX hack for a dumb gem bu
   exit -1
 fi
 rm container_images/*.pem || true
-bundle exec rake build:artifacts
-touch /tmp/done
+bundle exec rake cluster:artifacts && touch /tmp/done

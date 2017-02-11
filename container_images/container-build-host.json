@@ -2,7 +2,7 @@
   "variables": {
     "aws_access_key": "{{env `AWS_ACCESS_KEY_ID`}}",
     "aws_secret_key": "{{env `AWS_SECRET_ACCESS_KEY`}}",
-    "aws_region": "{{env `AWS_REGION`}}",
+    "aws_region": "{{env `AWS_DEFAULT_REGION`}}",
     "aws_ami": "ami-d206bdb2",
     "aws_vpc": "{{env `AWS_VPC_ID`}}",
     "aws_subnet": "{{env `AWS_SUBNET_ID`}}",
@@ -61,8 +61,14 @@
         "destination": "/home/ubuntu/repo"
    },
    {
+	"type": "shell",
+	"inline": [
+	  "sudo chown ubuntu /var/run/docker.sock"
+	]
+   },
+   {
      "type": "shell",
-     "environment_vars": ["AWS_ACCESS_KEY={{user `aws_secret_key`}}", "AWS_SECRET_ACCESS_KEY={{user `aws_secret_key`}}", "AWS_REGION={{user `aws_region`}}" ],
+     "environment_vars": ["AWS_ACCESS_KEY_ID={{user `aws_access_key`}}", "AWS_SECRET_ACCESS_KEY={{user `aws_secret_key`}}", "AWS_DEFAULT_REGION={{user `aws_region`}}","AWS_REGION={{user `aws_region`}}" ],
      "script": "scripts/buildartifacts-remote.sh"
    },
    {
@@ -76,6 +82,10 @@
     {
 	"type": "artifice",
 	"files": ["/tmp/done"]
+    },
+    {
+        "type":"manifest",
+	"output":"manifest.json"
     }
   ]
 }
