@@ -96,6 +96,13 @@ namespace :cluster do
   desc 'Build artifacts remotely for cluster'
   task :remote_artifacts, [:force] do |_t, _args|
     Rake::Task['cluster:init'].invoke unless get_stack(VPC_NAME)
+    manifest = 'container_images/manifest.json'
+    if File.exist?(manifest)
+      puts "Looks like you've run this successfully before; removing old manifest in 5 seconds, hit ctrl-c to bail out"
+      sleep 5
+      puts "Removing..."
+      File.delete(manifest)
+    end
     opts = ('-debug' if DEBUG)
     vpcstack = get_stack(VPC_NAME).to_h
 
@@ -110,6 +117,22 @@ namespace :cluster do
     ENV['AWS_VPC_ID'] = vpc_id
     ENV['AWS_SUBNET_ID'] = subnet_id
     status = system("cd container_images && packer build #{opts} container-build-host.json")
+    if status && File.exist?(manifest)
+      mfst = JSON.load(File.read(manifest))
+      # This is a gross one-liner that reads into the manifest hash to see what ami we just created so we can remove it- right now, Packer can't optionally discard an Amazon build job, so it generates an AMI. Kinda nice for debugging, actually.
+      ami = JSON.load(File.read('container_images/manifest.json'))['builds'].first['artifact_id'].split(':').last
+      unless DEBUG || ( ENV['KEEP_AMI'] && ENV['KEEP_AMI'] != 0)
+        ec2 = Aws::EC2::Client.new
+        snapshot = ec2.describe_images(image_ids: [ami]).images.first.block_device_mappings.first.ebs.snapshot_id
+        ec2.deregister_image(image_id: ami)
+        ec2.delete_snapshot(snapshot_id: snapshot)
+      else
+        puts "Kept intermediate AMI: #{ami}"
+      end
+    else
+      puts 'Failed to generate images!'
+      exit -1
+    end
   end
 
   desc 'Build images for cluster'
@@ -120,7 +143,7 @@ namespace :cluster do
     Rake::Task['cluster:init'].invoke if get_stack(VPC_NAME)
     ecrauth = Aws::ECR::Client.new.get_authorization_token
     unless ecrauth && ecrauth.authorization_data.first.proxy_endpoint
-        puts "Couldn't figure out which Docker repository to commit to"
+        puts "Couldn't figure out which remote Docker repository to commit to"
         exit -1
     end
     docker_endpoint = ecrauth.authorization_data.first.proxy_endpoint.slice(8..-1) # chop off https://

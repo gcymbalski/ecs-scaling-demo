@@ -4,3 +4,4 @@ container_images/*.pem
 container_images/chef/cookbooks
 container_images/chef/tmp
 tmp
+container_images/manifest.json
