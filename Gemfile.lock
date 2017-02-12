@@ -5,13 +5,13 @@ GEM
       public_suffix (~> 2.0, >= 2.0.2)
     attribute_struct (0.3.4)
       bogo (>= 0.1.31, < 0.3.0)
-    aws-sdk (2.7.5)
-      aws-sdk-resources (= 2.7.5)
-    aws-sdk-core (2.7.5)
+    aws-sdk (2.7.7)
+      aws-sdk-resources (= 2.7.7)
+    aws-sdk-core (2.7.7)
       aws-sigv4 (~> 1.0)
       jmespath (~> 1.0)
-    aws-sdk-resources (2.7.5)
-      aws-sdk-core (= 2.7.5)
+    aws-sdk-resources (2.7.7)
+      aws-sdk-core (= 2.7.7)
     aws-sigv4 (1.0.0)
     bogo (0.2.8)
       hashie
@@ -85,7 +85,7 @@ GEM
     fuzzyurl (0.9.0)
     graph (2.8.2)
     hashdiff (0.2.3)
-    hashie (3.5.1)
+    hashie (3.5.3)
     highline (1.7.8)
     http (1.0.4)
       addressable (~> 2.3)
@@ -176,6 +176,7 @@ GEM
     public_suffix (2.0.5)
     rack (2.0.1)
     rake (12.0.0)
+    rb-readline (0.5.4)
     rspec (3.5.0)
       rspec-core (~> 3.5.0)
       rspec-expectations (~> 3.5.0)
@@ -246,6 +247,7 @@ DEPENDENCIES
   minitar-cli
   pry
   rake
+  rb-readline
   sfn (> 3.0)
   sparkle_formation
 

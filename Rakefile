@@ -4,7 +4,7 @@ require 'pry'
 
 CFGFILE = '.clustercfg'.freeze
 DEBUG = ENV['DEBUG'] ? true : false
-VPC_NAME = 'service-cluster'.freeze
+VPC_NAME = 'ecs-cluster'.freeze
 ENV['AWS_DEFAULT_REGION'] = ENV['AWS_REGION']
 
 def readcfg
@@ -23,8 +23,16 @@ def get_stack(_stack_name)
   cf = Aws::CloudFormation::Client.new
   begin
     reply = cf.describe_stacks(stack_name: VPC_NAME)
-    stack = reply.stacks.first.to_h
-    stack
+    stack = reply.stacks.to_h.select do |stk|
+      # reasonable assumption we've got the right stack here
+      stk.stack_status =~ /COMPLETE/ && \
+           ! (stk.stack_status =~ /DELETE/)
+    end
+    if stack.count == 1
+      stack.first
+    else
+      nil
+    end
   rescue Aws::CloudFormation::Errors::ValidationError
     nil
   end
@@ -59,7 +67,10 @@ namespace :cluster do
     # call first-stage sparkle templates
     cfg = readcfg
     unless get_stack(VPC_NAME)
-      status = system("sfn create -d #{VPC_NAME} --file sparkleformation/vpc.rb")
+      puts "Building a stack with SparkleFormation..."
+      debugstring = DEBUG ? '-u' : ''
+      runline = "sfn create #{debugstring} -d #{VPC_NAME} --file sparkleformation/vpc.rb"
+      status = system(runline)
       unless status
         puts 'Failed generating our VPC!'
         exit -1
@@ -85,12 +96,6 @@ namespace :cluster do
   desc 'Build artifacts remotely for cluster'
   task :remote_artifacts, [:force] do |_t, _args|
     Rake::Task['cluster:init'].invoke unless get_stack(VPC_NAME)
-    repo = 'tmp/repo.tgz'
-    archive = system('git archive HEAD -o tmp/repo.tgz')
-    unless archive
-      puts 'Unable to run git archive; is something broken?'
-      exit -1
-    end
     opts = ('-debug' if DEBUG)
     vpcstack = get_stack(VPC_NAME)
 
