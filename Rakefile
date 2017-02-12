@@ -23,7 +23,8 @@ def get_stack(_stack_name)
   cf = Aws::CloudFormation::Client.new
   begin
     reply = cf.describe_stacks(stack_name: VPC_NAME)
-    stack = reply.stacks.to_h.select do |stk|
+      binding.pry
+    stack = reply.to_h.stacks.select do |stk|
       # reasonable assumption we've got the right stack here
       stk.stack_status =~ /COMPLETE/ && \
            ! (stk.stack_status =~ /DELETE/)
