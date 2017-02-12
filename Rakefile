@@ -118,7 +118,12 @@ namespace :cluster do
     #  - note that this is the only stage that specifically requires running on Linux, grr
     checkvars
     Rake::Task['cluster:init'].invoke if get_stack(VPC_NAME)
-    docker_endpoint = `aws ecr get-login`.split.last.slice(8..-1) # chop off https://
+    ecrauth = Aws::ECR::Client.new.get_authorization_token
+    unless ecrauth && ecrauth.authorization_data.first.proxy_endpoint
+        puts "Couldn't figure out which Docker repository to commit to"
+        exit -1
+    end
+    docker_endpoint = ecrauth.authorization_data.first.proxy_endpoint.slice(8..-1) # chop off https://
     ENV['DOCKER_LOGIN_SERVER'] = docker_endpoint
     puts 'Generating images, please wait...'
     opts = ('-debug' if DEBUG)
