@@ -23,8 +23,7 @@ def get_stack(_stack_name)
   cf = Aws::CloudFormation::Client.new
   begin
     reply = cf.describe_stacks(stack_name: VPC_NAME)
-      binding.pry
-    stack = reply.to_h.stacks.select do |stk|
+    stack = reply.stacks.select do |stk|
       # reasonable assumption we've got the right stack here
       stk.stack_status =~ /COMPLETE/ && \
            ! (stk.stack_status =~ /DELETE/)
@@ -98,7 +97,7 @@ namespace :cluster do
   task :remote_artifacts, [:force] do |_t, _args|
     Rake::Task['cluster:init'].invoke unless get_stack(VPC_NAME)
     opts = ('-debug' if DEBUG)
-    vpcstack = get_stack(VPC_NAME)
+    vpcstack = get_stack(VPC_NAME).to_h
 
     vpc_id = vpcstack[:outputs].select do |k|
                k[:output_key] == 'VpcId'
@@ -109,7 +108,7 @@ namespace :cluster do
                 end.first[:output_value]
 
     ENV['AWS_VPC_ID'] = vpc_id
-    ENV['AWS_SUBNET'] = subnet_id
+    ENV['AWS_SUBNET_ID'] = subnet_id
     status = system("cd container_images && packer build #{opts} container-build-host.json")
   end
 
