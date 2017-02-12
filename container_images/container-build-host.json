@@ -76,7 +76,13 @@
      "source": "/tmp/done",
      "destination": "/tmp/done",
      "direction": "download"
-   }
+   },
+   {
+      "type": "shell",
+      "inline": [
+        "touch /tmp/done"
+      ]
+    }
   ],
   "post-processors": [
     {
