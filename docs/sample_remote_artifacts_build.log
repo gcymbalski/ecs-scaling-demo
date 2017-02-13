@@ -1,0 +1,1432 @@
+UPDATE_COMPLETE
+UPDATE_COMPLETE
+[1;32mamazon-ebs output will be in this color.[0m
+
+[1;32m==> amazon-ebs: Prevalidating AMI Name...[0m
+[0;32m    amazon-ebs: Found Image ID: ami-d206bdb2[0m
+[1;32m==> amazon-ebs: Creating temporary keypair: packer_58a22c55-3214-e93a-2d05-d2b8ed172864[0m
+[1;32m==> amazon-ebs: Creating temporary security group for this instance...[0m
+[1;32m==> amazon-ebs: Authorizing access to port 22 the temporary security group...[0m
+[1;32m==> amazon-ebs: Launching a source AWS instance...[0m
+[0;32m    amazon-ebs: Instance ID: i-0a570ec1c755a7dec[0m
+[1;32m==> amazon-ebs: Waiting for instance (i-0a570ec1c755a7dec) to become ready...[0m
+[1;32m==> amazon-ebs: Waiting for SSH to become available...[0m
+[1;32m==> amazon-ebs: Connected to SSH![0m
+[1;32m==> amazon-ebs: Provisioning with shell script: /var/folders/81/71dqr_ms49bc0_jrp9bv6b8c0000gn/T/packer-shell172259914[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: Hit:1 http://us-west-2.ec2.archive.ubuntu.com/ubuntu xenial InRelease[0m
+[0;32m    amazon-ebs: Get:2 http://us-west-2.ec2.archive.ubuntu.com/ubuntu xenial-updates InRelease [102 kB][0m
+[0;32m    amazon-ebs: Get:3 http://us-west-2.ec2.archive.ubuntu.com/ubuntu xenial-backports InRelease [102 kB][0m
+[0;32m    amazon-ebs: Get:4 http://us-west-2.ec2.archive.ubuntu.com/ubuntu xenial/main Sources [868 kB][0m
+[0;32m    amazon-ebs: Get:5 http://us-west-2.ec2.archive.ubuntu.com/ubuntu xenial/restricted Sources [4,808 B][0m
+[0;32m    amazon-ebs: Get:6 http://us-west-2.ec2.archive.ubuntu.com/ubuntu xenial/universe Sources [7,728 kB][0m
+[0;32m    amazon-ebs: Get:7 http://security.ubuntu.com/ubuntu xenial-security InRelease [102 kB][0m
+[0;32m    amazon-ebs: Get:8 http://us-west-2.ec2.archive.ubuntu.com/ubuntu xenial/multiverse Sources [179 kB][0m
+[0;32m    amazon-ebs: Get:9 http://us-west-2.ec2.archive.ubuntu.com/ubuntu xenial-updates/main Sources [230 kB][0m
+[0;32m    amazon-ebs: Get:10 http://us-west-2.ec2.archive.ubuntu.com/ubuntu xenial-updates/restricted Sources [2,688 B][0m
+[0;32m    amazon-ebs: Get:11 http://us-west-2.ec2.archive.ubuntu.com/ubuntu xenial-updates/universe Sources [130 kB][0m
+[0;32m    amazon-ebs: Get:12 http://us-west-2.ec2.archive.ubuntu.com/ubuntu xenial-updates/multiverse Sources [4,552 B][0m
+[0;32m    amazon-ebs: Get:13 http://us-west-2.ec2.archive.ubuntu.com/ubuntu xenial-updates/main amd64 Packages [474 kB][0m
+[0;32m    amazon-ebs: Get:14 http://us-west-2.ec2.archive.ubuntu.com/ubuntu xenial-updates/main Translation-en [188 kB][0m
+[0;32m    amazon-ebs: Get:15 http://us-west-2.ec2.archive.ubuntu.com/ubuntu xenial-updates/restricted amd64 Packages [7,176 B][0m
+[0;32m    amazon-ebs: Get:16 http://us-west-2.ec2.archive.ubuntu.com/ubuntu xenial-updates/restricted Translation-en [2,396 B][0m
+[0;32m    amazon-ebs: Get:17 http://us-west-2.ec2.archive.ubuntu.com/ubuntu xenial-updates/universe amd64 Packages [396 kB][0m
+[0;32m    amazon-ebs: Get:18 http://us-west-2.ec2.archive.ubuntu.com/ubuntu xenial-updates/universe Translation-en [149 kB][0m
+[0;32m    amazon-ebs: Get:19 http://us-west-2.ec2.archive.ubuntu.com/ubuntu xenial-backports/main Sources [3,200 B][0m
+[0;32m    amazon-ebs: Get:20 http://us-west-2.ec2.archive.ubuntu.com/ubuntu xenial-backports/universe Sources [1,868 B][0m
+[0;32m    amazon-ebs: Get:21 http://us-west-2.ec2.archive.ubuntu.com/ubuntu xenial-backports/main amd64 Packages [4,672 B][0m
+[0;32m    amazon-ebs: Get:22 http://us-west-2.ec2.archive.ubuntu.com/ubuntu xenial-backports/main Translation-en [3,200 B][0m
+[0;32m    amazon-ebs: Get:23 http://us-west-2.ec2.archive.ubuntu.com/ubuntu xenial-backports/universe amd64 Packages [2,512 B][0m
+[0;32m    amazon-ebs: Get:24 http://us-west-2.ec2.archive.ubuntu.com/ubuntu xenial-backports/universe Translation-en [1,216 B][0m
+[0;32m    amazon-ebs: Get:25 http://security.ubuntu.com/ubuntu xenial-security/main Sources [59.3 kB][0m
+[0;32m    amazon-ebs: Get:26 http://security.ubuntu.com/ubuntu xenial-security/restricted Sources [2,288 B][0m
+[0;32m    amazon-ebs: Get:27 http://security.ubuntu.com/ubuntu xenial-security/universe Sources [19.3 kB][0m
+[0;32m    amazon-ebs: Get:28 http://security.ubuntu.com/ubuntu xenial-security/multiverse Sources [1,144 B][0m
+[0;32m    amazon-ebs: Get:29 http://security.ubuntu.com/ubuntu xenial-security/main amd64 Packages [211 kB][0m
+[0;32m    amazon-ebs: Get:30 http://security.ubuntu.com/ubuntu xenial-security/main Translation-en [88.5 kB][0m
+[0;32m    amazon-ebs: Get:31 http://security.ubuntu.com/ubuntu xenial-security/universe amd64 Packages [73.8 kB][0m
+[0;32m    amazon-ebs: Get:32 http://security.ubuntu.com/ubuntu xenial-security/universe Translation-en [41.7 kB][0m
+[0;32m    amazon-ebs: Fetched 11.2 MB in 2s (5,076 kB/s)[0m
+[0;32m    amazon-ebs: Reading package lists...[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: Reading package lists...[0m
+[0;32m    amazon-ebs: Building dependency tree...[0m
+[0;32m    amazon-ebs: Reading state information...[0m
+[0;32m    amazon-ebs: curl is already the newest version (7.47.0-1ubuntu2.2).[0m
+[0;32m    amazon-ebs: The following additional packages will be installed:[0m
+[0;32m    amazon-ebs: bridge-utils cgroupfs-mount containerd docutils-common libjbig0[0m
+[0;32m    amazon-ebs: libjpeg-turbo8 libjpeg8 liblcms2-2 libpaper-utils libpaper1 libtiff5[0m
+[0;32m    amazon-ebs: libwebp5 libwebpmux1 python3-botocore python3-colorama python3-dateutil[0m
+[0;32m    amazon-ebs: python3-docutils python3-jmespath python3-pil python3-pygments python3-roman[0m
+[0;32m    amazon-ebs: python3-rsa python3-s3transfer runc ubuntu-fan[0m
+[0;32m    amazon-ebs: Suggested packages:[0m
+[0;32m    amazon-ebs: mountall aufs-tools debootstrap docker-doc rinse zfs-fuse | zfsutils[0m
+[0;32m    amazon-ebs: liblcms2-utils texlive-latex-recommended texlive-latex-base[0m
+[0;32m    amazon-ebs: texlive-lang-french fonts-linuxlibertine | ttf-linux-libertine docutils-doc[0m
+[0;32m    amazon-ebs: python-pil-doc python3-pil-dbg ttf-bitstream-vera[0m
+[0;32m    amazon-ebs: The following NEW packages will be installed:[0m
+[0;32m    amazon-ebs: awscli bridge-utils cgroupfs-mount containerd docker.io docutils-common[0m
+[0;32m    amazon-ebs: libjbig0 libjpeg-turbo8 libjpeg8 liblcms2-2 libpaper-utils libpaper1[0m
+[0;32m    amazon-ebs: libtiff5 libwebp5 libwebpmux1 python3-botocore python3-colorama[0m
+[0;32m    amazon-ebs: python3-dateutil python3-docutils python3-jmespath python3-pil[0m
+[0;32m    amazon-ebs: python3-pygments python3-roman python3-rsa python3-s3transfer runc[0m
+[0;32m    amazon-ebs: ubuntu-fan[0m
+[0;32m    amazon-ebs: 0 upgraded, 27 newly installed, 0 to remove and 22 not upgraded.[0m
+[0;32m    amazon-ebs: Need to get 19.6 MB of archives.[0m
+[0;32m    amazon-ebs: After this operation, 113 MB of additional disk space will be used.[0m
+[0;32m    amazon-ebs: Get:1 http://us-west-2.ec2.archive.ubuntu.com/ubuntu xenial/main amd64 libjpeg-turbo8 amd64 1.4.2-0ubuntu3 [111 kB][0m
+[0;32m    amazon-ebs: Get:2 http://us-west-2.ec2.archive.ubuntu.com/ubuntu xenial/main amd64 liblcms2-2 amd64 2.6-3ubuntu2 [137 kB][0m
+[0;32m    amazon-ebs: Get:3 http://us-west-2.ec2.archive.ubuntu.com/ubuntu xenial/main amd64 libjbig0 amd64 2.1-3.1 [26.6 kB][0m
+[0;32m    amazon-ebs: Get:4 http://us-west-2.ec2.archive.ubuntu.com/ubuntu xenial/universe amd64 python3-dateutil all 2.4.2-1 [39.1 kB][0m
+[0;32m    amazon-ebs: Get:5 http://us-west-2.ec2.archive.ubuntu.com/ubuntu xenial/main amd64 python3-roman all 2.0.0-2 [8,140 B][0m
+[0;32m    amazon-ebs: Get:6 http://us-west-2.ec2.archive.ubuntu.com/ubuntu xenial/main amd64 docutils-common all 0.12+dfsg-1 [141 kB][0m
+[0;32m    amazon-ebs: Get:7 http://us-west-2.ec2.archive.ubuntu.com/ubuntu xenial/main amd64 python3-docutils all 0.12+dfsg-1 [346 kB][0m
+[0;32m    amazon-ebs: Get:8 http://us-west-2.ec2.archive.ubuntu.com/ubuntu xenial/universe amd64 python3-jmespath all 0.9.0-2 [16.6 kB][0m
+[0;32m    amazon-ebs: Get:9 http://us-west-2.ec2.archive.ubuntu.com/ubuntu xenial-updates/universe amd64 python3-botocore all 1.4.70-1~16.04.0 [1,054 kB][0m
+[0;32m    amazon-ebs: Get:10 http://us-west-2.ec2.archive.ubuntu.com/ubuntu xenial/universe amd64 python3-colorama all 0.3.7-1 [14.9 kB][0m
+[0;32m    amazon-ebs: Get:11 http://us-west-2.ec2.archive.ubuntu.com/ubuntu xenial/universe amd64 python3-rsa all 3.2.3-1.1 [27.2 kB][0m
+[0;32m    amazon-ebs: Get:12 http://us-west-2.ec2.archive.ubuntu.com/ubuntu xenial-updates/universe amd64 python3-s3transfer all 0.1.9-1~16.04.0 [35.6 kB][0m
+[0;32m    amazon-ebs: Get:13 http://us-west-2.ec2.archive.ubuntu.com/ubuntu xenial-updates/universe amd64 awscli all 1.11.13-1ubuntu1~16.04.0 [406 kB][0m
+[0;32m    amazon-ebs: Get:14 http://us-west-2.ec2.archive.ubuntu.com/ubuntu xenial/main amd64 bridge-utils amd64 1.5-9ubuntu1 [28.6 kB][0m
+[0;32m    amazon-ebs: Get:15 http://us-west-2.ec2.archive.ubuntu.com/ubuntu xenial/universe amd64 cgroupfs-mount all 1.2 [4,970 B][0m
+[0;32m    amazon-ebs: Get:16 http://us-west-2.ec2.archive.ubuntu.com/ubuntu xenial-updates/universe amd64 runc amd64 1.0.0~rc1-0ubuntu2~16.04.1.1 [1,467 kB][0m
+[0;32m    amazon-ebs: Get:17 http://us-west-2.ec2.archive.ubuntu.com/ubuntu xenial-updates/universe amd64 containerd amd64 0.2.3-0ubuntu1~16.04 [4,017 kB][0m
+[0;32m    amazon-ebs: Get:18 http://us-west-2.ec2.archive.ubuntu.com/ubuntu xenial-updates/universe amd64 docker.io amd64 1.12.3-0ubuntu4~16.04.2 [10.5 MB][0m
+[0;32m    amazon-ebs: Get:19 http://us-west-2.ec2.archive.ubuntu.com/ubuntu xenial/main amd64 libjpeg8 amd64 8c-2ubuntu8 [2,194 B][0m
+[0;32m    amazon-ebs: Get:20 http://us-west-2.ec2.archive.ubuntu.com/ubuntu xenial/main amd64 libpaper1 amd64 1.1.24+nmu4ubuntu1 [13.7 kB][0m
+[0;32m    amazon-ebs: Get:21 http://us-west-2.ec2.archive.ubuntu.com/ubuntu xenial/main amd64 libpaper-utils amd64 1.1.24+nmu4ubuntu1 [8,276 B][0m
+[0;32m    amazon-ebs: Get:22 http://us-west-2.ec2.archive.ubuntu.com/ubuntu xenial/main amd64 libtiff5 amd64 4.0.6-1 [144 kB][0m
+[0;32m    amazon-ebs: Get:23 http://us-west-2.ec2.archive.ubuntu.com/ubuntu xenial/main amd64 libwebp5 amd64 0.4.4-1 [165 kB][0m
+[0;32m    amazon-ebs: Get:24 http://us-west-2.ec2.archive.ubuntu.com/ubuntu xenial/main amd64 libwebpmux1 amd64 0.4.4-1 [14.2 kB][0m
+[0;32m    amazon-ebs: Get:25 http://us-west-2.ec2.archive.ubuntu.com/ubuntu xenial/main amd64 python3-pil amd64 3.1.2-0ubuntu1 [312 kB][0m
+[0;32m    amazon-ebs: Get:26 http://us-west-2.ec2.archive.ubuntu.com/ubuntu xenial/main amd64 python3-pygments all 2.1+dfsg-1 [520 kB][0m
+[0;32m    amazon-ebs: Get:27 http://us-west-2.ec2.archive.ubuntu.com/ubuntu xenial-updates/main amd64 ubuntu-fan all 0.9.1 [30.1 kB][0m
+[0;32m    amazon-ebs: debconf: unable to initialize frontend: Dialog[0m
+[0;32m    amazon-ebs: debconf: (Dialog frontend will not work on a dumb terminal, an emacs shell buffer, or without a controlling terminal.)[0m
+[0;32m    amazon-ebs: debconf: falling back to frontend: Readline[0m
+[0;32m    amazon-ebs: debconf: unable to initialize frontend: Readline[0m
+[0;32m    amazon-ebs: debconf: (This frontend requires a controlling tty.)[0m
+[0;32m    amazon-ebs: debconf: falling back to frontend: Teletype[0m
+[0;32m    amazon-ebs: dpkg-preconfigure: unable to re-open stdin:[0m
+[0;32m    amazon-ebs: Fetched 19.6 MB in 0s (46.6 MB/s)[0m
+[0;32m    amazon-ebs: Selecting previously unselected package libjpeg-turbo8:amd64.[0m
+[0;32m    amazon-ebs: (Reading database ... 53800 files and directories currently installed.)[0m
+[0;32m    amazon-ebs: Preparing to unpack .../libjpeg-turbo8_1.4.2-0ubuntu3_amd64.deb ...[0m
+[0;32m    amazon-ebs: Unpacking libjpeg-turbo8:amd64 (1.4.2-0ubuntu3) ...[0m
+[0;32m    amazon-ebs: Selecting previously unselected package liblcms2-2:amd64.[0m
+[0;32m    amazon-ebs: Preparing to unpack .../liblcms2-2_2.6-3ubuntu2_amd64.deb ...[0m
+[0;32m    amazon-ebs: Unpacking liblcms2-2:amd64 (2.6-3ubuntu2) ...[0m
+[0;32m    amazon-ebs: Selecting previously unselected package libjbig0:amd64.[0m
+[0;32m    amazon-ebs: Preparing to unpack .../libjbig0_2.1-3.1_amd64.deb ...[0m
+[0;32m    amazon-ebs: Unpacking libjbig0:amd64 (2.1-3.1) ...[0m
+[0;32m    amazon-ebs: Selecting previously unselected package python3-dateutil.[0m
+[0;32m    amazon-ebs: Preparing to unpack .../python3-dateutil_2.4.2-1_all.deb ...[0m
+[0;32m    amazon-ebs: Unpacking python3-dateutil (2.4.2-1) ...[0m
+[0;32m    amazon-ebs: Selecting previously unselected package python3-roman.[0m
+[0;32m    amazon-ebs: Preparing to unpack .../python3-roman_2.0.0-2_all.deb ...[0m
+[0;32m    amazon-ebs: Unpacking python3-roman (2.0.0-2) ...[0m
+[0;32m    amazon-ebs: Selecting previously unselected package docutils-common.[0m
+[0;32m    amazon-ebs: Preparing to unpack .../docutils-common_0.12+dfsg-1_all.deb ...[0m
+[0;32m    amazon-ebs: Unpacking docutils-common (0.12+dfsg-1) ...[0m
+[0;32m    amazon-ebs: Selecting previously unselected package python3-docutils.[0m
+[0;32m    amazon-ebs: Preparing to unpack .../python3-docutils_0.12+dfsg-1_all.deb ...[0m
+[0;32m    amazon-ebs: Unpacking python3-docutils (0.12+dfsg-1) ...[0m
+[0;32m    amazon-ebs: Selecting previously unselected package python3-jmespath.[0m
+[0;32m    amazon-ebs: Preparing to unpack .../python3-jmespath_0.9.0-2_all.deb ...[0m
+[0;32m    amazon-ebs: Unpacking python3-jmespath (0.9.0-2) ...[0m
+[0;32m    amazon-ebs: Selecting previously unselected package python3-botocore.[0m
+[0;32m    amazon-ebs: Preparing to unpack .../python3-botocore_1.4.70-1~16.04.0_all.deb ...[0m
+[0;32m    amazon-ebs: Unpacking python3-botocore (1.4.70-1~16.04.0) ...[0m
+[0;32m    amazon-ebs: Selecting previously unselected package python3-colorama.[0m
+[0;32m    amazon-ebs: Preparing to unpack .../python3-colorama_0.3.7-1_all.deb ...[0m
+[0;32m    amazon-ebs: Unpacking python3-colorama (0.3.7-1) ...[0m
+[0;32m    amazon-ebs: Selecting previously unselected package python3-rsa.[0m
+[0;32m    amazon-ebs: Preparing to unpack .../python3-rsa_3.2.3-1.1_all.deb ...[0m
+[0;32m    amazon-ebs: Unpacking python3-rsa (3.2.3-1.1) ...[0m
+[0;32m    amazon-ebs: Selecting previously unselected package python3-s3transfer.[0m
+[0;32m    amazon-ebs: Preparing to unpack .../python3-s3transfer_0.1.9-1~16.04.0_all.deb ...[0m
+[0;32m    amazon-ebs: Unpacking python3-s3transfer (0.1.9-1~16.04.0) ...[0m
+[0;32m    amazon-ebs: Selecting previously unselected package awscli.[0m
+[0;32m    amazon-ebs: Preparing to unpack .../awscli_1.11.13-1ubuntu1~16.04.0_all.deb ...[0m
+[0;32m    amazon-ebs: Unpacking awscli (1.11.13-1ubuntu1~16.04.0) ...[0m
+[0;32m    amazon-ebs: Selecting previously unselected package bridge-utils.[0m
+[0;32m    amazon-ebs: Preparing to unpack .../bridge-utils_1.5-9ubuntu1_amd64.deb ...[0m
+[0;32m    amazon-ebs: Unpacking bridge-utils (1.5-9ubuntu1) ...[0m
+[0;32m    amazon-ebs: Selecting previously unselected package cgroupfs-mount.[0m
+[0;32m    amazon-ebs: Preparing to unpack .../cgroupfs-mount_1.2_all.deb ...[0m
+[0;32m    amazon-ebs: Unpacking cgroupfs-mount (1.2) ...[0m
+[0;32m    amazon-ebs: Selecting previously unselected package runc.[0m
+[0;32m    amazon-ebs: Preparing to unpack .../runc_1.0.0~rc1-0ubuntu2~16.04.1.1_amd64.deb ...[0m
+[0;32m    amazon-ebs: Unpacking runc (1.0.0~rc1-0ubuntu2~16.04.1.1) ...[0m
+[0;32m    amazon-ebs: Selecting previously unselected package containerd.[0m
+[0;32m    amazon-ebs: Preparing to unpack .../containerd_0.2.3-0ubuntu1~16.04_amd64.deb ...[0m
+[0;32m    amazon-ebs: Unpacking containerd (0.2.3-0ubuntu1~16.04) ...[0m
+[0;32m    amazon-ebs: Selecting previously unselected package docker.io.[0m
+[0;32m    amazon-ebs: Preparing to unpack .../docker.io_1.12.3-0ubuntu4~16.04.2_amd64.deb ...[0m
+[0;32m    amazon-ebs: Unpacking docker.io (1.12.3-0ubuntu4~16.04.2) ...[0m
+[0;32m    amazon-ebs: Selecting previously unselected package libjpeg8:amd64.[0m
+[0;32m    amazon-ebs: Preparing to unpack .../libjpeg8_8c-2ubuntu8_amd64.deb ...[0m
+[0;32m    amazon-ebs: Unpacking libjpeg8:amd64 (8c-2ubuntu8) ...[0m
+[0;32m    amazon-ebs: Selecting previously unselected package libpaper1:amd64.[0m
+[0;32m    amazon-ebs: Preparing to unpack .../libpaper1_1.1.24+nmu4ubuntu1_amd64.deb ...[0m
+[0;32m    amazon-ebs: Unpacking libpaper1:amd64 (1.1.24+nmu4ubuntu1) ...[0m
+[0;32m    amazon-ebs: Selecting previously unselected package libpaper-utils.[0m
+[0;32m    amazon-ebs: Preparing to unpack .../libpaper-utils_1.1.24+nmu4ubuntu1_amd64.deb ...[0m
+[0;32m    amazon-ebs: Unpacking libpaper-utils (1.1.24+nmu4ubuntu1) ...[0m
+[0;32m    amazon-ebs: Selecting previously unselected package libtiff5:amd64.[0m
+[0;32m    amazon-ebs: Preparing to unpack .../libtiff5_4.0.6-1_amd64.deb ...[0m
+[0;32m    amazon-ebs: Unpacking libtiff5:amd64 (4.0.6-1) ...[0m
+[0;32m    amazon-ebs: Selecting previously unselected package libwebp5:amd64.[0m
+[0;32m    amazon-ebs: Preparing to unpack .../libwebp5_0.4.4-1_amd64.deb ...[0m
+[0;32m    amazon-ebs: Unpacking libwebp5:amd64 (0.4.4-1) ...[0m
+[0;32m    amazon-ebs: Selecting previously unselected package libwebpmux1:amd64.[0m
+[0;32m    amazon-ebs: Preparing to unpack .../libwebpmux1_0.4.4-1_amd64.deb ...[0m
+[0;32m    amazon-ebs: Unpacking libwebpmux1:amd64 (0.4.4-1) ...[0m
+[0;32m    amazon-ebs: Selecting previously unselected package python3-pil:amd64.[0m
+[0;32m    amazon-ebs: Preparing to unpack .../python3-pil_3.1.2-0ubuntu1_amd64.deb ...[0m
+[0;32m    amazon-ebs: Unpacking python3-pil:amd64 (3.1.2-0ubuntu1) ...[0m
+[0;32m    amazon-ebs: Selecting previously unselected package python3-pygments.[0m
+[0;32m    amazon-ebs: Preparing to unpack .../python3-pygments_2.1+dfsg-1_all.deb ...[0m
+[0;32m    amazon-ebs: Unpacking python3-pygments (2.1+dfsg-1) ...[0m
+[0;32m    amazon-ebs: Selecting previously unselected package ubuntu-fan.[0m
+[0;32m    amazon-ebs: Preparing to unpack .../ubuntu-fan_0.9.1_all.deb ...[0m
+[0;32m    amazon-ebs: Unpacking ubuntu-fan (0.9.1) ...[0m
+[0;32m    amazon-ebs: Processing triggers for libc-bin (2.23-0ubuntu5) ...[0m
+[0;32m    amazon-ebs: Processing triggers for man-db (2.7.5-1) ...[0m
+[0;32m    amazon-ebs: Processing triggers for shared-mime-info (1.5-2ubuntu0.1) ...[0m
+[0;32m    amazon-ebs: Processing triggers for sgml-base (1.26+nmu4ubuntu1) ...[0m
+[0;32m    amazon-ebs: Processing triggers for ureadahead (0.100.0-19) ...[0m
+[0;32m    amazon-ebs: Processing triggers for systemd (229-4ubuntu16) ...[0m
+[0;32m    amazon-ebs: Setting up libjpeg-turbo8:amd64 (1.4.2-0ubuntu3) ...[0m
+[0;32m    amazon-ebs: Setting up liblcms2-2:amd64 (2.6-3ubuntu2) ...[0m
+[0;32m    amazon-ebs: Setting up libjbig0:amd64 (2.1-3.1) ...[0m
+[0;32m    amazon-ebs: Setting up python3-dateutil (2.4.2-1) ...[0m
+[0;32m    amazon-ebs: Setting up python3-roman (2.0.0-2) ...[0m
+[0;32m    amazon-ebs: Setting up docutils-common (0.12+dfsg-1) ...[0m
+[0;32m    amazon-ebs: Setting up python3-jmespath (0.9.0-2) ...[0m
+[0;32m    amazon-ebs: Setting up python3-colorama (0.3.7-1) ...[0m
+[0;32m    amazon-ebs: Setting up python3-rsa (3.2.3-1.1) ...[0m
+[0;32m    amazon-ebs: Setting up bridge-utils (1.5-9ubuntu1) ...[0m
+[0;32m    amazon-ebs: debconf: unable to initialize frontend: Dialog[0m
+[0;32m    amazon-ebs: debconf: (Dialog frontend will not work on a dumb terminal, an emacs shell buffer, or without a controlling terminal.)[0m
+[0;32m    amazon-ebs: debconf: falling back to frontend: Readline[0m
+[0;32m    amazon-ebs: Setting up cgroupfs-mount (1.2) ...[0m
+[0;32m    amazon-ebs: Setting up runc (1.0.0~rc1-0ubuntu2~16.04.1.1) ...[0m
+[0;32m    amazon-ebs: Setting up containerd (0.2.3-0ubuntu1~16.04) ...[0m
+[0;32m    amazon-ebs: Setting up docker.io (1.12.3-0ubuntu4~16.04.2) ...[0m
+[0;32m    amazon-ebs: Adding group `docker' (GID 116) ...[0m
+[0;32m    amazon-ebs: Done.[0m
+[0;32m    amazon-ebs: Setting up libjpeg8:amd64 (8c-2ubuntu8) ...[0m
+[0;32m    amazon-ebs: Setting up libpaper1:amd64 (1.1.24+nmu4ubuntu1) ...[0m
+[0;32m    amazon-ebs: debconf: unable to initialize frontend: Dialog[0m
+[0;32m    amazon-ebs: debconf: (Dialog frontend will not work on a dumb terminal, an emacs shell buffer, or without a controlling terminal.)[0m
+[0;32m    amazon-ebs: debconf: falling back to frontend: Readline[0m
+[0;32m    amazon-ebs:[0m
+[0;32m    amazon-ebs: Creating config file /etc/papersize with new version[0m
+[0;32m    amazon-ebs: Setting up libpaper-utils (1.1.24+nmu4ubuntu1) ...[0m
+[0;32m    amazon-ebs: Setting up libtiff5:amd64 (4.0.6-1) ...[0m
+[0;32m    amazon-ebs: Setting up libwebp5:amd64 (0.4.4-1) ...[0m
+[0;32m    amazon-ebs: Setting up libwebpmux1:amd64 (0.4.4-1) ...[0m
+[0;32m    amazon-ebs: Setting up python3-pil:amd64 (3.1.2-0ubuntu1) ...[0m
+[0;32m    amazon-ebs: Setting up python3-pygments (2.1+dfsg-1) ...[0m
+[0;32m    amazon-ebs: Setting up ubuntu-fan (0.9.1) ...[0m
+[0;32m    amazon-ebs: Processing triggers for sgml-base (1.26+nmu4ubuntu1) ...[0m
+[0;32m    amazon-ebs: Setting up python3-docutils (0.12+dfsg-1) ...[0m
+[0;32m    amazon-ebs: update-alternatives: using /usr/share/docutils/scripts/python3/rst-buildhtml to provide /usr/bin/rst-buildhtml (rst-buildhtml) in auto mode[0m
+[0;32m    amazon-ebs: update-alternatives: using /usr/share/docutils/scripts/python3/rst2html to provide /usr/bin/rst2html (rst2html) in auto mode[0m
+[0;32m    amazon-ebs: update-alternatives: using /usr/share/docutils/scripts/python3/rst2latex to provide /usr/bin/rst2latex (rst2latex) in auto mode[0m
+[0;32m    amazon-ebs: update-alternatives: using /usr/share/docutils/scripts/python3/rst2man to provide /usr/bin/rst2man (rst2man) in auto mode[0m
+[0;32m    amazon-ebs: update-alternatives: using /usr/share/docutils/scripts/python3/rst2odt to provide /usr/bin/rst2odt (rst2odt) in auto mode[0m
+[0;32m    amazon-ebs: update-alternatives: using /usr/share/docutils/scripts/python3/rst2odt_prepstyles to provide /usr/bin/rst2odt_prepstyles (rst2odt_prepstyles) in auto mode[0m
+[0;32m    amazon-ebs: update-alternatives: using /usr/share/docutils/scripts/python3/rst2pseudoxml to provide /usr/bin/rst2pseudoxml (rst2pseudoxml) in auto mode[0m
+[0;32m    amazon-ebs: update-alternatives: using /usr/share/docutils/scripts/python3/rst2s5 to provide /usr/bin/rst2s5 (rst2s5) in auto mode[0m
+[0;32m    amazon-ebs: update-alternatives: using /usr/share/docutils/scripts/python3/rst2xetex to provide /usr/bin/rst2xetex (rst2xetex) in auto mode[0m
+[0;32m    amazon-ebs: update-alternatives: using /usr/share/docutils/scripts/python3/rst2xml to provide /usr/bin/rst2xml (rst2xml) in auto mode[0m
+[0;32m    amazon-ebs: update-alternatives: using /usr/share/docutils/scripts/python3/rstpep2html to provide /usr/bin/rstpep2html (rstpep2html) in auto mode[0m
+[0;32m    amazon-ebs: Setting up python3-botocore (1.4.70-1~16.04.0) ...[0m
+[0;32m    amazon-ebs: Setting up python3-s3transfer (0.1.9-1~16.04.0) ...[0m
+[0;32m    amazon-ebs: Setting up awscli (1.11.13-1ubuntu1~16.04.0) ...[0m
+[0;32m    amazon-ebs: Processing triggers for libc-bin (2.23-0ubuntu5) ...[0m
+[0;32m    amazon-ebs: Processing triggers for systemd (229-4ubuntu16) ...[0m
+[0;32m    amazon-ebs: Processing triggers for ureadahead (0.100.0-19) ...[0m
+[0;32m    amazon-ebs: % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current[0m
+[0;32m    amazon-ebs: Dload  Upload   Total   Spent    Left  Speed[0m
+[0;32m    amazon-ebs: 100 10.2M  100 10.2M    0     0  10.5M      0 --:--:-- --:--:-- --:--:-- 10.5M[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[1;32m==> amazon-ebs: Provisioning with chef-solo[0m
+[0;32m    amazon-ebs: Installing Chef...[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current[0m
+[0;32m    amazon-ebs: Dload  Upload   Total   Spent    Left  Speed[0m
+[0;32m    amazon-ebs: 100 20500  100 20500    0     0    98k      0 --:--:-- --:--:-- --:--:--   99k[0m
+[0;32m    amazon-ebs: ubuntu 16.04 x86_64[0m
+[0;32m    amazon-ebs: Getting information for chef stable  for ubuntu...[0m
+[0;32m    amazon-ebs: downloading https://omnitruck.chef.io/stable/chef/metadata?v=&p=ubuntu&pv=16.04&m=x86_64[0m
+[0;32m    amazon-ebs: to file /tmp/install.sh.3554/metadata.txt[0m
+[0;32m    amazon-ebs: trying wget...[0m
+[0;32m    amazon-ebs: sha1	a8c749bfde759692abdd98ae1b841ad089fe5461[0m
+[0;32m    amazon-ebs: sha256	4fdabf0ae37c999795bef5e97133c1b78182129edec28c17ccf9ca6661dcc754[0m
+[0;32m    amazon-ebs: url	https://packages.chef.io/files/stable/chef/12.18.31/ubuntu/16.04/chef_12.18.31-1_amd64.deb[0m
+[0;32m    amazon-ebs: version	12.18.31[0m
+[0;32m    amazon-ebs: downloaded metadata file looks valid...[0m
+[0;32m    amazon-ebs: downloading https://packages.chef.io/files/stable/chef/12.18.31/ubuntu/16.04/chef_12.18.31-1_amd64.deb[0m
+[0;32m    amazon-ebs: to file /tmp/install.sh.3554/chef_12.18.31-1_amd64.deb[0m
+[0;32m    amazon-ebs: trying wget...[0m
+[0;32m    amazon-ebs: Comparing checksum with sha256sum...[0m
+[0;32m    amazon-ebs:[0m
+[0;32m    amazon-ebs: WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING[0m
+[0;32m    amazon-ebs:[0m
+[0;32m    amazon-ebs: You are installing an omnibus package without a version pin.  If you are installing[0m
+[0;32m    amazon-ebs: on production servers via an automated process this is DANGEROUS and you will[0m
+[0;32m    amazon-ebs: be upgraded without warning on new releases, even to new major releases.[0m
+[0;32m    amazon-ebs: Letting the version float is only appropriate in desktop, test, development or[0m
+[0;32m    amazon-ebs: CI/CD environments.[0m
+[0;32m    amazon-ebs:[0m
+[0;32m    amazon-ebs: WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING[0m
+[0;32m    amazon-ebs:[0m
+[0;32m    amazon-ebs: Installing chef[0m
+[0;32m    amazon-ebs: installing with dpkg...[0m
+[0;32m    amazon-ebs: Selecting previously unselected package chef.[0m
+[0;32m    amazon-ebs: (Reading database ... 56481 files and directories currently installed.)[0m
+[0;32m    amazon-ebs: Preparing to unpack .../chef_12.18.31-1_amd64.deb ...[0m
+[0;32m    amazon-ebs: Unpacking chef (12.18.31-1) ...[0m
+[0;32m    amazon-ebs: Setting up chef (12.18.31-1) ...[0m
+[0;32m    amazon-ebs: Thank you for installing Chef![0m
+[0;32m    amazon-ebs: Creating directory: /tmp/packer-chef-solo[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: Creating directory: /tmp/packer-chef-solo/cookbooks-0[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: Creating configuration file 'solo.rb'[0m
+[0;32m    amazon-ebs: Creating JSON attribute file[0m
+[0;32m    amazon-ebs: Executing Chef: sudo chef-solo --no-color -c /tmp/packer-chef-solo/solo.rb -j /tmp/packer-chef-solo/node.json[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:00+00:00] INFO: Started chef-zero at chefzero://localhost:8889 with repository at /tmp/packer-chef-solo[0m
+[0;32m    amazon-ebs: One version per cookbook[0m
+[0;32m    amazon-ebs:[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:00+00:00] INFO: Forking chef instance to converge...[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:00+00:00] INFO: *** Chef 12.18.31 ***[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:00+00:00] INFO: Platform: x86_64-linux[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:00+00:00] INFO: Chef-client pid: 3646[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: HTTP Request Returned 404 Not Found: Object not found: chefzero://localhost:8889/nodes/ip-10-0-0-122[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Setting the run_list to ["ruby_build", "ruby_rbenv::system"] from CLI options[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Run List is [recipe[ruby_build], recipe[ruby_rbenv::system]][0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Run List expands to [ruby_build, ruby_rbenv::system][0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Starting Chef Run for ip-10-0-0-122[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Running start handlers[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Start handlers complete.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: HTTP Request Returned 404 Not Found: Object not found:[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Loading cookbooks [ruby_build@1.0.0, ruby_rbenv@1.1.0, yum-epel@2.1.1, compat_resource@12.16.3][0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/ruby_build/resources/ruby.rb in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/ruby_build/libraries/ruby_build_recipe_helpers.rb in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/ruby_build/providers/ruby.rb in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/ruby_build/.gitignore in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/ruby_build/recipes/default.rb in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/ruby_build/Berksfile in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/ruby_build/.kitchen.docker.yml in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/ruby_build/attributes/default.rb in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/ruby_build/CHANGELOG.md in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/ruby_build/.kitchen.yml in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/ruby_build/Gemfile in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/ruby_build/README.md in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/ruby_rbenv/resources/ruby.rb in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/ruby_build/metadata.rb in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/ruby_rbenv/resources/plugin.rb in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/ruby_rbenv/resources/rehash.rb in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/ruby_rbenv/resources/global.rb in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/ruby_build/.travis.yml in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/ruby_build/LICENSE in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/ruby_rbenv/resources/script.rb in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/ruby_rbenv/resources/gem.rb in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/ruby_build/chefignore in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/ruby_rbenv/providers/global.rb in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/ruby_rbenv/providers/rehash.rb in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/ruby_build/Rakefile in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/ruby_rbenv/recipes/system.rb in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/ruby_rbenv/providers/script.rb in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/ruby_rbenv/recipes/system_install.rb in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/ruby_rbenv/providers/plugin.rb in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/ruby_rbenv/providers/ruby.rb in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/ruby_rbenv/recipes/default.rb in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/ruby_rbenv/recipes/user_install.rb in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/ruby_rbenv/recipes/user.rb in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/ruby_rbenv/libraries/chef_provider_package_rbenvrubygems.rb in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/ruby_rbenv/libraries/chef_rbenv_mixin.rb in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/ruby_rbenv/libraries/chef_rbenv_recipe_helpers.rb in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/ruby_rbenv/templates/default/rbenv.sh.erb in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/ruby_rbenv/libraries/chef_rbenv_script_helpers.rb in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/ruby_rbenv/libraries/matchers.rb in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/ruby_rbenv/Berksfile in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/ruby_rbenv/.rspec in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/ruby_rbenv/attributes/default.rb in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/ruby_rbenv/.gitignore in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/ruby_rbenv/CHANGELOG.md in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/ruby_rbenv/.kitchen.docker.yml in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/ruby_rbenv/README.md in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/ruby_rbenv/.kitchen.yml in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/ruby_rbenv/.travis.yml in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/ruby_rbenv/LICENSE in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/ruby_rbenv/Rakefile in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/ruby_rbenv/metadata.rb in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/ruby_rbenv/Gemfile in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/yum-epel/attributes/epel-testing-debuginfo.rb in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/yum-epel/attributes/default.rb in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/yum-epel/attributes/epel-source.rb in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/yum-epel/attributes/epel-debuginfo.rb in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/yum-epel/attributes/epel-testing-source.rb in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/yum-epel/recipes/default.rb in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/yum-epel/attributes/epel-testing.rb in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/ruby_rbenv/chefignore in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/yum-epel/CHANGELOG.md in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/ruby_rbenv/.foodcritic in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/yum-epel/attributes/epel.rb in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/yum-epel/metadata.json in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/yum-epel/CONTRIBUTING.md in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/compat_resource/files/lib/chef_compat/copied_from_chef/chef/dsl/core.rb in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/compat_resource/files/lib/chef_compat/copied_from_chef/chef/delayed_evaluator.rb in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/compat_resource/libraries/autoload.rb in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/compat_resource/files/lib/chef_compat/copied_from_chef/chef/dsl/declare_resource.rb in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/ruby_rbenv/Guardfile in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/compat_resource/files/lib/chef_compat/copied_from_chef/chef/dsl/recipe.rb in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/compat_resource/files/lib/chef_compat/copied_from_chef/chef/constants.rb in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/yum-epel/MAINTAINERS.md in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/compat_resource/files/lib/chef_compat/copied_from_chef/chef/mixin/lazy_module_include.rb in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/compat_resource/files/lib/chef_compat/copied_from_chef/chef/mixin/powershell_out.rb in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/yum-epel/README.md in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/compat_resource/files/lib/chef_compat/copied_from_chef/chef/dsl/universal.rb in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/compat_resource/files/lib/chef_compat/copied_from_chef/chef/mixin/params_validate.rb in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/compat_resource/files/lib/chef_compat/copied_from_chef/chef/dsl/platform_introspection.rb in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/compat_resource/files/lib/chef_compat/copied_from_chef/chef/provider/apt_update.rb in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/compat_resource/files/lib/chef_compat/copied_from_chef/chef/provider/noop.rb in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/compat_resource/files/lib/chef_compat/copied_from_chef/chef/provider/apt_repository.rb in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/compat_resource/files/lib/chef_compat/copied_from_chef/chef/provider/yum_repository.rb in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/compat_resource/files/lib/chef_compat/copied_from_chef/chef/provider/systemd_unit.rb in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/compat_resource/files/lib/chef_compat/copied_from_chef/chef/provider/support/yum_repo.erb in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/compat_resource/files/lib/chef_compat/copied_from_chef/chef/mixin/notifying_block.rb in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/compat_resource/files/lib/chef_compat/copied_from_chef/chef/property.rb in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/compat_resource/files/lib/chef_compat/copied_from_chef/chef/resource.rb in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/compat_resource/files/lib/chef_compat/copied_from_chef/chef/resource/apt_repository.rb in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/compat_resource/files/lib/chef_compat/copied_from_chef/chef/mixin/properties.rb in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/compat_resource/files/lib/chef_compat/copied_from_chef/chef/resource/yum_repository.rb in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/compat_resource/files/lib/chef_compat/copied_from_chef/chef/resource/apt_update.rb in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/compat_resource/files/lib/chef_compat/copied_from_chef/chef/resource_builder.rb in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/compat_resource/files/lib/chef_compat/mixin/properties.rb in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/compat_resource/files/lib/chef_compat/copied_from_chef/chef/resource/systemd_unit.rb in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/compat_resource/files/lib/chef_compat/copied_from_chef.rb in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/compat_resource/files/lib/chef_compat/copied_from_chef/chef/resource/action_class.rb in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/compat_resource/files/lib/chef_compat/monkeypatches/chef/provider.rb in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/compat_resource/files/lib/chef_compat/monkeypatches/chef/property.rb in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/compat_resource/files/lib/chef_compat/monkeypatches/chef/mixin/params_validate.rb in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/compat_resource/files/lib/chef_compat/monkeypatches/chef/log.rb in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/compat_resource/files/lib/chef_compat/monkeypatches/chef/recipe_hook.rb in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/compat_resource/files/lib/chef_compat/monkeypatches/chef/exceptions.rb in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/compat_resource/files/lib/chef_compat/copied_from_chef/chef/provider.rb in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/compat_resource/files/lib/chef_compat/monkeypatches/chef/node.rb in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/compat_resource/files/lib/chef_compat/monkeypatches/chef/resource.rb in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/compat_resource/files/lib/chef_compat/monkeypatches/chef/recipe.rb in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/compat_resource/files/lib/chef_compat/monkeypatches/chef/resource_collection/resource_list.rb in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/compat_resource/files/lib/chef_compat/monkeypatches/chef/resource_collection/resource_set.rb in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/compat_resource/files/lib/chef_compat/monkeypatches/chef/resource_collection.rb in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/compat_resource/files/lib/chef_compat/monkeypatches/chef/resource_builder.rb in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/compat_resource/files/lib/chef_compat/monkeypatches/chef/runner.rb in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/compat_resource/files/lib/chef_compat/monkeypatches/chef.rb in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/compat_resource/files/lib/chef_compat/recipe.rb in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/compat_resource/files/lib/chef_compat/property.rb in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/compat_resource/files/lib/chef_compat/monkeypatches.rb in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/compat_resource/files/lib/chef_compat/resource/lwrp_base.rb in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/compat_resource/files/lib/chef_compat/monkeypatches/chef/run_context.rb in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/compat_resource/files/lib/chef_upstream_version.rb in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/compat_resource/files/lib/chef_compat/monkeypatches/chef/resource/lwrp_base.rb in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/compat_resource/files/lib/chef_compat/resource.rb in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/compat_resource/README.md in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/compat_resource/files/lib/compat_resource.rb in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/compat_resource/CHANGELOG.md in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/compat_resource/MAINTAINERS.md in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/compat_resource/CONTRIBUTING.md in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Storing updated cookbooks/compat_resource/metadata.json in the cache.[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:01+00:00] INFO: Processing apt_package[tar, bash, curl] action install (ruby_build::default line 37)[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:02+00:00] INFO: Processing apt_package[git-core] action install (ruby_build::default line 39)[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:02+00:00] INFO: Processing execute[Install ruby-build] action nothing (ruby_build::default line 55)[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:02+00:00] INFO: Processing directory[/tmp/packer-chef-solo/local-mode-cache/cache] action create (ruby_build::default line 62)[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:02+00:00] INFO: Processing git[/tmp/packer-chef-solo/local-mode-cache/cache/ruby-build] action checkout (ruby_build::default line 66)[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:03+00:00] INFO: git[/tmp/packer-chef-solo/local-mode-cache/cache/ruby-build] cloning repo https://github.com/rbenv/ruby-build.git to /tmp/packer-chef-solo/local-mode-cache/cache/ruby-build[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:06+00:00] INFO: git[/tmp/packer-chef-solo/local-mode-cache/cache/ruby-build] checked out branch: master onto: deploy reference: 6df6ab470f7a921347e110274145160eb6a11d9c[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:06+00:00] INFO: git[/tmp/packer-chef-solo/local-mode-cache/cache/ruby-build] sending run action to execute[Install ruby-build] (immediate)[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:06+00:00] INFO: Processing execute[Install ruby-build] action run (ruby_build::default line 55)[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:06+00:00] INFO: execute[Install ruby-build] ran successfully[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:06+00:00] INFO: Processing apt_package[git-core] action install (ruby_rbenv::system_install line 42)[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:07+00:00] INFO: apt_package[git-core] installed git-core at 1:2.7.4-0ubuntu1[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:07+00:00] INFO: Processing apt_package[grep] action install (ruby_rbenv::system_install line 42)[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:07+00:00] INFO: Processing directory[/etc/profile.d] action create (ruby_rbenv::system_install line 30)[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:07+00:00] INFO: Processing template[/etc/profile.d/rbenv.sh] action create (ruby_rbenv::system_install line 35)[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:07+00:00] INFO: template[/etc/profile.d/rbenv.sh] created file /etc/profile.d/rbenv.sh[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:07+00:00] INFO: template[/etc/profile.d/rbenv.sh] updated file contents /etc/profile.d/rbenv.sh[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:07+00:00] INFO: template[/etc/profile.d/rbenv.sh] owner changed to 0[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:07+00:00] INFO: template[/etc/profile.d/rbenv.sh] mode changed to 755[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:07+00:00] INFO: Processing git[/usr/local/rbenv] action checkout (ruby_rbenv::system_install line 60)[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:08+00:00] INFO: git[/usr/local/rbenv] cloning repo https://github.com/rbenv/rbenv.git to /usr/local/rbenv[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:09+00:00] INFO: git[/usr/local/rbenv] checked out branch: v0.4.0 onto: deploy reference: 9375e99f921f428849f19efe2a2e500b3295d1a7[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:09+00:00] INFO: Processing directory[/usr/local/rbenv/plugins] action create (ruby_rbenv::system_install line 68)[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:09+00:00] INFO: directory[/usr/local/rbenv/plugins] created directory /usr/local/rbenv/plugins[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:09+00:00] INFO: directory[/usr/local/rbenv/plugins] owner changed to 0[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:09+00:00] INFO: directory[/usr/local/rbenv/plugins] mode changed to 755[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:09+00:00] INFO: Processing bash[Initialize rbenv (system)] action run (ruby_rbenv::system_install line 98)[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:09+00:00] INFO: bash[Initialize rbenv (system)] ran successfully[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:09+00:00] INFO: Processing log[rbenv-post-init-system] action write (ruby_rbenv::system_install line 105)[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:09+00:00] INFO: rbenv-post-init-system[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:09+00:00] INFO: Processing ruby_block[Add rbenv to PATH] action run (ruby_rbenv::system_install line 109)[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:09+00:00] INFO: ruby_block[Add rbenv to PATH] called[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:09+00:00] INFO: Processing ruby_rbenv_ruby[2.3.3] (system) action install (ruby_rbenv::system line 36)[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:09+00:00] INFO: Processing apt_package[autoconf] action install (/tmp/packer-chef-solo/local-mode-cache/cache/cookbooks/ruby_rbenv/providers/ruby.rb line 112)[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:11+00:00] INFO: apt_package[autoconf] installed autoconf at 2.69-9[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:11+00:00] INFO: Processing apt_package[bison] action install (/tmp/packer-chef-solo/local-mode-cache/cache/cookbooks/ruby_rbenv/providers/ruby.rb line 112)[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:13+00:00] INFO: apt_package[bison] installed bison at 2:3.0.4.dfsg-1[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:13+00:00] INFO: Processing apt_package[build-essential] action install (/tmp/packer-chef-solo/local-mode-cache/cache/cookbooks/ruby_rbenv/providers/ruby.rb line 112)[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:27+00:00] INFO: apt_package[build-essential] installed build-essential at 12.1ubuntu2[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:27+00:00] INFO: Processing apt_package[libssl-dev] action install (/tmp/packer-chef-solo/local-mode-cache/cache/cookbooks/ruby_rbenv/providers/ruby.rb line 112)[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:30+00:00] INFO: apt_package[libssl-dev] installed libssl-dev at 1.0.2g-1ubuntu4.6[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:30+00:00] INFO: Processing apt_package[libyaml-dev] action install (/tmp/packer-chef-solo/local-mode-cache/cache/cookbooks/ruby_rbenv/providers/ruby.rb line 112)[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:32+00:00] INFO: apt_package[libyaml-dev] installed libyaml-dev at 0.1.6-3[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:32+00:00] INFO: Processing apt_package[libreadline6-dev] action install (/tmp/packer-chef-solo/local-mode-cache/cache/cookbooks/ruby_rbenv/providers/ruby.rb line 112)[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:33+00:00] INFO: apt_package[libreadline6-dev] installed libreadline6-dev at 6.3-8ubuntu2[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:33+00:00] INFO: Processing apt_package[zlib1g-dev] action install (/tmp/packer-chef-solo/local-mode-cache/cache/cookbooks/ruby_rbenv/providers/ruby.rb line 112)[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:33+00:00] INFO: Processing apt_package[libsqlite3-dev] action install (/tmp/packer-chef-solo/local-mode-cache/cache/cookbooks/ruby_rbenv/providers/ruby.rb line 112)[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:35+00:00] INFO: apt_package[libsqlite3-dev] installed libsqlite3-dev at 3.11.0-1ubuntu1[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:35+00:00] INFO: Processing apt_package[libxml2-dev] action install (/tmp/packer-chef-solo/local-mode-cache/cache/cookbooks/ruby_rbenv/providers/ruby.rb line 112)[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:39+00:00] INFO: apt_package[libxml2-dev] installed libxml2-dev at 2.9.3+dfsg1-1ubuntu0.1[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:39+00:00] INFO: Processing apt_package[libxslt1-dev] action install (/tmp/packer-chef-solo/local-mode-cache/cache/cookbooks/ruby_rbenv/providers/ruby.rb line 112)[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:42+00:00] INFO: apt_package[libxslt1-dev] installed libxslt1-dev at 1.1.28-2.1[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:42+00:00] INFO: Processing apt_package[libc6-dev] action install (/tmp/packer-chef-solo/local-mode-cache/cache/cookbooks/ruby_rbenv/providers/ruby.rb line 112)[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:42+00:00] INFO: Processing apt_package[libffi-dev] action install (/tmp/packer-chef-solo/local-mode-cache/cache/cookbooks/ruby_rbenv/providers/ruby.rb line 112)[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:44+00:00] INFO: apt_package[libffi-dev] installed libffi-dev at 3.2.1-4[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:44+00:00] INFO: Processing apt_package[libgdbm3] action install (/tmp/packer-chef-solo/local-mode-cache/cache/cookbooks/ruby_rbenv/providers/ruby.rb line 112)[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:44+00:00] INFO: Processing apt_package[libgdbm-dev] action install (/tmp/packer-chef-solo/local-mode-cache/cache/cookbooks/ruby_rbenv/providers/ruby.rb line 112)[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:47+00:00] INFO: apt_package[libgdbm-dev] installed libgdbm-dev at 1.8.3-13.1[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:47+00:00] INFO: Building ruby_rbenv_ruby[2.3.3] (system), this could take a while...[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:47+00:00] INFO: Processing ruby_rbenv_script[rbenv install 2.3.3  (system)] action run (/tmp/packer-chef-solo/local-mode-cache/cache/cookbooks/ruby_rbenv/providers/ruby.rb line 74)[0m
+[0;32m    amazon-ebs: [2017-02-13T22:02:47+00:00] INFO: Processing script[rbenv install 2.3.3  (system)] action run (/tmp/packer-chef-solo/local-mode-cache/cache/cookbooks/ruby_rbenv/providers/script.rb line 40)[0m
+[0;32m    amazon-ebs: [2017-02-13T22:07:52+00:00] INFO: script[rbenv install 2.3.3  (system)] ran successfully[0m
+[0;32m    amazon-ebs: [2017-02-13T22:07:52+00:00] INFO: Processing apt_package[autoconf] action nothing (/tmp/packer-chef-solo/local-mode-cache/cache/cookbooks/ruby_rbenv/providers/ruby.rb line 112)[0m
+[0;32m    amazon-ebs: [2017-02-13T22:07:52+00:00] INFO: Processing apt_package[bison] action nothing (/tmp/packer-chef-solo/local-mode-cache/cache/cookbooks/ruby_rbenv/providers/ruby.rb line 112)[0m
+[0;32m    amazon-ebs: [2017-02-13T22:07:52+00:00] INFO: Processing apt_package[build-essential] action nothing (/tmp/packer-chef-solo/local-mode-cache/cache/cookbooks/ruby_rbenv/providers/ruby.rb line 112)[0m
+[0;32m    amazon-ebs: [2017-02-13T22:07:52+00:00] INFO: Processing apt_package[libssl-dev] action nothing (/tmp/packer-chef-solo/local-mode-cache/cache/cookbooks/ruby_rbenv/providers/ruby.rb line 112)[0m
+[0;32m    amazon-ebs: [2017-02-13T22:07:52+00:00] INFO: Processing apt_package[libyaml-dev] action nothing (/tmp/packer-chef-solo/local-mode-cache/cache/cookbooks/ruby_rbenv/providers/ruby.rb line 112)[0m
+[0;32m    amazon-ebs: [2017-02-13T22:07:52+00:00] INFO: Processing apt_package[libreadline6-dev] action nothing (/tmp/packer-chef-solo/local-mode-cache/cache/cookbooks/ruby_rbenv/providers/ruby.rb line 112)[0m
+[0;32m    amazon-ebs: [2017-02-13T22:07:52+00:00] INFO: Processing apt_package[zlib1g-dev] action nothing (/tmp/packer-chef-solo/local-mode-cache/cache/cookbooks/ruby_rbenv/providers/ruby.rb line 112)[0m
+[0;32m    amazon-ebs: [2017-02-13T22:07:52+00:00] INFO: Processing apt_package[libsqlite3-dev] action nothing (/tmp/packer-chef-solo/local-mode-cache/cache/cookbooks/ruby_rbenv/providers/ruby.rb line 112)[0m
+[0;32m    amazon-ebs: [2017-02-13T22:07:52+00:00] INFO: Processing apt_package[libxml2-dev] action nothing (/tmp/packer-chef-solo/local-mode-cache/cache/cookbooks/ruby_rbenv/providers/ruby.rb line 112)[0m
+[0;32m    amazon-ebs: [2017-02-13T22:07:52+00:00] INFO: Processing apt_package[libxslt1-dev] action nothing (/tmp/packer-chef-solo/local-mode-cache/cache/cookbooks/ruby_rbenv/providers/ruby.rb line 112)[0m
+[0;32m    amazon-ebs: [2017-02-13T22:07:52+00:00] INFO: Processing apt_package[libc6-dev] action nothing (/tmp/packer-chef-solo/local-mode-cache/cache/cookbooks/ruby_rbenv/providers/ruby.rb line 112)[0m
+[0;32m    amazon-ebs: [2017-02-13T22:07:52+00:00] INFO: Processing apt_package[libffi-dev] action nothing (/tmp/packer-chef-solo/local-mode-cache/cache/cookbooks/ruby_rbenv/providers/ruby.rb line 112)[0m
+[0;32m    amazon-ebs: [2017-02-13T22:07:52+00:00] INFO: Processing apt_package[libgdbm3] action nothing (/tmp/packer-chef-solo/local-mode-cache/cache/cookbooks/ruby_rbenv/providers/ruby.rb line 112)[0m
+[0;32m    amazon-ebs: [2017-02-13T22:07:52+00:00] INFO: Processing apt_package[libgdbm-dev] action nothing (/tmp/packer-chef-solo/local-mode-cache/cache/cookbooks/ruby_rbenv/providers/ruby.rb line 112)[0m
+[0;32m    amazon-ebs: [2017-02-13T22:07:52+00:00] INFO: Processing ruby_rbenv_script[rbenv install 2.3.3  (system)] action nothing (/tmp/packer-chef-solo/local-mode-cache/cache/cookbooks/ruby_rbenv/providers/ruby.rb line 74)[0m
+[0;32m    amazon-ebs: [2017-02-13T22:07:52+00:00] INFO: Processing ruby_rbenv_global[2.3.3] (system) action create (ruby_rbenv::system line 40)[0m
+[0;32m    amazon-ebs: [2017-02-13T22:07:52+00:00] INFO: Processing ruby_rbenv_script[rbenv global 2.3.3 (system)] action run (/tmp/packer-chef-solo/local-mode-cache/cache/cookbooks/ruby_rbenv/providers/global.rb line 43)[0m
+[0;32m    amazon-ebs: [2017-02-13T22:07:52+00:00] INFO: Processing script[rbenv global 2.3.3 (system)] action run (/tmp/packer-chef-solo/local-mode-cache/cache/cookbooks/ruby_rbenv/providers/script.rb line 40)[0m
+[0;32m    amazon-ebs: [2017-02-13T22:07:52+00:00] INFO: script[rbenv global 2.3.3 (system)] ran successfully[0m
+[0;32m    amazon-ebs: [2017-02-13T22:07:52+00:00] INFO: Processing [2.3.3::bundler] (system) action install (ruby_rbenv::system line 44)[0m
+[0;32m    amazon-ebs: [2017-02-13T22:07:53+00:00] INFO: Processing ruby_rbenv_rehash[bundler] action run (dynamically defined)[0m
+[0;32m    amazon-ebs: [2017-02-13T22:07:53+00:00] INFO: Processing ruby_rbenv_script[rbenv rehash (system)] action run (/tmp/packer-chef-solo/local-mode-cache/cache/cookbooks/ruby_rbenv/providers/rehash.rb line 39)[0m
+[0;32m    amazon-ebs: [2017-02-13T22:07:53+00:00] INFO: Processing script[rbenv rehash (system)] action run (/tmp/packer-chef-solo/local-mode-cache/cache/cookbooks/ruby_rbenv/providers/script.rb line 40)[0m
+[0;32m    amazon-ebs: [2017-02-13T22:07:53+00:00] INFO: script[rbenv rehash (system)] ran successfully[0m
+[0;32m    amazon-ebs: [2017-02-13T22:07:53+00:00] INFO: [2.3.3::bundler] (system) installed bundler at 1.14.4[0m
+[0;32m    amazon-ebs: [2017-02-13T22:07:53+00:00] INFO: Chef Run complete in 351.886918672 seconds[0m
+[0;32m    amazon-ebs: [2017-02-13T22:07:53+00:00] INFO: Running report handlers[0m
+[0;32m    amazon-ebs: [2017-02-13T22:07:53+00:00] INFO: Report handlers complete[0m
+[1;32m==> amazon-ebs: Uploading ../ => /home/ubuntu/repo[0m
+[1;32m==> amazon-ebs: Provisioning with shell script: /var/folders/81/71dqr_ms49bc0_jrp9bv6b8c0000gn/T/packer-shell016499640[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[1;32m==> amazon-ebs: Provisioning with shell script: scripts/buildartifacts-remote.sh[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: sudo: unable to resolve host ip-10-0-0-122[0m
+[0;32m    amazon-ebs: rm: cannot remove 'container_images/*.pem': No such file or directory[0m
+[0;32m    amazon-ebs: UPDATE_COMPLETE[0m
+[0;32m    amazon-ebs: Updating submodules...[0m
+[0;32m    amazon-ebs: Grabbing upstream Chef artifacts...[0m
+[0;32m    amazon-ebs: Installing compat_resource (12.16.3)[0m
+[0;32m    amazon-ebs: Installing golang (1.7.1)[0m
+[0;32m    amazon-ebs: Installing yum-epel (2.1.1)[0m
+[0;32m    amazon-ebs: Installing ruby_build (1.0.0)[0m
+[0;32m    amazon-ebs: Installing ruby_rbenv (1.1.0)[0m
+[0;32m    amazon-ebs: UPDATE_COMPLETE[0m
+[0;32m    amazon-ebs: Generating images, please wait...[0m
+[0;32m    amazon-ebs: [1;32mdocker output will be in this color.[0m[0m
+[0;32m    amazon-ebs:[0m
+[0;32m    amazon-ebs: [1;32m==> docker: Creating a temporary directory for sharing data...[0m[0m
+[0;32m    amazon-ebs: [1;32m==> docker: Pulling Docker image: phusion/baseimage:latest[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: latest: Pulling from phusion/baseimage[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: f069f1d21059: Pulling fs layer[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: ecbeec5633cf: Pulling fs layer[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: ea6f18256d63: Pulling fs layer[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: 54bde7b02897: Pulling fs layer[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: a3ed95caeb02: Pulling fs layer[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: ce9e695a6234: Pulling fs layer[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: 346026b9659b: Pulling fs layer[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: 54bde7b02897: Waiting[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: a3ed95caeb02: Waiting[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: ce9e695a6234: Waiting[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: 346026b9659b: Waiting[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: ea6f18256d63: Verifying Checksum[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: ea6f18256d63: Download complete[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: ecbeec5633cf: Verifying Checksum[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: ecbeec5633cf: Download complete[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: 54bde7b02897: Verifying Checksum[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: 54bde7b02897: Download complete[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: a3ed95caeb02: Verifying Checksum[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: a3ed95caeb02: Download complete[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: ce9e695a6234: Verifying Checksum[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: ce9e695a6234: Download complete[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: 346026b9659b: Verifying Checksum[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: 346026b9659b: Download complete[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: f069f1d21059: Verifying Checksum[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: f069f1d21059: Download complete[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: f069f1d21059: Pull complete[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: ecbeec5633cf: Pull complete[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: ea6f18256d63: Pull complete[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: 54bde7b02897: Pull complete[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: a3ed95caeb02: Pull complete[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: ce9e695a6234: Pull complete[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: 346026b9659b: Pull complete[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: Digest: sha256:595dcea19336245004b0b256231a6aa2ccc79a576f06f66e3b608335b231eefd[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: Status: Downloaded newer image for phusion/baseimage:latest[0m[0m
+[0;32m    amazon-ebs: [1;32m==> docker: Starting docker container...[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: Run command: docker run -v /home/ubuntu/.packer.d/tmp/packer-docker806652368:/packer-files -d -i -t phusion/baseimage:latest /bin/bash[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: Container ID: bc6ecbfdeaa236787bd8b47830c3d177112ec138709d6e5b0da8a9530347bd4b[0m[0m
+[0;32m    amazon-ebs: [1;32m==> docker: Provisioning with shell script: /tmp/packer-shell665343364[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: Get:1 http://archive.ubuntu.com/ubuntu xenial InRelease [247 kB][0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: Get:2 http://archive.ubuntu.com/ubuntu xenial-updates InRelease [102 kB][0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: Get:3 http://archive.ubuntu.com/ubuntu xenial-security InRelease [102 kB][0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: Get:4 http://archive.ubuntu.com/ubuntu xenial/main Sources [1103 kB][0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: Get:5 http://archive.ubuntu.com/ubuntu xenial/restricted Sources [5179 B][0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: Get:6 http://archive.ubuntu.com/ubuntu xenial/universe Sources [9802 kB][0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: Get:7 http://archive.ubuntu.com/ubuntu xenial/main amd64 Packages [1558 kB][0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: Get:8 http://archive.ubuntu.com/ubuntu xenial/restricted amd64 Packages [14.1 kB][0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: Get:9 http://archive.ubuntu.com/ubuntu xenial/universe amd64 Packages [9827 kB][0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: Get:10 http://archive.ubuntu.com/ubuntu xenial-updates/main Sources [290 kB][0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: Get:11 http://archive.ubuntu.com/ubuntu xenial-updates/restricted Sources [2815 B][0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: Get:12 http://archive.ubuntu.com/ubuntu xenial-updates/universe Sources [162 kB][0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: Get:13 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 Packages [604 kB][0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: Get:14 http://archive.ubuntu.com/ubuntu xenial-updates/restricted amd64 Packages [12.4 kB][0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: Get:15 http://archive.ubuntu.com/ubuntu xenial-updates/universe amd64 Packages [500 kB][0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: Get:16 http://archive.ubuntu.com/ubuntu xenial-security/main Sources [71.1 kB][0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: Get:17 http://archive.ubuntu.com/ubuntu xenial-security/restricted Sources [2392 B][0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: Get:18 http://archive.ubuntu.com/ubuntu xenial-security/universe Sources [21.5 kB][0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: Get:19 http://archive.ubuntu.com/ubuntu xenial-security/multiverse Sources [1079 B][0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: Get:20 http://archive.ubuntu.com/ubuntu xenial-security/main amd64 Packages [263 kB][0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: Get:21 http://archive.ubuntu.com/ubuntu xenial-security/restricted amd64 Packages [12.0 kB][0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: Get:22 http://archive.ubuntu.com/ubuntu xenial-security/universe amd64 Packages [89.3 kB][0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: Get:23 http://archive.ubuntu.com/ubuntu xenial-security/multiverse amd64 Packages [2936 B][0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: Fetched 24.8 MB in 4s (5535 kB/s)[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: Reading package lists...[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: Reading package lists...[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: Building dependency tree...[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: Reading state information...[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: The following additional packages will be installed:[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: libcurl3-gnutls[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: The following NEW packages will be installed:[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: sudo[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: The following packages will be upgraded:[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: curl libcurl3-gnutls[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: 2 upgraded, 1 newly installed, 0 to remove and 62 not upgraded.[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: Need to get 713 kB of archives.[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: After this operation, 1620 kB of additional disk space will be used.[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: Get:1 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 sudo amd64 1.8.16-0ubuntu1.3 [390 kB][0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: Get:2 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 curl amd64 7.47.0-1ubuntu2.2 [139 kB][0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: Get:3 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 libcurl3-gnutls amd64 7.47.0-1ubuntu2.2 [184 kB][0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: debconf: delaying package configuration, since apt-utils is not installed[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: Fetched 713 kB in 0s (743 kB/s)[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: Selecting previously unselected package sudo.[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: (Reading database ... 10720 files and directories currently installed.)[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: Preparing to unpack .../sudo_1.8.16-0ubuntu1.3_amd64.deb ...[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: Unpacking sudo (1.8.16-0ubuntu1.3) ...[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: Preparing to unpack .../curl_7.47.0-1ubuntu2.2_amd64.deb ...[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: Unpacking curl (7.47.0-1ubuntu2.2) over (7.47.0-1ubuntu2) ...[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: Preparing to unpack .../libcurl3-gnutls_7.47.0-1ubuntu2.2_amd64.deb ...[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: Unpacking libcurl3-gnutls:amd64 (7.47.0-1ubuntu2.2) over (7.47.0-1ubuntu2) ...[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: Processing triggers for libc-bin (2.23-0ubuntu3) ...[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: Setting up sudo (1.8.16-0ubuntu1.3) ...[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: Setting up libcurl3-gnutls:amd64 (7.47.0-1ubuntu2.2) ...[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: Setting up curl (7.47.0-1ubuntu2.2) ...[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: Processing triggers for libc-bin (2.23-0ubuntu3) ...[0m[0m
+[0;32m    amazon-ebs: [1;32m==> docker: Committing the container[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: Image ID: sha256:ea0eb8a6fbc9648e121db886d5702670a21f33ab8b18a267b906350f29383f20[0m[0m
+[0;32m    amazon-ebs: [1;32m==> docker: Killing the container: bc6ecbfdeaa236787bd8b47830c3d177112ec138709d6e5b0da8a9530347bd4b[0m[0m
+[0;32m    amazon-ebs: [1;32m==> docker: Running post-processor: docker-tag[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker (docker-tag): Tagging image: sha256:ea0eb8a6fbc9648e121db886d5702670a21f33ab8b18a267b906350f29383f20[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker (docker-tag): Repository: cluster/baseimage:0.1[0m[0m
+[0;32m    amazon-ebs: [1;32mBuild 'docker' finished.[0m[0m
+[0;32m    amazon-ebs:[0m
+[0;32m    amazon-ebs: ==> Builds finished. The artifacts of successful builds are:[0m
+[0;32m    amazon-ebs: --> docker: Imported Docker image: sha256:ea0eb8a6fbc9648e121db886d5702670a21f33ab8b18a267b906350f29383f20[0m
+[0;32m    amazon-ebs: --> docker: Imported Docker image: cluster/baseimage:0.1[0m
+[0;32m    amazon-ebs: [1;32mdocker output will be in this color.[0m[0m
+[0;32m    amazon-ebs:[0m
+[0;32m    amazon-ebs: [1;32m==> docker: Creating a temporary directory for sharing data...[0m[0m
+[0;32m    amazon-ebs: [1;32m==> docker: Starting docker container...[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: Run command: docker run -v /home/ubuntu/.packer.d/tmp/packer-docker329600295:/packer-files -d -i -t cluster/baseimage:0.1 /bin/bash[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: Container ID: f71a8ec40225676dd8fa836e5fba9459baf352dd99b67f1a3ac9ef628695063e[0m[0m
+[0;32m    amazon-ebs: [1;32m==> docker: Provisioning with chef-solo[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: Installing Chef...[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: Dload  Upload   Total   Spent    Left  Speed[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: 100 20500  100 20500    0     0  69803      0 --:--:-- --:--:-- --:--:-- 69727[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: ubuntu 16.04 x86_64[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: Getting information for chef stable  for ubuntu...[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: downloading https://omnitruck.chef.io/stable/chef/metadata?v=&p=ubuntu&pv=16.04&m=x86_64[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: to file /tmp/install.sh.27/metadata.txt[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: trying curl...[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: sha1	a8c749bfde759692abdd98ae1b841ad089fe5461[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: sha256	4fdabf0ae37c999795bef5e97133c1b78182129edec28c17ccf9ca6661dcc754[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: url	https://packages.chef.io/files/stable/chef/12.18.31/ubuntu/16.04/chef_12.18.31-1_amd64.deb[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: version	12.18.31[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: downloaded metadata file looks valid...[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: downloading https://packages.chef.io/files/stable/chef/12.18.31/ubuntu/16.04/chef_12.18.31-1_amd64.deb[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: to file /tmp/install.sh.27/chef_12.18.31-1_amd64.deb[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: trying curl...[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: Comparing checksum with sha256sum...[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker:[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker:[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: You are installing an omnibus package without a version pin.  If you are installing[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: on production servers via an automated process this is DANGEROUS and you will[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: be upgraded without warning on new releases, even to new major releases.[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: Letting the version float is only appropriate in desktop, test, development or[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: CI/CD environments.[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker:[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker:[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: Installing chef[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: installing with dpkg...[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: Selecting previously unselected package chef.[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: (Reading database ... 10773 files and directories currently installed.)[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: Preparing to unpack .../chef_12.18.31-1_amd64.deb ...[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: Unpacking chef (12.18.31-1) ...[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: Setting up chef (12.18.31-1) ...[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: Thank you for installing Chef![0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: Creating directory: /tmp/packer-chef-solo[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: Creating directory: /tmp/packer-chef-solo/cookbooks-0[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: Creating configuration file 'solo.rb'[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: Creating JSON attribute file[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: Executing Chef: sudo chef-solo --no-color -c /tmp/packer-chef-solo/solo.rb -j /tmp/packer-chef-solo/node.json[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: [2017-02-13T22:09:48+00:00] INFO: Started chef-zero at chefzero://localhost:8889 with repository at /tmp/packer-chef-solo[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: One version per cookbook[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker:[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: [2017-02-13T22:09:48+00:00] INFO: Forking chef instance to converge...[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: [2017-02-13T22:09:48+00:00] INFO: *** Chef 12.18.31 ***[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: [2017-02-13T22:09:48+00:00] INFO: Platform: x86_64-linux[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: [2017-02-13T22:09:48+00:00] INFO: Chef-client pid: 171[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: [2017-02-13T22:09:48+00:00] WARN: unable to detect ipaddress[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: [2017-02-13T22:09:49+00:00] INFO: HTTP Request Returned 404 Not Found: Object not found: chefzero://localhost:8889/nodes/f71a8ec40225[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: [2017-02-13T22:09:49+00:00] INFO: Setting the run_list to ["golang::default"] from CLI options[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: [2017-02-13T22:09:49+00:00] INFO: Run List is [recipe[golang::default]][0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: [2017-02-13T22:09:49+00:00] INFO: Run List expands to [golang::default][0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: [2017-02-13T22:09:49+00:00] INFO: Starting Chef Run for f71a8ec40225[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: [2017-02-13T22:09:49+00:00] INFO: Running start handlers[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: [2017-02-13T22:09:49+00:00] INFO: Start handlers complete.[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: [2017-02-13T22:09:49+00:00] INFO: HTTP Request Returned 404 Not Found: Object not found:[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: [2017-02-13T22:09:49+00:00] INFO: Loading cookbooks [golang@1.7.1][0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: [2017-02-13T22:09:49+00:00] INFO: Storing updated cookbooks/golang/resources/package.rb in the cache.[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: [2017-02-13T22:09:49+00:00] INFO: Storing updated cookbooks/golang/providers/package.rb in the cache.[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: [2017-02-13T22:09:49+00:00] INFO: Storing updated cookbooks/golang/attributes/default.rb in the cache.[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: [2017-02-13T22:09:49+00:00] INFO: Storing updated cookbooks/golang/recipes/default.rb in the cache.[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: [2017-02-13T22:09:49+00:00] INFO: Storing updated cookbooks/golang/.gitignore in the cache.[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: [2017-02-13T22:09:49+00:00] INFO: Storing updated cookbooks/golang/recipes/packages.rb in the cache.[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: [2017-02-13T22:09:49+00:00] INFO: Storing updated cookbooks/golang/CHANGELOG.md in the cache.[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: [2017-02-13T22:09:49+00:00] INFO: Storing updated cookbooks/golang/templates/default/golang.sh.erb in the cache.[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: [2017-02-13T22:09:49+00:00] INFO: Storing updated cookbooks/golang/Berksfile in the cache.[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: [2017-02-13T22:09:49+00:00] INFO: Storing updated cookbooks/golang/LICENSE in the cache.[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: [2017-02-13T22:09:49+00:00] INFO: Storing updated cookbooks/golang/.travis.yml in the cache.[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: [2017-02-13T22:09:49+00:00] INFO: Storing updated cookbooks/golang/README.md in the cache.[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: [2017-02-13T22:09:49+00:00] INFO: Storing updated cookbooks/golang/.kitchen.yml in the cache.[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: [2017-02-13T22:09:49+00:00] INFO: Storing updated cookbooks/golang/Gemfile.lock in the cache.[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: [2017-02-13T22:09:49+00:00] INFO: Storing updated cookbooks/golang/metadata.rb in the cache.[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: [2017-02-13T22:09:49+00:00] INFO: Storing updated cookbooks/golang/Gemfile in the cache.[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: [2017-02-13T22:09:49+00:00] INFO: Storing updated cookbooks/golang/Rakefile in the cache.[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: [2017-02-13T22:09:49+00:00] INFO: Storing updated cookbooks/golang/libraries/matchers.rb in the cache.[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: [2017-02-13T22:09:49+00:00] INFO: Processing bash[install-golang] action nothing (golang::default line 24)[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: [2017-02-13T22:09:49+00:00] INFO: Processing bash[build-golang] action nothing (golang::default line 35)[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: [2017-02-13T22:09:49+00:00] INFO: Processing remote_file[/tmp/packer-chef-solo/local-mode-cache/cache/go1.7.5.linux-amd64.tar.gz] action create (golang::default line 70)[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: [2017-02-13T22:09:51+00:00] INFO: remote_file[/tmp/packer-chef-solo/local-mode-cache/cache/go1.7.5.linux-amd64.tar.gz] created file /tmp/packer-chef-solo/local-mode-cache/cache/go1.7.5.linux-amd64.tar.gz[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: [2017-02-13T22:09:52+00:00] INFO: remote_file[/tmp/packer-chef-solo/local-mode-cache/cache/go1.7.5.linux-amd64.tar.gz] updated file contents /tmp/packer-chef-solo/local-mode-cache/cache/go1.7.5.linux-amd64.tar.gz[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: [2017-02-13T22:09:53+00:00] INFO: remote_file[/tmp/packer-chef-solo/local-mode-cache/cache/go1.7.5.linux-amd64.tar.gz] owner changed to 0[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: [2017-02-13T22:09:53+00:00] INFO: remote_file[/tmp/packer-chef-solo/local-mode-cache/cache/go1.7.5.linux-amd64.tar.gz] mode changed to 644[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: [2017-02-13T22:09:53+00:00] INFO: remote_file[/tmp/packer-chef-solo/local-mode-cache/cache/go1.7.5.linux-amd64.tar.gz] sending run action to bash[install-golang] (immediate)[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: [2017-02-13T22:09:53+00:00] INFO: Processing bash[install-golang] action run (golang::default line 24)[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: [2017-02-13T22:09:55+00:00] INFO: bash[install-golang] ran successfully[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: [2017-02-13T22:09:55+00:00] INFO: remote_file[/tmp/packer-chef-solo/local-mode-cache/cache/go1.7.5.linux-amd64.tar.gz] sending run action to bash[build-golang] (immediate)[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: [2017-02-13T22:09:55+00:00] INFO: Processing bash[build-golang] action run (golang::default line 35)[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: [2017-02-13T22:09:55+00:00] INFO: Processing directory[/opt/go] action create (golang::default line 79)[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: [2017-02-13T22:09:55+00:00] INFO: directory[/opt/go] created directory /opt/go[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: [2017-02-13T22:09:55+00:00] INFO: directory[/opt/go] owner changed to 0[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: [2017-02-13T22:09:55+00:00] INFO: directory[/opt/go] group changed to 0[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: [2017-02-13T22:09:55+00:00] INFO: directory[/opt/go] mode changed to 755[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: [2017-02-13T22:09:55+00:00] INFO: Processing directory[/opt/go/bin] action create (golang::default line 87)[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: [2017-02-13T22:09:55+00:00] INFO: directory[/opt/go/bin] created directory /opt/go/bin[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: [2017-02-13T22:09:55+00:00] INFO: directory[/opt/go/bin] owner changed to 0[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: [2017-02-13T22:09:55+00:00] INFO: directory[/opt/go/bin] group changed to 0[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: [2017-02-13T22:09:55+00:00] INFO: directory[/opt/go/bin] mode changed to 755[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: [2017-02-13T22:09:55+00:00] INFO: Processing template[/etc/profile.d/golang.sh] action create (golang::default line 95)[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: [2017-02-13T22:09:55+00:00] INFO: template[/etc/profile.d/golang.sh] created file /etc/profile.d/golang.sh[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: [2017-02-13T22:09:55+00:00] INFO: template[/etc/profile.d/golang.sh] updated file contents /etc/profile.d/golang.sh[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: [2017-02-13T22:09:55+00:00] INFO: template[/etc/profile.d/golang.sh] owner changed to 0[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: [2017-02-13T22:09:55+00:00] INFO: template[/etc/profile.d/golang.sh] group changed to 0[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: [2017-02-13T22:09:55+00:00] INFO: template[/etc/profile.d/golang.sh] mode changed to 755[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: [2017-02-13T22:09:55+00:00] INFO: Processing apt_package[git] action install (golang::default line 104)[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: [2017-02-13T22:10:05+00:00] INFO: apt_package[git] installed git at 1:2.7.4-0ubuntu1[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: [2017-02-13T22:10:05+00:00] INFO: Processing apt_package[mercurial] action install (golang::default line 104)[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: [2017-02-13T22:10:13+00:00] INFO: apt_package[mercurial] installed mercurial at 3.7.3-1ubuntu1[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: [2017-02-13T22:10:13+00:00] INFO: Processing apt_package[bzr] action install (golang::default line 104)[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: [2017-02-13T22:10:22+00:00] INFO: apt_package[bzr] installed bzr at 2.7.0-2ubuntu3[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: [2017-02-13T22:10:22+00:00] INFO: Chef Run complete in 33.413548042 seconds[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: [2017-02-13T22:10:22+00:00] INFO: Running report handlers[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: [2017-02-13T22:10:22+00:00] INFO: Report handlers complete[0m[0m
+[0;32m    amazon-ebs: [1;32m==> docker: Committing the container[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: Image ID: sha256:ea78df21c1a11c43279fd8861edb757bfc7b8c947f2fda9cd934229ef3785143[0m[0m
+[0;32m    amazon-ebs: [1;32m==> docker: Killing the container: f71a8ec40225676dd8fa836e5fba9459baf352dd99b67f1a3ac9ef628695063e[0m[0m
+[0;32m    amazon-ebs: [1;32m==> docker: Running post-processor: docker-tag[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker (docker-tag): Tagging image: sha256:ea78df21c1a11c43279fd8861edb757bfc7b8c947f2fda9cd934229ef3785143[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker (docker-tag): Repository: cluster/golang:0.1[0m[0m
+[0;32m    amazon-ebs: [1;32mBuild 'docker' finished.[0m[0m
+[0;32m    amazon-ebs:[0m
+[0;32m    amazon-ebs: ==> Builds finished. The artifacts of successful builds are:[0m
+[0;32m    amazon-ebs: --> docker: Imported Docker image: sha256:ea78df21c1a11c43279fd8861edb757bfc7b8c947f2fda9cd934229ef3785143[0m
+[0;32m    amazon-ebs: --> docker: Imported Docker image: cluster/golang:0.1[0m
+[0;32m    amazon-ebs: [1;32mdocker output will be in this color.[0m[0m
+[0;32m    amazon-ebs:[0m
+[0;32m    amazon-ebs: [1;32m==> docker: Creating a temporary directory for sharing data...[0m[0m
+[0;32m    amazon-ebs: [1;32m==> docker: Starting docker container...[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: Run command: docker run -v /home/ubuntu/.packer.d/tmp/packer-docker788627436:/packer-files -d -i -t cluster/golang:0.1 /bin/bash[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: Container ID: 395380a1f9fdee3af7d0af6224558d11bd44511a22bcac2a46b9114a3c442809[0m[0m
+[0;32m    amazon-ebs: [1;32m==> docker: Provisioning with shell script: /tmp/packer-shell088647466[0m[0m
+[0;32m    amazon-ebs: [1;32m==> docker: Uploading ../lib/trivial_service/backend/backend.go => /backend/backend.go[0m[0m
+[0;32m    amazon-ebs: [1;32m==> docker: Uploading service_definitions/backend.sh => /etc/service/backend/run[0m[0m
+[0;32m    amazon-ebs: [1;32m==> docker: Provisioning with shell script: /tmp/packer-shell331714752[0m[0m
+[0;32m    amazon-ebs: [1;32m==> docker: Committing the container[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: Image ID: sha256:63a0be157e51ac7e6cdbc70bcd91db2c46847363b2013c1101dcbc9c5ed1d95e[0m[0m
+[0;32m    amazon-ebs: [1;32m==> docker: Killing the container: 395380a1f9fdee3af7d0af6224558d11bd44511a22bcac2a46b9114a3c442809[0m[0m
+[0;32m    amazon-ebs: [1;32m==> docker: Running post-processor: docker-tag[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker (docker-tag): Tagging image: sha256:63a0be157e51ac7e6cdbc70bcd91db2c46847363b2013c1101dcbc9c5ed1d95e[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker (docker-tag): Repository: 613976259988.dkr.ecr.us-west-2.amazonaws.com/backend:0.3[0m[0m
+[0;32m    amazon-ebs: [1;32m==> docker: Running post-processor: docker-push[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker (docker-push): Fetching ECR credentials...[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker (docker-push): Logging in...[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker (docker-push): Login Succeeded[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker (docker-push): Pushing: 613976259988.dkr.ecr.us-west-2.amazonaws.com/backend:0.3[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker (docker-push): The push refers to a repository [613976259988.dkr.ecr.us-west-2.amazonaws.com/backend][0m[0m
+[0;32m    amazon-ebs: [0;32m    docker (docker-push): cf718970a35a: Preparing[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker (docker-push): 0bd6b7461ad6: Preparing[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker (docker-push): ff0df35a8a17: Preparing[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker (docker-push): 5f70bf18a086: Preparing[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker (docker-push): 0184e31d4eba: Preparing[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker (docker-push): 19a8383d6948: Preparing[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker (docker-push): 5f70bf18a086: Preparing[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker (docker-push): 0738910e0455: Preparing[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker (docker-push): 21df36b5c775: Preparing[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker (docker-push): 315fe8388056: Preparing[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker (docker-push): 7f4734de8e3d: Preparing[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker (docker-push): 19a8383d6948: Waiting[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker (docker-push): 0738910e0455: Waiting[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker (docker-push): 21df36b5c775: Waiting[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker (docker-push): 315fe8388056: Waiting[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker (docker-push): 7f4734de8e3d: Waiting[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker (docker-push): 5f70bf18a086: Pushed[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker (docker-push): cf718970a35a: Pushed[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker (docker-push): 19a8383d6948: Pushed[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker (docker-push): 0738910e0455: Pushed[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker (docker-push): 21df36b5c775: Pushed[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker (docker-push): 315fe8388056: Pushed[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker (docker-push): ff0df35a8a17: Pushed[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker (docker-push): 0184e31d4eba: Pushed[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker (docker-push): 7f4734de8e3d: Pushed[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker (docker-push): 0bd6b7461ad6: Pushed[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker (docker-push): 0.3: digest: sha256:688c29f13cb463d5223552cf5ee349a38d8e032ad0a6c7c8e025ae66ebaa13ee size: 2621[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker (docker-push): Logging out...[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker (docker-push): Remove login credentials for https://613976259988.dkr.ecr.us-west-2.amazonaws.com[0m[0m
+[0;32m    amazon-ebs: [1;32mBuild 'docker' finished.[0m[0m
+[0;32m    amazon-ebs:[0m
+[0;32m    amazon-ebs: ==> Builds finished. The artifacts of successful builds are:[0m
+[0;32m    amazon-ebs: --> docker: Imported Docker image: sha256:63a0be157e51ac7e6cdbc70bcd91db2c46847363b2013c1101dcbc9c5ed1d95e[0m
+[0;32m    amazon-ebs: [1;32mdocker output will be in this color.[0m[0m
+[0;32m    amazon-ebs:[0m
+[0;32m    amazon-ebs: [1;32m==> docker: Creating a temporary directory for sharing data...[0m[0m
+[0;32m    amazon-ebs: [1;32m==> docker: Starting docker container...[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: Run command: docker run -v /home/ubuntu/.packer.d/tmp/packer-docker549183528:/packer-files -d -i -t cluster/golang:0.1 /bin/bash[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: Container ID: a5eb82f0d7c22b60bf4dbab4486ff00236f8e875538f9d0d84abf6ea63855f55[0m[0m
+[0;32m    amazon-ebs: [1;32m==> docker: Provisioning with shell script: /tmp/packer-shell576241967[0m[0m
+[0;32m    amazon-ebs: [1;32m==> docker: Uploading ../lib/trivial_service/www/www.go => /frontend/frontend.go[0m[0m
+[0;32m    amazon-ebs: [1;32m==> docker: Uploading service_definitions/frontend.sh => /etc/service/frontend/run[0m[0m
+[0;32m    amazon-ebs: [1;32m==> docker: Provisioning with shell script: /tmp/packer-shell604843768[0m[0m
+[0;32m    amazon-ebs: [1;32m==> docker: Committing the container[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker: Image ID: sha256:2422c32a89ce39e9c151fe9f02a9ff201bf1b94dcb0ffda65a6651bf4e771977[0m[0m
+[0;32m    amazon-ebs: [1;32m==> docker: Killing the container: a5eb82f0d7c22b60bf4dbab4486ff00236f8e875538f9d0d84abf6ea63855f55[0m[0m
+[0;32m    amazon-ebs: [1;32m==> docker: Running post-processor: docker-tag[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker (docker-tag): Tagging image: sha256:2422c32a89ce39e9c151fe9f02a9ff201bf1b94dcb0ffda65a6651bf4e771977[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker (docker-tag): Repository: 613976259988.dkr.ecr.us-west-2.amazonaws.com/frontend:0.3[0m[0m
+[0;32m    amazon-ebs: [1;32m==> docker: Running post-processor: docker-push[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker (docker-push): Fetching ECR credentials...[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker (docker-push): Logging in...[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker (docker-push): Login Succeeded[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker (docker-push): Pushing: 613976259988.dkr.ecr.us-west-2.amazonaws.com/frontend:0.3[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker (docker-push): The push refers to a repository [613976259988.dkr.ecr.us-west-2.amazonaws.com/frontend][0m[0m
+[0;32m    amazon-ebs: [0;32m    docker (docker-push): 13dd523ea5d0: Preparing[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker (docker-push): 0bd6b7461ad6: Preparing[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker (docker-push): ff0df35a8a17: Preparing[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker (docker-push): 5f70bf18a086: Preparing[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker (docker-push): 0184e31d4eba: Preparing[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker (docker-push): 19a8383d6948: Preparing[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker (docker-push): 5f70bf18a086: Preparing[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker (docker-push): 0738910e0455: Preparing[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker (docker-push): 21df36b5c775: Preparing[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker (docker-push): 315fe8388056: Preparing[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker (docker-push): 7f4734de8e3d: Preparing[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker (docker-push): 19a8383d6948: Waiting[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker (docker-push): 0738910e0455: Waiting[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker (docker-push): 21df36b5c775: Waiting[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker (docker-push): 315fe8388056: Waiting[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker (docker-push): 7f4734de8e3d: Waiting[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker (docker-push): 5f70bf18a086: Pushed[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker (docker-push): 19a8383d6948: Pushed[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker (docker-push): 13dd523ea5d0: Pushed[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker (docker-push): 0738910e0455: Pushed[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker (docker-push): 21df36b5c775: Pushed[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker (docker-push): 315fe8388056: Pushed[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker (docker-push): ff0df35a8a17: Pushed[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker (docker-push): 0184e31d4eba: Pushed[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker (docker-push): 7f4734de8e3d: Pushed[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker (docker-push): 0bd6b7461ad6: Pushed[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker (docker-push): 0.3: digest: sha256:eb9dcdf9ec3fcd5b5c2284b9a38fbf06f4c6c12ad4f86fa04e3de5b84d64a100 size: 2621[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker (docker-push): Logging out...[0m[0m
+[0;32m    amazon-ebs: [0;32m    docker (docker-push): Remove login credentials for https://613976259988.dkr.ecr.us-west-2.amazonaws.com[0m[0m
+[0;32m    amazon-ebs: [1;32mBuild 'docker' finished.[0m[0m
+[0;32m    amazon-ebs:[0m
+[0;32m    amazon-ebs: ==> Builds finished. The artifacts of successful builds are:[0m
+[0;32m    amazon-ebs: --> docker: Imported Docker image: sha256:2422c32a89ce39e9c151fe9f02a9ff201bf1b94dcb0ffda65a6651bf4e771977[0m
+[0;32m    amazon-ebs: Successfully built images![0m
+[1;32m==> amazon-ebs: Downloading /tmp/done => /tmp/done[0m
+[1;32m==> amazon-ebs: Provisioning with shell script: /var/folders/81/71dqr_ms49bc0_jrp9bv6b8c0000gn/T/packer-shell932568282[0m
+[1;32m==> amazon-ebs: Stopping the source instance...[0m
+[1;32m==> amazon-ebs: Waiting for the instance to stop...[0m
+[1;32m==> amazon-ebs: Creating the AMI: packer-intermediate 1487023189[0m
+[0;32m    amazon-ebs: AMI: ami-ba981fda[0m
+[1;32m==> amazon-ebs: Waiting for AMI to become ready...[0m
+[1;32m==> amazon-ebs: Terminating the source AWS instance...[0m
+[1;32m==> amazon-ebs: Cleaning up any extra volumes...[0m
+[1;32m==> amazon-ebs: No volumes to clean up, skipping[0m
+[1;32m==> amazon-ebs: Deleting temporary security group...[0m
+[1;32m==> amazon-ebs: Deleting temporary keypair...[0m
+[1;32m==> amazon-ebs: Running post-processor: artifice[0m
+[1;32m==> amazon-ebs (artifice): Using these artifact files: /tmp/done[0m
+[1;32m==> amazon-ebs: Running post-processor: manifest[0m
+[1;32mBuild 'amazon-ebs' finished.[0m
+
+==> Builds finished.
