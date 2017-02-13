@@ -110,7 +110,7 @@ SparkleFormation.component(:ecs) do
       properties do
         image_id 'ami-022b9262'
         instance_type 't2.medium'
-        key_name 'testcluster'
+    #   key_name 'testcluster'
         iam_instance_profile ref!(:ecs_instance_profile)
         security_group_ids [ref!(:ecs_security_group)]
         subnet_id ref!(subnets.first)
