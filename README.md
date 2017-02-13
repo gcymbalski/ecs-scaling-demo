@@ -57,4 +57,4 @@ These tasks are, fortunately, more or less stateless to the user- as long as you
 
 - For one, while I think this is a decent start to something that could probably be more resiliant if not for all the Amazon in it, it doesn't include the kind of day-to-day tooling that makes a project efficient, like single-keystroke version bumping of artifacts, along with understanding their dependency graph and how to know when to cut and possibly promote a version.
 - It also doesn't have automated tests written. For the most part, the pieces are so functionally separated and specialized that I just have to test that the pieces going in don't gum up the works. Speaking of...
-- The lack of the above means 'CI' is more like me trying to get to 'rake test:throughput' with flying colors
+- Now that all builds happen in container-capable hosts in EC2 instead relying on Docker locally, there may be even more room for removing non-portable code paths.
