@@ -29,8 +29,8 @@ SparkleFormation.component(:ecs) do
         security_group_ingress do
           ip_protocol 'tcp'
           from_port 0
-          to_port 0
-          cidr_ip '0.0.0.0/0'
+          to_port  65535
+          cidr_ip ref!(:vpc_cidr)
           #cidr_ip ref!(:vpc_cidr)
         end
       end
