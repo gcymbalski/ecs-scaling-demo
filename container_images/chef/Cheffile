@@ -1,0 +1,5 @@
+site "https://supermarket.getchef.com/api/v1"
+
+cookbook 'golang', github: 'NOX73/chef-golang', ref: '1.7.1'
+cookbook 'ruby_rbenv', github: 'sous-chefs/ruby_rbenv', ref: 'v1.1.0'
+cookbook 'ruby_build', github: 'sous-chefs/ruby_build', ref: 'v1.0.0'

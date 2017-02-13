@@ -1,0 +1,35 @@
+SITE
+  remote: https://supermarket.getchef.com/api/v1
+  specs:
+    compat_resource (12.16.3)
+    yum-epel (2.1.1)
+      compat_resource (>= 12.16.3)
+
+GIT
+  remote: https://github.com/NOX73/chef-golang
+  ref: 1.7.1
+  sha: f22e2af9c20b4252015a04b32a454fa569543be5
+  specs:
+    golang (1.7.1)
+
+GIT
+  remote: https://github.com/sous-chefs/ruby_build
+  ref: v1.0.0
+  sha: 6548a9a622af846fc6ea3e0f7255ba42fa662cdb
+  specs:
+    ruby_build (1.0.0)
+      yum-epel (>= 0.0.0)
+
+GIT
+  remote: https://github.com/sous-chefs/ruby_rbenv
+  ref: v1.1.0
+  sha: 025b504f5743ce798831ea90c1d954bb4c623c97
+  specs:
+    ruby_rbenv (1.1.0)
+      ruby_build (>= 0.0.0)
+
+DEPENDENCIES
+  golang (>= 0)
+  ruby_build (>= 0)
+  ruby_rbenv (>= 0)
+

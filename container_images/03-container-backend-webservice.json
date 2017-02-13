@@ -1,0 +1,54 @@
+{
+  "variables": {
+    "login_server":"{{env `DOCKER_LOGIN_SERVER`}}",
+    "aws_access_key": "{{env `AWS_ACCESS_KEY_ID`}}",
+    "aws_secret_key": "{{env `AWS_SECRET_ACCESS_KEY`}}"
+  },
+  "builders": [
+    {
+      "type": "docker",
+      "image": "cluster/golang:0.1",
+      "changes": ["EXPOSE 80", "CMD /sbin/my_init"],
+      "pull": "false",
+      "commit": true
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "shell",
+      "inline": [
+	"mkdir /backend && mkdir -p /etc/service/backend"
+      ]
+    },
+    {
+      "type": "file",
+      "source": "../lib/trivial_service/backend/backend.go",
+      "destination": "/backend/backend.go"
+    },
+    {
+      "type": "file",
+      "source": "service_definitions/backend.sh",
+      "destination": "/etc/service/backend/run"
+    },
+    {
+      "type": "shell",
+      "inline": [
+	". /etc/profile && cd /backend && go build backend.go && chmod +x /etc/service/backend/run"
+      ]
+    }
+  ],
+  "post-processors": [
+   [ {
+      "type": "docker-tag",
+      "repository": "{{user `login_server`}}/backend",
+      "tag": "0.3"
+    },
+    {
+      "type": "docker-push",
+      "aws_access_key":"{{user `aws_access_key`}}",
+      "aws_secret_key":"{{user `aws_secret_key`}}",
+      "ecr_login": true,
+      "login_server": "https://{{user `login_server`}}"
+    }
+  ]]
+}

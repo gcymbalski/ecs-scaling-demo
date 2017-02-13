@@ -1,0 +1,33 @@
+{
+  "builders": [
+    {
+      "type": "docker",
+      "pull": "false",
+      "image": "cluster/baseimage:0.1",
+      "commit": true
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "chef-solo",
+      "cookbook_paths": [
+        "chef/cookbooks"
+      ],
+      "json": {
+        "go": {
+          "version": "1.7.5"
+        }
+      },
+      "run_list": [
+        "golang::default"
+      ]
+    }
+  ],
+  "post-processors": [
+    {
+      "type": "docker-tag",
+      "repository": "cluster/golang",
+      "tag": "0.1"
+    }
+  ]
+}

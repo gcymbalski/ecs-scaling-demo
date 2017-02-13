@@ -1,5 +1,12 @@
 source 'https://rubygems.org'
 
-gem 'highline'
+gem 'rb-readline'
+gem 'minitar-cli'
+gem 'pry'
+gem 'chef'
+gem 'librarian-chef'
 gem 'rake'
+gem 'aws-sdk'
+gem 'sparkle_formation'
+gem 'sparkle-pack-aws-vpc'
 gem 'sfn', '> 3.0'
