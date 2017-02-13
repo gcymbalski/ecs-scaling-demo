@@ -1,4 +1,4 @@
-SparkleFormation.new(:cluster_vpc).load(:base, :vpc).overrides do
+SparkleFormation.new(:cluster_vpc).load(:base, :vpc, :ecs).overrides do
   description 'Our service VPC'
   
   ## Access the list of available Availability Zones via registry entry.
@@ -18,26 +18,6 @@ SparkleFormation.new(:cluster_vpc).load(:base, :vpc).overrides do
       default ['10.0.', index, '.0/24'].join
     end
 
-  end
-
-  resources do 
-    backend_repo do
-      type 'AWS::ECR::Repository'
-      properties do 
-        repository_name 'backend'
-      end
-    end
-    
-    frontend_repo do
-      type 'AWS::ECR::Repository'
-      properties do 
-        repository_name 'frontend'
-      end
-    end
-
-    ecs_cluster do
-      type 'AWS::ECS::Cluster'
-    end
   end
 
 end
