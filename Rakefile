@@ -77,19 +77,6 @@ namespace :cluster do
       end
     end
 
-    vpcstack = get_stack(VPC_NAME)
-
-    vpc_id   = vpcstack[:outputs].select do |k|
-                 k[:output_key] == 'VpcId'
-               end.first[:output_value]
-
-    unless get_stack('ecs')
-      status = system("sfn create -m vpc_id:#{vpc_id} -d ecs --file sparkleformation/ecs.rb")
-      unless status
-        puts 'Failed generating our ECS stack!'
-        exit -1
-      end
-    end
     writecfg(cfg)
   end
 
@@ -112,7 +99,7 @@ namespace :cluster do
 
     subnet_id = vpcstack[:outputs].select do |k|
                   k[:output_key] =~ /Public.*Subnet/
-                end.first[:output_value]
+                end.first[:output_value].split(',').first
 
     ENV['AWS_VPC_ID'] = vpc_id
     ENV['AWS_SUBNET_ID'] = subnet_id
@@ -189,8 +176,20 @@ namespace :cluster do
     subnet_vars = subnets.collect { |x| "#{x[:output_key]}:#{x[:output_value]}" }.join(',')
 
     cfg = readcfg
-    # XXX future stack update that
-    #    status = system("sfn create -m vpc_id:#{vpc_id} -d ecs --file sparkleformation/ecs.rb")
+    # XXX launch second-stage stuff later
+    #vpcstack = get_stack(VPC_NAME)
+
+    #vpc_id   = vpcstack[:outputs].select do |k|
+    #             k[:output_key] == 'VpcId'
+    #           end.first[:output_value]
+
+    #unless get_stack('ecs')
+    #  status = system("sfn create -m vpc_id:#{vpc_id} -d ecs --file sparkleformation/ecs.rb")
+    #  unless status
+    #    puts 'Failed generating our ECS stack!'
+    #    exit -1
+    #  end
+    #end
     writecfg(cfg)
   end
 
@@ -222,7 +221,7 @@ namespace :test do
     end
     Rake::Task['cluster:init'].invoke if get_stack(VPC_NAME)
     vpcstack = get_stack(VPC_NAME)
-    # wrap apachebench here
+    # XXX wrap apachebench here
     cfg = readcfg
 
     writecfg(cfg)

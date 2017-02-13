@@ -16,7 +16,7 @@ This shows that some underlying services with a non-ideal failure rate are no re
 - Packer for building container images (install from your package manager or https://www.packer.io/downloads.html - fortunately, it's just a binary that needs to be in your $PATH)
 - apachebench for testing cluster performance (install from your package manager [apache2-utils on Debian] or `brew install homebrew/apache/ab` if you're on OSX using Homebrew )
 Other Reqs
-- Have an AWS account with your local environment variables of AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, and AWS_REGION set appropriately. You'll get yelled at if they aren't filled out. Make sure these match your AWS profile if you've configured the CLI for other stuff, too.
+- Have an AWS IAM user set up with admin permissions, with your local environment variables of AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, and AWS_REGION (n.b. only us-west-2 is supported right now) set appropriately. You'll get yelled at if they aren't filled out. Make sure these match your AWS profile if you've configured the CLI for other stuff, too.
 
 ##Caveat to the above
 AWS_REGION only supports us-west-2 right now; there are too many moving pieces of information about what is available in which region to reasonably handle more cases than needed. Though this does definitely imply a lack of cross-regional failover.

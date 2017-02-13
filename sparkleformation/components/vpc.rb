@@ -80,31 +80,28 @@ SparkleFormation.component(:vpc) do
     end
   end
 
-  resources(:internet_gateway) do
-    type 'AWS::EC2::InternetGateway'
+  resources(:nat_eip) do
+    type 'AWS::EC2::EIP'
     properties do
-      tags _array(
-        -> {
-          key 'Name'
-          value stack_name!
-        }
-      )
+      domain 'vpc'
     end
   end
 
-  resources(:internet_gateway_attachment) do
-    type 'AWS::EC2::VPCGatewayAttachment'
+  resources(:nat_gateway) do
+    type 'AWS::EC2::NatGateway'
+    depends_on process_key!('nat_eip')
     properties do
-      internet_gateway_id ref!(:internet_gateway)
-      vpc_id ref!(:vpc)
+      allocation_id attr!(:nat_eip, :allocation_id)
+      subnet_id ref!(registry!(:zones).collect{|z| "public_#{z.gsub('-','_')}_subnet" }.first.to_sym)
     end
   end
 
-  resources(:public_subnet_internet_route) do
+  resources(:nat_route) do
     type 'AWS::EC2::Route'
+    depends_on process_key!('nat_gateway')
     properties do
       destination_cidr_block '0.0.0.0/0'
-      gateway_id ref!(:internet_gateway)
+      nat_gateway_id ref!(:nat_gateway)
       route_table_id ref!(:public_route_table)
     end
   end
@@ -113,7 +110,7 @@ SparkleFormation.component(:vpc) do
     value ref!(:vpc)
   end
 
-  [ :vpc_cidr, :public_route_table, :internet_gateway ].each do |x|
+  [ :vpc_cidr, :nat_route, :nat_gateway ].each do |x|
     outputs do
       set!(x) do
         value ref!(x)

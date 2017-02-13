@@ -17,6 +17,9 @@ Configuration.new do
       creator ENV['USER']
     end
   end
+
+  sparkle_pack [ 'sparkle-pack-aws-availability-zones', 'sparkle-pack-aws-vpc' ]
+
   #   Name of bucket in object store to hold nested
   #   stack templates
   # nesting_bucket 'BUCKET_NAME'

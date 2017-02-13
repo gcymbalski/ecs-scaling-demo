@@ -218,6 +218,10 @@ GEM
       net-ssh
       sparkle_formation (>= 3.0.11, < 4)
     slop (3.6.0)
+    sparkle-pack-aws-availability-zones (0.1.2)
+      aws-sdk-core (~> 2.2)
+    sparkle-pack-aws-vpc (0.2.0)
+      sparkle-pack-aws-availability-zones
     sparkle_formation (3.0.12)
       attribute_struct (>= 0.3.0, < 0.5)
       bogo
@@ -249,6 +253,7 @@ DEPENDENCIES
   rake
   rb-readline
   sfn (> 3.0)
+  sparkle-pack-aws-vpc
   sparkle_formation
 
 BUNDLED WITH
