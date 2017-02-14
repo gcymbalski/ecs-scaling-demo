@@ -5,7 +5,7 @@ require 'pry'
 CFGFILE = '.clustercfg'.freeze
 DEBUG = ENV['DEBUG'] ? true : false
 VPC_NAME = 'ecs-cluster'.freeze
-SERVICES_NAME = 'ecs-services'.freeze
+SERVICES_NAME = 'ecs-service'.freeze
 ENV['AWS_DEFAULT_REGION'] = ENV['AWS_REGION']
 
 def readcfg
@@ -236,11 +236,18 @@ namespace :test do
       puts 'Cannot find ApacheBench (ab) in your PATH, please install it'
       exit -1
     end
-    Rake::Task['cluster:init'].invoke if get_stack(VPC_NAME)
-    vpcstack = get_stack(VPC_NAME)
-    # XXX wrap apachebench here
-    cfg = readcfg
+    Rake::Task['cluster:init'].invoke unless get_stack(VPC_NAME)
+    Rake::Task['cluster:build'].invoke unless get_stack(SERVICES_NAME)
 
-    writecfg(cfg)
+    svcs = get_stack(SERVICES_NAME).to_h
+    unless svcs 
+      puts "Unable to find running stacks with load balancer; something went wrong, try terminating and retrying"
+      exit -1
+    end
+    uri = svcs[:outputs].select do |k|
+               k[:output_key] == 'FrontendAlbDns'
+             end.first[:output_value]
+
+    system("ab -r -n 1500 -c 5 http://#{uri}/")
   end
 end

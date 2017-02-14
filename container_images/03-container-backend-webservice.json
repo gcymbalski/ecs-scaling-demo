@@ -7,7 +7,7 @@
   "builders": [
     {
       "type": "docker",
-      "image": "cluster/golang:0.1",
+      "image": "cluster/golang:0.2",
       "changes": ["EXPOSE 80", "CMD /sbin/my_init"],
       "pull": "false",
       "commit": true
@@ -41,7 +41,7 @@
    [ {
       "type": "docker-tag",
       "repository": "{{user `login_server`}}/backend",
-      "tag": "0.3"
+      "tag": "0.5"
     },
     {
       "type": "docker-push",

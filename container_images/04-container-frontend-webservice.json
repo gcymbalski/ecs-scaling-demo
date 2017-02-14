@@ -7,7 +7,7 @@
   "builders": [
     {
       "type": "docker",
-      "image": "cluster/golang:0.1",
+      "image": "cluster/golang:0.2",
       "changes": ["EXPOSE 80", "CMD /sbin/my_init"],
       "pull": "false",
       "commit": true
@@ -26,6 +26,11 @@
       "destination": "/frontend/frontend.go"
     },
     {
+      "type": "file",
+      "source": "service_definitions/frontend.sh",
+      "destination": "/etc/service/frontend/run"
+    },
+    {
       "type": "shell",
       "inline": [
 	". /etc/profile && cd /frontend && go build frontend.go && chmod +x /etc/service/frontend/run"
@@ -36,7 +41,7 @@
    [ {
       "type": "docker-tag",
       "repository": "{{user `login_server`}}/frontend",
-      "tag": "0.3"
+      "tag": "0.5"
     },
     {
       "type": "docker-push",

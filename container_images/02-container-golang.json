@@ -3,7 +3,7 @@
     {
       "type": "docker",
       "pull": "false",
-      "image": "cluster/baseimage:0.1",
+      "image": "cluster/baseimage:0.2",
       "commit": true
     }
   ],
@@ -27,7 +27,7 @@
     {
       "type": "docker-tag",
       "repository": "cluster/golang",
-      "tag": "0.1"
+      "tag": "0.2"
     }
   ]
 }

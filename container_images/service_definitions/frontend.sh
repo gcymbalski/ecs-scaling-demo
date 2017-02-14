@@ -1,3 +1,2 @@
 #!/bin/sh
-BACKEND=`cat /frontend/backend`
-exec /frontend/frontend -backend $BACKEND >>/var/log/frontend.log 2>&1
+exec /frontend/frontend -backend $BACKEND -backendPort $BACKENDPORT >>/var/log/frontend.log 2>&1

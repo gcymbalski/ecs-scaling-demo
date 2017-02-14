@@ -4,6 +4,8 @@ This is an automation-driven approach to the complete lifecycle management of th
 
 The major technologies in use are SparkleFormation for modeling/orchestration in AWS and Packer for generating repeatable, controlled artifacts for deployment with SparkleFormation/AWS. Good stuff that's saved me a lot of time and headaches.
 
+See the 'docs' folder for more in-detail documentation, and sample logs!
+
 #Major functionality
 
 This shows that some underlying services with a non-ideal failure rate are no reason to not deliver reasonable performance. The major goal is to sustain as many reqs/sec as possible, though there are a ton of ways to do that anywhere, let alone on AWS. For now we'll have a small cluster of managed container hosts that are running a daemon from Amazon that acts as a job scheduler. If our load goes up, boom, we spawn more containers and see if we need to worry about an additional layer of setting up an autoscaling group for Docker/ECS hosts themselves.
@@ -61,6 +63,8 @@ These tasks are, fortunately, more or less stateless to the user- as long as you
 
 #Room for Improvement
 
-- For one, while I think this is a decent start to something that could probably be more resiliant if not for all the Amazon in it, it doesn't include the kind of day-to-day tooling that makes a project efficient, like single-keystroke version bumping of artifacts, along with understanding their dependency graph and how to know when to cut and possibly promote a version.
-- It also doesn't have automated tests written. For the most part, the pieces are so functionally separated and specialized that I just have to test that the pieces going in don't gum up the works. Speaking of...
-- Now that all builds happen in container-capable hosts in EC2 instead relying on Docker locally, there may be even more room for removing non-portable code paths.
+- While the container host allows an arbitrary amount of containers to spin up/down at the request of the application load balancer, the host itself is still a singleton- this means no uninterrupted deployments, unfortunately. Just needs to be put behind an ASG and have additional rules written for its scaling.
+- Intermediate artifacts aren't cached independently- like for the build of Ruby and installation of other dependencies for the remote build host used to generate container images. From my connection, generating the build artifacts is the most time-consuming portion at a little over 10 minutes. This could greatly be improved by caching artifacts and probably having a dedicated/pre-baked image for building container images.
+- Speaking of, packages should be generated for software especially - like the backend/frontend web services used. Those packages could then be installed directly into our upstream container image (from phusion/baseimage)- removing the intermediate artifacts of a build system. Our containers probably don't need GCC et al- and including it all just adds to the cost of using AWS.
+- Security-wise, credentials could be more finely-tuned at least along the services used (see sparkleformation/components/ecs.rb for the IAM role that describes what actions are allowed by which services)
+- The CLI doesn't necessarily account for all states that all the dependent services could be in; for a production environment, more care could be put into assuring a certain predictability and ease of debugging.
