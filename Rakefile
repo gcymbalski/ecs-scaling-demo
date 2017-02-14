@@ -207,8 +207,11 @@ namespace :cluster do
     # first, empty our container repos
     ecr = Aws::ECR::Client.new
     %w(backend frontend).each do |repo|
-      digests = ecr.describe_images(repository_name: repo).image_details.collect { |x| { 'image_digest' => x['image_digest'] } }
-      ecr.batch_delete_image(repository_name: repo, image_ids: digests)
+      digests = ecr.describe_images(repository_name: repo)
+      if digests
+          digests.image_details.collect { |x| { 'image_digest' => x['image_digest'] } }
+          ecr.batch_delete_image(repository_name: repo, image_ids: digests)
+      end
     end
     puts 'Emptied remote repositories...'
     # then we can be done with all our stacks
