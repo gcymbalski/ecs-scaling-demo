@@ -1,97 +1,114 @@
 {
-  "variables": {
-    "aws_access_key": "{{env `AWS_ACCESS_KEY_ID`}}",
-    "aws_secret_key": "{{env `AWS_SECRET_ACCESS_KEY`}}",
-    "aws_region": "{{env `AWS_DEFAULT_REGION`}}",
-    "aws_ami": "ami-d206bdb2",
-    "aws_vpc": "{{env `AWS_VPC_ID`}}",
-    "aws_subnet": "{{env `AWS_SUBNET_ID`}}",
-    "ssh_username": "ubuntu",
-    "build_uuid": "{{env `BUILD_UUID`}}"
-  },
-  "builders": [
-    {
-      "type": "amazon-ebs",
-      "region": "{{user `aws_region`}}",
-      "access_key": "{{user `aws_access_key`}}",
-      "secret_key": "{{user `aws_secret_key`}}",
-      "instance_type": "m3.large",
-      "source_ami": "{{user `aws_ami`}}",
-      "ssh_username": "{{user `ssh_username`}}",
-      "subnet_id": "{{user `aws_subnet`}}",
-      "vpc_id": "{{user `aws_vpc`}}",
-      "associate_public_ip_address": true,
-      "run_tags": {
-	"build_uuid": "{{user `build_uuid`}}"
-      },
-      "ami_name":"packer-intermediate {{timestamp}}"
+    "builders": [
+        {
+            "access_key": "{{user `aws_access_key`}}",
+            "ami_name": "packer-intermediate {{timestamp}}",
+            "associate_public_ip_address": true,
+            "instance_profile": "{{env `AWS_INSTANCE_PROFILE`}}",
+            "instance_type": "m3.large",
+            "region": "{{user `aws_region`}}",
+            "run_tags": {
+                "build_uuid": "{{user `build_uuid`}}"
+            },
+            "secret_key": "{{user `aws_secret_key`}}",
+            "source_ami": "{{user `aws_ami`}}",
+            "ssh_username": "{{user `ssh_username`}}",
+            "subnet_id": "{{user `aws_subnet`}}",
+            "type": "amazon-ebs",
+            "vpc_id": "{{user `aws_vpc`}}"
+        }
+    ],
+    "post-processors": [
+        {
+            "files": [
+                "/tmp/done"
+            ],
+            "type": "artifice"
+        },
+        {
+            "output": "manifest.json",
+            "type": "manifest"
+        }
+    ],
+    "provisioners": [
+        {
+            "inline": [
+                "sudo bash -c \"echo \\\"127.0.0.1   $(hostname)\\\" >> /etc/hostname\"",
+                "sudo apt-get -y update",
+                "sudo apt-get -y install docker.io awscli curl",
+                "curl https://releases.hashicorp.com/packer/0.12.2/packer_0.12.2_linux_amd64.zip | zcat > packer; chmod +x packer; sudo mv packer /usr/local/bin",
+                "mkdir -p /home/ubuntu/repo"
+            ],
+            "type": "shell"
+        },
+        {
+            "cookbook_paths": [
+                "chef/cookbooks"
+            ],
+            "json": {
+                "rbenv": {
+                    "gems": {
+                        "2.3.3": [
+                            {
+                                "name": "bundler"
+                            }
+                        ]
+                    },
+                    "global": "2.3.3",
+                    "rubies": [
+                        "2.3.3"
+                    ]
+                }
+            },
+            "run_list": [
+                "ruby_build",
+                "ruby_rbenv::system"
+            ],
+            "type": "chef-solo"
+        },
+        {
+            "destination": "/home/ubuntu/repo",
+            "source": "../",
+            "type": "file"
+        },
+        {
+            "inline": [
+                "sudo chown ubuntu /var/run/docker.sock"
+            ],
+            "type": "shell"
+        },
+        {
+            "environment_vars": [
+                "AWS_ACCESS_KEY_ID={{user `aws_access_key`}}",
+                "AWS_SECRET_ACCESS_KEY={{user `aws_secret_key`}}",
+                "AWS_DEFAULT_REGION={{user `aws_region`}}",
+                "AWS_REGION={{user `aws_region`}}"
+            ],
+            "script": "scripts/buildartifacts-remote.sh",
+            "type": "shell"
+        },
+        {
+            "destination": "/tmp/done",
+            "direction": "download",
+            "source": "/tmp/done",
+            "type": "file"
+        },
+        {
+            "inline": [
+                "touch /tmp/done"
+            ],
+            "type": "shell"
+        }
+    ],
+    "variables": {
+        "aws_access_key": "{{env `AWS_ACCESS_KEY_ID`}}",
+        "aws_ami": "ami-d206bdb2",
+        "aws_region": "{{env `AWS_DEFAULT_REGION`}}",
+        "aws_secret_key": "{{env `AWS_SECRET_ACCESS_KEY`}}",
+        "aws_subnet": "{{env `AWS_SUBNET_ID`}}",
+        "aws_vpc": "{{env `AWS_VPC_ID`}}",
+        "build_uuid": "{{env `BUILD_UUID`}}",
+        "instance_profile": "{{env `AWS_INSTANCE_PROFILE`}}",
+        "ssh_username": "ubuntu"
     }
-  ],
-  "provisioners": [
-   {
-      "type": "shell",
-      "inline": [
-	  "sudo bash -c \"echo \\\"127.0.0.1   $(hostname)\\\" >> /etc/hostname\"",
-          "sudo apt-get -y update",
-	  "sudo apt-get -y install docker.io awscli curl",
-	  "curl https://releases.hashicorp.com/packer/0.12.2/packer_0.12.2_linux_amd64.zip | zcat > packer; chmod +x packer; sudo mv packer /usr/local/bin",
-	  "mkdir -p /home/ubuntu/repo"
-        ]
-   },
-    {
-      "type": "chef-solo",
-      "cookbook_paths": [
-        "chef/cookbooks"
-      ],
-      "json": {
-	"rbenv": {
-	    "rubies": ["2.3.3"],
-	    "global": "2.3.3",
-	    "gems": {"2.3.3": [{"name":"bundler"}]}
-	}
-      },
-      "run_list": [
-	"ruby_build",
-        "ruby_rbenv::system"
-      ]
-   },
-   {
-	"type": "file",
-	"source": "../",
-        "destination": "/home/ubuntu/repo"
-   },
-   {
-	"type": "shell",
-	"inline": [
-	  "sudo chown ubuntu /var/run/docker.sock"
-	]
-   },
-   {
-     "type": "shell",
-     "environment_vars": ["AWS_ACCESS_KEY_ID={{user `aws_access_key`}}", "AWS_SECRET_ACCESS_KEY={{user `aws_secret_key`}}", "AWS_DEFAULT_REGION={{user `aws_region`}}","AWS_REGION={{user `aws_region`}}" ],
-     "script": "scripts/buildartifacts-remote.sh"
-   },
-   {
-     "type": "file",
-     "source": "/tmp/done",
-     "destination": "/tmp/done",
-     "direction": "download"
-   },
-   {
-      "type": "shell",
-      "inline": [
-        "touch /tmp/done"
-      ]
-    }
-  ],
-  "post-processors": [
-    {
-	"type": "artifice",
-	"files": ["/tmp/done"]
-    },
-    {
-        "type":"manifest",
-	"output":"manifest.json"
-    }
-  ]
 }

@@ -5,6 +5,7 @@ require 'pry'
 CFGFILE = '.clustercfg'.freeze
 DEBUG = ENV['DEBUG'] ? true : false
 VPC_NAME = 'ecs-cluster'.freeze
+SERVICES_NAME = 'ecs-services'.freeze
 ENV['AWS_DEFAULT_REGION'] = ENV['AWS_REGION']
 
 def readcfg
@@ -22,7 +23,7 @@ end
 def get_stack(_stack_name)
   cf = Aws::CloudFormation::Client.new
   begin
-    reply = cf.describe_stacks(stack_name: VPC_NAME)
+    reply = cf.describe_stacks(stack_name: _stack_name)
     stack = reply.stacks.select do |stk|
       # reasonable assumption we've got the right stack here
       stk.stack_status =~ /COMPLETE/ && \
@@ -98,11 +99,16 @@ namespace :cluster do
              end.first[:output_value]
 
     subnet_id = vpcstack[:outputs].select do |k|
-                  k[:output_key] =~ /Public.*Subnet/
-                end.first[:output_value].split(',').first
+               k[:output_key] =~ /Public.*Subnet/
+             end.first[:output_value].split(',').first
+
+    ecs_instance_profile = vpcstack[:outputs].select do |k|
+              k[:output_key] == 'EcsInstanceProfile'
+            end.first[:output_value]
 
     ENV['AWS_VPC_ID'] = vpc_id
     ENV['AWS_SUBNET_ID'] = subnet_id
+    ENV['AWS_INSTANCE_PROFILE'] = ecs_instance_profile
     status = system("cd container_images && packer build #{opts} container-build-host.json")
     if status && File.exist?(manifest)
       mfst = JSON.load(File.read(manifest))
@@ -163,7 +169,7 @@ namespace :cluster do
   desc 'Build cluster services'
   task :build do
     # use aforegenerated images to actually launch our cluster
-    Rake::Task['cluster:init'].invoke if get_stack(VPC_NAME)
+    Rake::Task['cluster:init'].invoke unless get_stack(VPC_NAME)
     ecrauth = Aws::ECR::Client.new.get_authorization_token
     unless ecrauth && ecrauth.authorization_data.first.proxy_endpoint
         puts "Couldn't figure out which remote Docker repository to commit to"
@@ -183,20 +189,14 @@ namespace :cluster do
     subnet_vars = subnets.collect { |x| "#{x[:output_key]}:#{x[:output_value]}" }.join(',')
 
     cfg = readcfg
-    # XXX launch second-stage stuff later
-    #vpcstack = get_stack(VPC_NAME)
 
-    #vpc_id   = vpcstack[:outputs].select do |k|
-    #             k[:output_key] == 'VpcId'
-    #           end.first[:output_value]
-
-    #unless get_stack('ecs')
-    #  status = system("sfn create -m vpc_id:#{vpc_id} -d ecs --file sparkleformation/ecs.rb")
-    #  unless status
-    #    puts 'Failed generating our ECS stack!'
-    #    exit -1
-    #  end
-    #end
+    unless get_stack(SERVICES_NAME)
+      status = system("sfn create -d #{SERVICES_NAME} --file sparkleformation/ecs.rb --apply-stack #{VPC_NAME}")
+      unless status
+        puts 'Failed generating our ECS stack!'
+        exit -1
+      end
+    end
     writecfg(cfg)
   end
 
@@ -212,7 +212,7 @@ namespace :cluster do
     end
     puts 'Emptied remote repositories...'
     # then we can be done with all our stacks
-    status = system("sfn destroy ecs && sfn destroy #{VPC_NAME}")
+    status = system("sfn destroy #{SERVICES_NAME}; sfn destroy #{VPC_NAME}")
     writecfg(cfg)
   end
 end

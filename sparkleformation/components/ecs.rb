@@ -17,7 +17,7 @@ SparkleFormation.component(:ecs) do
     ecs_cluster do
       type 'AWS::ECS::Cluster'
       properties do
-          cluster_name 'ecs_cluster'
+        cluster_name 'ecs_cluster'
       end
     end
 
@@ -29,9 +29,9 @@ SparkleFormation.component(:ecs) do
         security_group_ingress do
           ip_protocol 'tcp'
           from_port 0
-          to_port  65535
+          to_port 65_535
+          # cidr_ip '0.0.0.0/0'
           cidr_ip ref!(:vpc_cidr)
-          #cidr_ip ref!(:vpc_cidr)
         end
       end
     end
@@ -69,9 +69,13 @@ SparkleFormation.component(:ecs) do
                            'ecs:StartTelemetrySession',
                            'ecs:Submit*',
                            'ecr:GetAuthorizationToken',
-                           'ecr:BatchCheckLayerAvailability',
                            'ecr:GetDownloadUrlForLayer',
                            'ecr:BatchGetImage',
+                           'ecr:BatchCheckLayerAvailability',
+                           'ecr:PutImage',
+                           'ecr:InitiateLayerUpload',
+                           'ecr:UploadLayerPart',
+                           'ecr:CompleteLayerUpload',
                            'logs:CreateLogStream',
                            'logs:PutLogEvents',
                            'ec2:AuthorizeSecurityGroupIngress',
@@ -83,7 +87,7 @@ SparkleFormation.component(:ecs) do
                            'elasticloadbalancing:RegisterTargets'
                          ],
                          'Effect' => 'Allow',
-                         'Resource' => ['*']
+                         'Resource' => '*'
                        }
                      }
                    }
@@ -99,39 +103,40 @@ SparkleFormation.component(:ecs) do
       end
     end
 
-    subnets = registry!(:zones).collect{|zone| "public_#{zone.gsub('-','_')}_subnet"}
+    subnets = registry!(:zones).collect { |zone| "private_#{zone.tr('-', '_')}_subnet" }
     # XXX eventually manage these container hosts with ASGs, if we really need to
-    #dynamic!(:launch_configuration, 'ecs_instance', image_id: 'ami-022b9262', instance_type: 't2.medium', security_group: ref!(:ecs_security_group))
-    #dynamic!(:auto_scaling_group, 'ecs_instance', launch_configuration_name: ref!('ecs_host_launch_configuration'), )
+    # dynamic!(:launch_configuration, 'ecs_instance', image_id: 'ami-022b9262', instance_type: 't2.medium', security_group: ref!(:ecs_security_group))
+    # dynamic!(:auto_scaling_group, 'ecs_instance', launch_configuration_name: ref!('ecs_host_launch_configuration'), )
 
     ecs_host do
       type 'AWS::EC2::Instance'
       depends_on process_key!('nat_vpc_nat_route')
       properties do
         image_id 'ami-022b9262'
-        instance_type 't2.medium'
-    #   key_name 'testcluster'
+        instance_type 't2.small'
+        #   key_name 'testcluster'
         iam_instance_profile ref!(:ecs_instance_profile)
         security_group_ids [ref!(:ecs_security_group)]
         subnet_id ref!(subnets.first)
-    #    network_interfaces([
-    #        {
-    #          'DeviceIndex' => 0,
-    #          'AssociatePublicIpAddress' => 'true',
-    #          'GroupSet' => [ref!(:ecs_security_group)],
-    #          'DeleteOnTermination' => 'true',
-    #          'SubnetId' => ref!(subnets.first)
-    #        }
-    #    ])
+        #    network_interfaces([
+        #        {
+        #          'DeviceIndex' => 0,
+        #          'AssociatePublicIpAddress' => 'true',
+        #          'GroupSet' => [ref!(:ecs_security_group)],
+        #          'DeleteOnTermination' => 'true',
+        #          'SubnetId' => ref!(subnets.first)
+        #        }
+        #    ])
         user_data base64!(
           join!(
-          "#!/bin/bash -v\n",
-          "echo ECS_CLUSTER=ecs_cluster >> /etc/ecs/ecs.config\n"
+            "#!/bin/bash -v\n",
+            "echo ECS_CLUSTER=",
+            ref!(:ecs_cluster),
+            " >> /etc/ecs/ecs.config\n"
           )
         )
       end
     end
-
   end
 
   outputs do
@@ -141,11 +146,8 @@ SparkleFormation.component(:ecs) do
     ecs_iam_role do
       value ref!(:ecs_iam_role)
     end
-    #ecs_host_ip_address do
-    #  value attr!(:ecs_host, :public_ip)
-    #end
-    #ecs_host_dns_address do
-    #  value attr!(:ecs_host, :public_dns_name)
-    #end
+    ecs_instance_profile do
+      value ref!(:ecs_instance_profile)
+    end
   end
 end
