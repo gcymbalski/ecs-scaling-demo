@@ -1,6 +1,6 @@
 #What this is
 
-This is an automation-driven approach to the complete lifecycle management of the problem of managing a high-performance, semi-fault tolerant(for a certain value of 'complete'). It basically tries to minimize the moving pieces involved in first building a test environment in a VPC [which you may want to generate a new IAM user for], the building deployable containers from well-controlled artifacts, and finally getting those deployed in a monitored/controlled way (for these purposes, load balancer checks over HTTP give us a lot of bang for the buck).
+This is an automation-driven approach to the complete lifecycle management of the problem of managing a high-performance, semi-fault tolerant(for a certain value of 'complete'). It basically tries to minimize the moving pieces involved in first building a test environment in a VPC [which you may want to generate a new IAM user for], the building of deployable containers from well-controlled artifacts, and finally getting those deployed in a monitored/controlled way (for these purposes, load balancer checks over HTTP give us a lot of bang for the buck).
 
 The major technologies in use are SparkleFormation for modeling/orchestration in AWS and Packer for generating repeatable, controlled artifacts for deployment with SparkleFormation/AWS. Good stuff that's saved me a lot of time and headaches.
 
@@ -42,6 +42,12 @@ Fortunately, you can start at any of the above steps you want and the right thin
 `bundle exec rake test:throughput`
 
 (I like keeping these things in namespaces for clarity)
+
+Completed lifecycle stages:
+[x] Build VPC scaffolding (normal VPC 'stuff' + ECS/ECR services)
+[x] Build all artifacts
+[x] ...On remote host in EC2
+[x] Deploy tasks into ECS cluster
 
 This will automatically run the equivalent of the following:
 ```
