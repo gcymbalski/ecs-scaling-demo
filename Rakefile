@@ -164,6 +164,13 @@ namespace :cluster do
   task :build do
     # use aforegenerated images to actually launch our cluster
     Rake::Task['cluster:init'].invoke if get_stack(VPC_NAME)
+    ecrauth = Aws::ECR::Client.new.get_authorization_token
+    unless ecrauth && ecrauth.authorization_data.first.proxy_endpoint
+        puts "Couldn't figure out which remote Docker repository to commit to"
+        exit -1
+    end
+    docker_endpoint = ecrauth.authorization_data.first.proxy_endpoint.slice(8..-1) # chop off https://
+    # now we have an image path, sort of
     vpcstack = get_stack(VPC_NAME)
 
     vpc_id   = vpcstack[:outputs].select do |k|
