@@ -106,6 +106,8 @@ namespace :cluster do
               k[:output_key] == 'EcsInstanceProfile'
             end.first[:output_value]
 
+            puts 'profile is ' + ecs_instance_profile
+
     ENV['AWS_VPC_ID'] = vpc_id
     ENV['AWS_SUBNET_ID'] = subnet_id
     ENV['AWS_INSTANCE_PROFILE'] = ecs_instance_profile

@@ -26,11 +26,6 @@
       "destination": "/frontend/frontend.go"
     },
     {
-      "type": "file",
-      "source": "service_definitions/frontend.sh",
-      "destination": "/etc/service/frontend/run"
-    },
-    {
       "type": "shell",
       "inline": [
 	". /etc/profile && cd /frontend && go build frontend.go && chmod +x /etc/service/frontend/run"
