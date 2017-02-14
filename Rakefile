@@ -170,7 +170,12 @@ namespace :cluster do
   task :build do
     # use aforegenerated images to actually launch our cluster
     Rake::Task['cluster:init'].invoke unless get_stack(VPC_NAME)
-    ecrauth = Aws::ECR::Client.new.get_authorization_token
+    ecr = Aws::ECR::Client.new
+    if ecr.describe_images(repository_name: 'backend').image_details.empty? || ecr.describe_images(repository_name: 'frontend').image_details.empty?
+      Rake::Task['cluster:remote_artifacts'].invoke
+    end
+    ecr = Aws::ECR::Client.new
+    ecrauth = ecr.get_authorization_token
     unless ecrauth && ecrauth.authorization_data.first.proxy_endpoint
         puts "Couldn't figure out which remote Docker repository to commit to"
         exit -1
