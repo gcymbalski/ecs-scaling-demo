@@ -135,8 +135,11 @@ SparkleFormation.component(:ecs) do
   end
 
   outputs do
-    ecs_cluster_name do
+    ecs_cluster do
       value ref!(:ecs_cluster)
+    end
+    ecs_iam_role do
+      value ref!(:ecs_iam_role)
     end
     #ecs_host_ip_address do
     #  value attr!(:ecs_host, :public_ip)
