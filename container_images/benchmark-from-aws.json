@@ -1,0 +1,44 @@
+{
+    "builders": [
+        {
+            "access_key": "{{user `aws_access_key`}}",
+            "ami_name": "packer-intermediate {{timestamp}}",
+            "associate_public_ip_address": true,
+            "iam_instance_profile": "{{user `instance_profile`}}",
+            "instance_type": "m3.large",
+            "region": "{{user `aws_region`}}",
+            "run_tags": {
+                "build_uuid": "{{user `build_uuid`}}"
+            },
+            "secret_key": "{{user `aws_secret_key`}}",
+            "source_ami": "{{user `aws_ami`}}",
+            "ssh_username": "{{user `ssh_username`}}",
+            "type": "amazon-ebs",
+            "vpc_id": "{{user `aws_vpc`}}"
+        }
+    ],
+    "post-processors": [],
+    "provisioners": [
+        {
+            "inline": [
+                "sudo apt-get -y update && sudo apt-get -y install apache2-utils\n",
+		"ab -r -n 1500 -c 10 {{user `http_endpoint`}}\n",
+                "sleep 600\n",
+                "exit -1\n"
+            ],
+            "type": "shell"
+        }
+    ],
+    "variables": {
+        "aws_access_key": "{{env `AWS_ACCESS_KEY_ID`}}",
+        "aws_ami": "ami-d206bdb2",
+        "aws_region": "{{env `AWS_DEFAULT_REGION`}}",
+        "aws_secret_key": "{{env `AWS_SECRET_ACCESS_KEY`}}",
+        "aws_subnet": "{{env `AWS_SUBNET_ID`}}",
+        "aws_vpc": "{{env `AWS_VPC_ID`}}",
+        "build_uuid": "{{env `BUILD_UUID`}}",
+        "ssh_username": "ubuntu",
+	"http_endpoint": "{{env `HTTP_ENDPOINT`}}",
+        "instance_profile": "{{env `AWS_INSTANCE_PROFILE`}}"
+    }
+}
