@@ -1,0 +1,127 @@
+Updating submodules...
+Grabbing upstream Chef artifacts...
+Installing compat_resource (12.16.3)
+Installing golang (1.7.1)
+Installing yum-epel (2.1.1)
+Installing ruby_build (1.0.0)
+Installing ruby_rbenv (1.1.0)
+Building a stack with SparkleFormation...
+[32m[Sfn]:[0m [1mSparkleFormation:[0m [32mcreate[0m
+[32m[Sfn]:[0m   -> [1mName:[0m ecs-cluster1
+[32m[Sfn]:[0m [1mStack runtime parameters:[0m - template: [32;1mecs-cluster1[0m
+[32m[Sfn]:[0m Events for Stack: [1mecs-cluster1[0m
+[1mTime                     [0m [1mResource Logical Id  [0m [1mResource Status     [0m [1mResource Status Reason  [0m 
+2017-02-15 19:27:48 UTC   ecs-cluster1          CREATE_IN_PROGRESS   User Initiated           
+2017-02-15 19:27:52 UTC   NatVpcNatEip          CREATE_IN_PROGRESS                                 
+2017-02-15 19:27:52 UTC   BackendRepo           CREATE_IN_PROGRESS                                 
+2017-02-15 19:27:52 UTC   FrontendRepo          CREATE_IN_PROGRESS                                 
+2017-02-15 19:27:52 UTC   DhcpOptions           CREATE_IN_PROGRESS                                 
+2017-02-15 19:27:52 UTC   EcsIamRole            CREATE_IN_PROGRESS                                 
+2017-02-15 19:27:53 UTC   EcsCluster            CREATE_IN_PROGRESS                                 
+2017-02-15 19:27:53 UTC   InternetGateway       CREATE_IN_PROGRESS                                 
+2017-02-15 19:27:53 UTC   NatVpcNatEip          CREATE_IN_PROGRESS   Resource creation Initiated   
+2017-02-15 19:27:53 UTC   DhcpOptions           CREATE_IN_PROGRESS   Resource creation Initiated   
+2017-02-15 19:27:53 UTC   Vpc                   CREATE_IN_PROGRESS                                 
+2017-02-15 19:27:53 UTC   EcsIamRole            CREATE_IN_PROGRESS   Resource creation Initiated   
+2017-02-15 19:27:53 UTC   InternetGateway       CREATE_IN_PROGRESS   Resource creation Initiated   
+2017-02-15 19:27:53 UTC   EcsCluster            CREATE_IN_PROGRESS   Resource creation Initiated   
+2017-02-15 19:27:53 UTC   FrontendRepo          CREATE_IN_PROGRESS   Resource creation Initiated   
+2017-02-15 19:27:54 UTC   Vpc                   CREATE_IN_PROGRESS   Resource creation Initiated   
+2017-02-15 19:27:54 UTC   BackendRepo           CREATE_IN_PROGRESS   Resource creation Initiated   
+2017-02-15 19:27:54 UTC   EcsCluster            CREATE_COMPLETE                                    
+2017-02-15 19:27:54 UTC   FrontendRepo          CREATE_COMPLETE                                    
+2017-02-15 19:27:54 UTC   BackendRepo           CREATE_COMPLETE                                    
+2017-02-15 19:28:02 UTC   EcsIamRole                  CREATE_COMPLETE                                    
+2017-02-15 19:28:05 UTC   EcsInstanceProfile          CREATE_IN_PROGRESS                                 
+2017-02-15 19:28:05 UTC   EcsInstanceProfile          CREATE_IN_PROGRESS   Resource creation Initiated   
+2017-02-15 19:28:08 UTC   NatVpcNatEip                CREATE_COMPLETE                                    
+2017-02-15 19:28:09 UTC   InternetGateway             CREATE_COMPLETE                                    
+2017-02-15 19:28:09 UTC   DhcpOptions                 CREATE_COMPLETE                                    
+2017-02-15 19:28:11 UTC   Vpc                         CREATE_COMPLETE                                    
+2017-02-15 19:28:13 UTC   PrivateUsWest2bSubnet       CREATE_IN_PROGRESS                                 
+2017-02-15 19:28:13 UTC   InternetGatewayAttachment   CREATE_IN_PROGRESS                                 
+2017-02-15 19:28:13 UTC   PublicRouteTable            CREATE_IN_PROGRESS                                 
+2017-02-15 19:28:13 UTC   PrivateUsWest2cSubnet       CREATE_IN_PROGRESS                                 
+2017-02-15 19:28:13 UTC   PrivateRouteTable           CREATE_IN_PROGRESS                                 
+2017-02-15 19:28:13 UTC   PrivateUsWest2aSubnet       CREATE_IN_PROGRESS                                 
+2017-02-15 19:28:13 UTC   VpcDhcpOptionsAssociation   CREATE_IN_PROGRESS                                 
+2017-02-15 19:28:13 UTC   EcsSecurityGroup            CREATE_IN_PROGRESS                                 
+2017-02-15 19:28:13 UTC   PublicRouteTable            CREATE_IN_PROGRESS   Resource creation Initiated   
+2017-02-15 19:28:13 UTC   InternetGatewayAttachment   CREATE_IN_PROGRESS   Resource creation Initiated   
+2017-02-15 19:28:14 UTC   PrivateUsWest2bSubnet       CREATE_IN_PROGRESS   Resource creation Initiated   
+2017-02-15 19:28:14 UTC   PublicUsWest2bSubnet        CREATE_IN_PROGRESS                                 
+2017-02-15 19:28:14 UTC   PrivateUsWest2aSubnet       CREATE_IN_PROGRESS   Resource creation Initiated   
+2017-02-15 19:28:14 UTC   PrivateUsWest2cSubnet       CREATE_IN_PROGRESS   Resource creation Initiated   
+2017-02-15 19:28:14 UTC   PrivateRouteTable           CREATE_IN_PROGRESS   Resource creation Initiated   
+2017-02-15 19:28:14 UTC   VpcDhcpOptionsAssociation   CREATE_IN_PROGRESS   Resource creation Initiated   
+2017-02-15 19:28:14 UTC   PublicUsWest2aSubnet        CREATE_IN_PROGRESS                                 
+2017-02-15 19:28:14 UTC   VpcDhcpOptionsAssociation   CREATE_COMPLETE                                    
+2017-02-15 19:28:14 UTC   PublicUsWest2bSubnet        CREATE_IN_PROGRESS   Resource creation Initiated   
+2017-02-15 19:28:14 UTC   PublicUsWest2aSubnet        CREATE_IN_PROGRESS   Resource creation Initiated   
+2017-02-15 19:28:15 UTC   PublicRouteTable            CREATE_COMPLETE                                    
+2017-02-15 19:28:15 UTC   PrivateRouteTable           CREATE_COMPLETE                                    
+2017-02-15 19:28:15 UTC   PublicUsWest2cSubnet        CREATE_IN_PROGRESS                                 
+2017-02-15 19:28:16 UTC   PublicUsWest2cSubnet        CREATE_IN_PROGRESS   Resource creation Initiated   
+2017-02-15 19:28:17 UTC   PublicSubnetInternetRoute   CREATE_IN_PROGRESS                                 
+2017-02-15 19:28:18 UTC   PublicSubnetInternetRoute   CREATE_IN_PROGRESS   Resource creation Initiated   
+2017-02-15 19:28:29 UTC   InternetGatewayAttachment                    CREATE_COMPLETE                                    
+2017-02-15 19:28:29 UTC   EcsSecurityGroup                             CREATE_IN_PROGRESS   Resource creation Initiated   
+2017-02-15 19:28:30 UTC   PrivateUsWest2aSubnet                        CREATE_COMPLETE                                    
+2017-02-15 19:28:30 UTC   PrivateUsWest2cSubnet                        CREATE_COMPLETE                                    
+2017-02-15 19:28:30 UTC   PrivateUsWest2bSubnet                        CREATE_COMPLETE                                    
+2017-02-15 19:28:30 UTC   PublicUsWest2bSubnet                         CREATE_COMPLETE                                    
+2017-02-15 19:28:30 UTC   PublicUsWest2aSubnet                         CREATE_COMPLETE                                    
+2017-02-15 19:28:30 UTC   EcsSecurityGroup                             CREATE_COMPLETE                                    
+2017-02-15 19:28:32 UTC   PrivateUsWest2aSubnetRouteTableAssociation   CREATE_IN_PROGRESS                                 
+2017-02-15 19:28:32 UTC   PrivateUsWest2cSubnetRouteTableAssociation   CREATE_IN_PROGRESS                                 
+2017-02-15 19:28:32 UTC   PrivateUsWest2bSubnetRouteTableAssociation   CREATE_IN_PROGRESS                                 
+2017-02-15 19:28:32 UTC   PublicUsWest2cSubnet                         CREATE_COMPLETE                                    
+2017-02-15 19:28:33 UTC   PublicUsWest2aSubnetRouteTableAssociation    CREATE_IN_PROGRESS                                 
+2017-02-15 19:28:33 UTC   PrivateUsWest2cSubnetRouteTableAssociation   CREATE_IN_PROGRESS   Resource creation Initiated   
+2017-02-15 19:28:33 UTC   PrivateUsWest2aSubnetRouteTableAssociation   CREATE_IN_PROGRESS   Resource creation Initiated   
+2017-02-15 19:28:33 UTC   PublicUsWest2bSubnetRouteTableAssociation    CREATE_IN_PROGRESS                                 
+2017-02-15 19:28:33 UTC   NatVpcNatGateway                             CREATE_IN_PROGRESS                                 
+2017-02-15 19:28:33 UTC   PrivateUsWest2bSubnetRouteTableAssociation   CREATE_IN_PROGRESS   Resource creation Initiated   
+2017-02-15 19:28:33 UTC   PublicUsWest2bSubnetRouteTableAssociation    CREATE_IN_PROGRESS   Resource creation Initiated   
+2017-02-15 19:28:33 UTC   NatVpcNatGateway                             CREATE_IN_PROGRESS   Resource creation Initiated   
+2017-02-15 19:28:33 UTC   PublicUsWest2aSubnetRouteTableAssociation    CREATE_IN_PROGRESS   Resource creation Initiated   
+2017-02-15 19:28:34 UTC   PublicSubnetInternetRoute                    CREATE_COMPLETE                                    
+2017-02-15 19:28:35 UTC   PublicUsWest2cSubnetRouteTableAssociation    CREATE_IN_PROGRESS                                 
+2017-02-15 19:28:36 UTC   PublicUsWest2cSubnetRouteTableAssociation    CREATE_IN_PROGRESS   Resource creation Initiated   
+2017-02-15 19:28:48 UTC   PrivateUsWest2cSubnetRouteTableAssociation   CREATE_COMPLETE                               
+2017-02-15 19:28:48 UTC   PrivateUsWest2aSubnetRouteTableAssociation   CREATE_COMPLETE                               
+2017-02-15 19:28:49 UTC   PrivateUsWest2bSubnetRouteTableAssociation   CREATE_COMPLETE                               
+2017-02-15 19:28:49 UTC   PublicUsWest2bSubnetRouteTableAssociation    CREATE_COMPLETE                               
+2017-02-15 19:28:49 UTC   PublicUsWest2aSubnetRouteTableAssociation    CREATE_COMPLETE                               
+2017-02-15 19:28:52 UTC   PublicUsWest2cSubnetRouteTableAssociation    CREATE_COMPLETE                               
+2017-02-15 19:30:06 UTC   EcsInstanceProfile    CREATE_COMPLETE                               
+2017-02-15 19:30:36 UTC   NatVpcNatGateway      CREATE_COMPLETE                               
+2017-02-15 19:30:42 UTC   NatVpcNatRoute        CREATE_IN_PROGRESS                                 
+2017-02-15 19:30:43 UTC   NatVpcNatRoute        CREATE_IN_PROGRESS   Resource creation Initiated   
+2017-02-15 19:30:58 UTC   NatVpcNatRoute        CREATE_COMPLETE                                    
+2017-02-15 19:31:00 UTC   EcsHost               CREATE_IN_PROGRESS                                 
+2017-02-15 19:31:02 UTC   EcsHost               CREATE_IN_PROGRESS   Resource creation Initiated   
+2017-02-15 19:31:48 UTC   EcsHost               CREATE_COMPLETE                               
+2017-02-15 19:31:51 UTC   ecs-cluster1          CREATE_COMPLETE                               
+[32m[Sfn]:[0m Stack create complete: [32mSUCCESS[0m
+[32m[Sfn]:[0m Stack description of [1mecs-cluster1[0m:
+[32m[Sfn]:[0m Outputs for stack: [1mecs-cluster1[0m
+[32m[Sfn]:[0m    [1mPublic Route Table:[0m rtb-c81926af
+[32m[Sfn]:[0m    [1mPrivate Us West2b Subnet:[0m subnet-7560b53c
+[32m[Sfn]:[0m    [1mPublic Subnet Ids:[0m subnet-d0ee5cb7,subnet-7460b53d,subnet-ad4574f5
+[32m[Sfn]:[0m    [1mPublic Us West2c Subnet:[0m subnet-ad4574f5
+[32m[Sfn]:[0m    [1mPrivate Us West2a Subnet:[0m subnet-d1ee5cb6
+[32m[Sfn]:[0m    [1mEcs Iam Role:[0m ecs-cluster1-EcsIamRole-1IY3PTXLAOZ0U
+[32m[Sfn]:[0m    [1mEcs Iam Role Arn:[0m arn:aws:iam::613976259988:role/ecs-cluster1-EcsIamRole-1IY3PTXLAOZ0U
+[32m[Sfn]:[0m    [1mPrivate Route Table:[0m rtb-d51926b2
+[32m[Sfn]:[0m    [1mPrivate Subnet Ids:[0m subnet-d1ee5cb6,subnet-7560b53c,subnet-ab4574f3
+[32m[Sfn]:[0m    [1mEcs Instance Profile:[0m ecs-cluster1-EcsInstanceProfile-1WV3EAOZH84ZX
+[32m[Sfn]:[0m    [1mVpc Id:[0m vpc-b928b1de
+[32m[Sfn]:[0m    [1mVpc Cidr:[0m 10.0.0.0/16
+[32m[Sfn]:[0m    [1mEcs Security Group:[0m sg-dd2554a5
+[32m[Sfn]:[0m    [1mPublic Us West2a Subnet:[0m subnet-d0ee5cb7
+[32m[Sfn]:[0m    [1mInternet Gateway:[0m igw-17537173
+[32m[Sfn]:[0m    [1mEcs Cluster:[0m ecs_cluster
+[32m[Sfn]:[0m    [1mPublic Us West2b Subnet:[0m subnet-7460b53d
+[32m[Sfn]:[0m    [1mPrivate Us West2c Subnet:[0m subnet-ab4574f3
+

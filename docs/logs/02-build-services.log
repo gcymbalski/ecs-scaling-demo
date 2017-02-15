@@ -1,0 +1,56 @@
+greg@RCA-705:~/ecs-scaling-demo$ bundle exec rake cluster:build
+[Sfn]: SparkleFormation: create
+[Sfn]:   -> Name: ecs-services
+[Sfn]: Stack runtime parameters: - template: ecs-services
+[Sfn]: Events for Stack: ecs-services
+Time                      Resource Logical Id   Resource Status      Resource Status Reason   
+2017-02-15 02:13:40 UTC   ecs-services          CREATE_IN_PROGRESS   User Initiated           
+2017-02-15 02:13:44 UTC   BackendAlb            CREATE_IN_PROGRESS                                 
+2017-02-15 02:13:44 UTC   FrontendAlbSg         CREATE_IN_PROGRESS                                 
+2017-02-15 02:13:45 UTC   BackendAlb            CREATE_IN_PROGRESS   Resource creation Initiated   
+2017-02-15 02:14:00 UTC   FrontendAlbSg         CREATE_IN_PROGRESS   Resource creation Initiated   
+2017-02-15 02:14:01 UTC   FrontendAlbSg         CREATE_COMPLETE                                    
+2017-02-15 02:14:03 UTC   FrontendAlb           CREATE_IN_PROGRESS                                 
+2017-02-15 02:14:04 UTC   FrontendAlb           CREATE_IN_PROGRESS   Resource creation Initiated   
+2017-02-15 02:15:47 UTC   BackendAlb               CREATE_COMPLETE                                    
+2017-02-15 02:15:49 UTC   FrontendTaskDefinition   CREATE_IN_PROGRESS                                 
+2017-02-15 02:15:49 UTC   BackendTaskDefinition    CREATE_IN_PROGRESS                                 
+2017-02-15 02:15:49 UTC   FrontendTaskDefinition   CREATE_IN_PROGRESS   Resource creation Initiated   
+2017-02-15 02:15:49 UTC   BackendTargetGroup       CREATE_IN_PROGRESS                                 
+2017-02-15 02:15:50 UTC   FrontendTaskDefinition   CREATE_COMPLETE                                    
+2017-02-15 02:15:50 UTC   BackendTaskDefinition    CREATE_IN_PROGRESS   Resource creation Initiated   
+2017-02-15 02:15:50 UTC   BackendTaskDefinition    CREATE_COMPLETE                                    
+2017-02-15 02:15:50 UTC   BackendTargetGroup       CREATE_IN_PROGRESS   Resource creation Initiated   
+2017-02-15 02:15:50 UTC   BackendTargetGroup    CREATE_COMPLETE                                    
+2017-02-15 02:15:57 UTC   BackendAlbListener    CREATE_IN_PROGRESS                                 
+2017-02-15 02:15:58 UTC   BackendAlbListener    CREATE_IN_PROGRESS   Resource creation Initiated   
+2017-02-15 02:15:58 UTC   BackendAlbListener    CREATE_COMPLETE                                    
+2017-02-15 02:16:00 UTC   BackendService        CREATE_IN_PROGRESS                                 
+2017-02-15 02:16:01 UTC   BackendService        CREATE_IN_PROGRESS   Resource creation Initiated   
+2017-02-15 02:16:06 UTC   FrontendAlb           CREATE_COMPLETE                                    
+2017-02-15 02:16:09 UTC   FrontendTargetGroup   CREATE_IN_PROGRESS                                 
+2017-02-15 02:16:10 UTC   FrontendTargetGroup   CREATE_IN_PROGRESS   Resource creation Initiated   
+2017-02-15 02:16:10 UTC   FrontendTargetGroup   CREATE_COMPLETE                                    
+2017-02-15 02:16:13 UTC   FrontendAlbListener   CREATE_IN_PROGRESS                                 
+2017-02-15 02:16:13 UTC   FrontendAlbListener   CREATE_IN_PROGRESS   Resource creation Initiated   
+2017-02-15 02:16:14 UTC   FrontendAlbListener   CREATE_COMPLETE                                    
+2017-02-15 02:16:16 UTC   FrontendService       CREATE_IN_PROGRESS                                 
+2017-02-15 02:16:17 UTC   FrontendService       CREATE_IN_PROGRESS   Resource creation Initiated   
+2017-02-15 02:17:02 UTC   BackendService        CREATE_COMPLETE                               
+2017-02-15 02:17:17 UTC   FrontendService         CREATE_COMPLETE                                    
+2017-02-15 02:17:21 UTC   FrontendScalingTarget   CREATE_IN_PROGRESS                                 
+2017-02-15 02:17:22 UTC   FrontendScalingTarget   CREATE_IN_PROGRESS   Resource creation Initiated   
+2017-02-15 02:17:22 UTC   FrontendScalingTarget       CREATE_COMPLETE                                    
+2017-02-15 02:17:25 UTC   FrontendScalingDownPolicy   CREATE_IN_PROGRESS                                 
+2017-02-15 02:17:25 UTC   FrontendScalingUpPolicy     CREATE_IN_PROGRESS                                 
+2017-02-15 02:17:26 UTC   FrontendScalingDownPolicy   CREATE_IN_PROGRESS   Resource creation Initiated   
+2017-02-15 02:17:26 UTC   FrontendScalingDownPolicy   CREATE_COMPLETE                                    
+2017-02-15 02:17:26 UTC   FrontendScalingUpPolicy     CREATE_IN_PROGRESS   Resource creation Initiated   
+2017-02-15 02:17:26 UTC   FrontendScalingUpPolicy     CREATE_COMPLETE                                    
+2017-02-15 02:17:39 UTC   ecs-services          CREATE_COMPLETE                               
+[Sfn]: Stack create complete: SUCCESS
+[Sfn]: Stack description of ecs-services:
+[Sfn]: Outputs for stack: ecs-services
+[Sfn]:    Backend Alb Dns: internal-ecs-s-Backe-1KUX7327T06HZ-1046973827.us-west-2.elb.amazonaws.com
+[Sfn]:    Frontend Alb Dns: ecs-s-Front-12P6ODGCKEJWX-856177063.us-west-2.elb.amazonaws.com
+
