@@ -4,8 +4,8 @@ require 'pry'
 
 CFGFILE = '.clustercfg'.freeze
 DEBUG = ENV['DEBUG'] ? true : false
-VPC_NAME = 'ecs-cluster1'.freeze
-SERVICES_NAME = 'ecs-service1'.freeze
+VPC_NAME = 'ecs-cluster'.freeze
+SERVICES_NAME = 'ecs-service'.freeze
 ENV['AWS_DEFAULT_REGION'] = ENV['AWS_REGION']
 
 def readcfg
@@ -197,7 +197,8 @@ namespace :cluster do
 
     cfg = readcfg
 
-    unless get_stack(SERVICES_NAME)
+    svcs = get_stack(SERVICES_NAME)
+    unless svcs
       status = system("sfn create -d #{SERVICES_NAME} --file sparkleformation/ecs.rb --apply-stack #{VPC_NAME}")
       unless status
         puts 'Failed generating our ECS stack!'
