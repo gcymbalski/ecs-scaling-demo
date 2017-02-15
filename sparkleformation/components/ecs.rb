@@ -111,28 +111,34 @@ SparkleFormation.component(:ecs) do
     end
 
     subnets = registry!(:zones).collect { |zone| "private_#{zone.tr('-', '_')}_subnet" }
-    # XXX eventually manage these container hosts with ASGs, if we really need to
-    # dynamic!(:launch_configuration, 'ecs_instance', image_id: 'ami-022b9262', instance_type: 't2.medium', security_group: ref!(:ecs_security_group))
-    # dynamic!(:auto_scaling_group, 'ecs_instance', launch_configuration_name: ref!('ecs_host_launch_configuration'), )
+    ecs_host_launch_configuration do
 
-    ecs_host do
-      type 'AWS::EC2::Instance'
-      depends_on process_key!('nat_vpc_nat_route')
-      properties do
-        image_id 'ami-022b9262'
-        instance_type 't2.medium'
-        iam_instance_profile ref!(:ecs_instance_profile)
-        security_group_ids [ref!(:ecs_security_group)]
-        subnet_id ref!(subnets.first)
-        user_data base64!(
+ 	     type 'AWS::AutoScaling::LaunchConfiguration'
+             properties({image_id: 'ami-022b9262',
+	     instance_type: 't2.large',
+             iam_instance_profile: ref!(:ecs_instance_profile),
+	     security_groups: [ref!(:ecs_security_group)],
+        user_data: base64!(
           join!(
             "#!/bin/bash -v\n",
             "echo ECS_CLUSTER=",
             ref!(:ecs_cluster),
             " >> /etc/ecs/ecs.config\n"
           )
-        )
-      end
+        )})
+
+	    
+    end
+
+    ecs_host_auto_scaling_group do
+	type 'AWS::AutoScaling::AutoScalingGroup'
+	properties({
+             launch_configuration_name: ref!('ecs_host_launch_configuration'),	
+             'VPCZoneIdentifier': subnets.collect{|x| ref!(x)},
+	     cooldown: '15',
+	     desired_capacity: 2,
+	     min_size: 1,
+             max_size: 5})
     end
   end
 

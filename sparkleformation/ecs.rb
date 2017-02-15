@@ -36,7 +36,7 @@ SparkleFormation.new(:ecs).overrides do
           {
             'Name': t,
             'Image': "#{docker_endpoint}/#{t}:0.5",
-            'Memory': 256,
+            'Memory': 128,
             'Cpu': 15,
             'Command': [ '/sbin/my_init' ],
             'Environment':  [
@@ -171,7 +171,7 @@ SparkleFormation.new(:ecs).overrides do
 	  minimum_healthy_percent 50
 	  maximum_percent(t =~ /back/ ? 100 : 150)
 	end
-        desired_count(t =~ /back/ ? 1 : 8)
+        desired_count(t =~ /back/ ? 1 : 20)
         task_definition ref!("#{t}_task_definition")
         role ref!(:ecs_iam_role)
         load_balancers [{'ContainerName': t, 'ContainerPort': 80, 'TargetGroupArn': ref!("#{t}_target_group") }]
