@@ -4,8 +4,8 @@ require 'pry'
 
 CFGFILE = '.clustercfg'.freeze
 DEBUG = ENV['DEBUG'] ? true : false
-VPC_NAME = 'ecs-cluster'.freeze
-SERVICES_NAME = 'ecs-service'.freeze
+VPC_NAME = 'ecs-cluster1'.freeze
+SERVICES_NAME = 'ecs-service1'.freeze
 ENV['AWS_DEFAULT_REGION'] = ENV['AWS_REGION']
 
 def readcfg
@@ -203,6 +203,11 @@ namespace :cluster do
         puts 'Failed generating our ECS stack!'
         exit -1
       end
+      uri = svcs[:outputs].select do |k|
+               k[:output_key] == 'FrontendAlbDns'
+             end.first[:output_value]
+      puts 'Generated services on our ECS cluster- frontend load balancer DNS:'
+      puts "http://#{uri}/"
     end
     writecfg(cfg)
   end
