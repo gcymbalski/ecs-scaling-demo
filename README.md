@@ -56,8 +56,14 @@ This will automatically run the equivalent of the following:
 bundle exec rake cluster:init	          #build scaffolding
 bundle exec rake cluster:remote_artifacts #build artifacts
 bundle exec rake cluster:build		  #build out the rest of the services
-bundle exec rake cluster:terminate	  #destroy everything we just made
 ``` 
+
+followed by a run of ApacheBench.
+
+Then, you can terminate it when satisfied:
+```
+bundle exec rake cluster:terminate	  #destroy everything we just made
+```
 
 These tasks are, fortunately, more or less stateless to the user- as long as you're operating your cluster from the same git commmits, anyway.
 
