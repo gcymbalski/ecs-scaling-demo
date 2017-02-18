@@ -222,7 +222,7 @@ namespace :cluster do
     %w(backend frontend).each do |repo|
       digests = ecr.describe_images(repository_name: repo)
       if digests
-          digests.image_details.collect { |x| { 'image_digest' => x['image_digest'] } }
+          digests = digests.image_details.collect { |x| { 'image_digest' => x['image_digest'] } }
           ecr.batch_delete_image(repository_name: repo, image_ids: digests)
       end
     end
