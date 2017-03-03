@@ -1,0 +1,18 @@
+- job-template:
+    name: '{name}-{env}-{phase}'
+    views:
+      - scaling-demo:
+
+- project:
+    name: scalingdemo
+    env:
+      - dev
+    phase:
+      - init
+      - remote_artifacts
+      - build
+      - test
+      - terminate
+    jobs:
+      - '{name}-{env}-{phase}'
+
