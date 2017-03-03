@@ -49,6 +49,11 @@ def checkvars
 end
 
 namespace :cluster do
+  desc 'Test (alias for rake test)'
+  task :test do
+    Rake::Task['test:throughput'].invoke
+  end
+
   desc 'Preflight stuff- check out submodules, upstream Chef artifacts, etc'
   task :preflight do
     checkvars
