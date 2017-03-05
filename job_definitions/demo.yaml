@@ -3,7 +3,7 @@
     project-type: pipeline
     triggers:
       - pollscm:
-          cron: "*/5 * * * *"
+          cron: '* * * * *'
     views:
       - scaling-demo
     dsl: |
@@ -12,7 +12,7 @@
           stages {{
             stage('Build Cluster') {{
               steps {{
-                checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'ssh://git@github.com/gcymbalski/ecs-scaling-demo']]])
+                checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: true, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'ssh://git@github.com/gcymbalski/ecs-scaling-demo']]])
                 sh 'bundle'
                 sh 'bundle exec rake cluster:init'
                 sh 'bundle exec rake cluster:remote_artifacts'
@@ -24,12 +24,10 @@
                 sh 'bundle exec rake cluster:test'
               }}
             }}
-            post {{
-              stage('Destroy Cluster') {{
-                steps {{
-                  sh 'bundle exec rake cluster:terminate'
-                }}
-              }}
+          }}
+          post {{
+            always {{
+              sh 'bundle exec rake cluster:terminate'
             }}
           }}
         }}
