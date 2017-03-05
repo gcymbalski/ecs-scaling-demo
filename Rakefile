@@ -8,7 +8,6 @@ DEBUG = ENV['DEBUG'] ? true : false
 VPC_NAME = 'demo-service-vpc-base'.freeze
 SERVICES_NAME = 'demo-service-vpc-containers'.freeze
 ENV['AWS_DEFAULT_REGION'] = ENV['AWS_REGION']
-STDOUT.sync = true
 
 def readcfg
   if File.exist?(CFGFILE)
@@ -27,6 +26,7 @@ def stream_command(cmd)
     Thread.new do
       until (raw = oe.gets).nil? do 
         puts raw
+        STDOUT.flush
       end
     end
     w.value
