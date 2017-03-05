@@ -4,8 +4,8 @@ require 'pry'
 
 CFGFILE = '.clustercfg'.freeze
 DEBUG = ENV['DEBUG'] ? true : false
-VPC_NAME = 'ecs-cluster'.freeze
-SERVICES_NAME = 'ecs-service'.freeze
+VPC_NAME = 'demo-service-vpc-base'.freeze
+SERVICES_NAME = 'demo-service-vpc-containers'.freeze
 ENV['AWS_DEFAULT_REGION'] = ENV['AWS_REGION']
 
 def readcfg
