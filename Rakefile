@@ -1,6 +1,7 @@
 require 'json'
 require 'aws-sdk'
 require 'pry'
+require 'open3'
 
 CFGFILE = '.clustercfg'.freeze
 DEBUG = ENV['DEBUG'] ? true : false
@@ -18,6 +19,10 @@ end
 
 def writecfg(cfg)
   File.write(CFGFILE, cfg.to_json)
+end
+
+def stream_command(cmd)
+  Open3.popen2e(cmd){|i,oe,w| Thread.new{oe.each{|x| puts x}}; i.close; w.value}
 end
 
 def get_stack(_stack_name)
@@ -58,9 +63,9 @@ namespace :cluster do
   task :preflight do
     checkvars
     puts 'Updating submodules...'
-    success = system('git submodule init; git submodule update')
+    success = stream_command('git submodule init; git submodule update')
     puts 'Grabbing upstream Chef artifacts...'
-    success &&= system('cd container_images/chef && librarian-chef install')
+    success &&= stream_command('cd container_images/chef && librarian-chef install')
     unless success
       puts 'Unable to fetch upstream artifacts!'
       exit -1
@@ -76,7 +81,7 @@ namespace :cluster do
       puts "Building a stack with SparkleFormation..."
       debugstring = DEBUG ? '-u' : ''
       runline = "sfn create #{debugstring} -d #{VPC_NAME} --file sparkleformation/vpc.rb"
-      status = system(runline)
+      status = stream_command(runline)
       unless status
         puts 'Failed generating our VPC!'
         exit -1
@@ -116,7 +121,7 @@ namespace :cluster do
     ENV['AWS_VPC_ID'] = vpc_id
     ENV['AWS_SUBNET_ID'] = subnet_id
     ENV['AWS_INSTANCE_PROFILE'] = ecs_instance_profile
-    status = system("cd container_images && packer build #{opts} container-build-host.json")
+    status = stream_command("cd container_images && packer build #{opts} container-build-host.json")
     if status && File.exist?(manifest)
       mfst = JSON.load(File.read(manifest))
       # This is a gross one-liner that reads into the manifest hash to see what ami we just created so we can remove it- right now, Packer can't optionally discard an Amazon build job, so it generates an AMI. Kinda nice for debugging, actually.
@@ -162,7 +167,7 @@ namespace :cluster do
         puts "Skipping step #{step}, force with `rake cluster:artifacts[force]`"
         next
       end
-      status = system("cd container_images && packer build #{opts} #{step}")
+      status = stream_command("cd container_images && packer build #{opts} #{step}")
       unless status
         puts "Failed to build #{step}, please debug further (export DEBUG=true for more)"
         exit -1
@@ -204,7 +209,7 @@ namespace :cluster do
 
     svcs = get_stack(SERVICES_NAME)
     unless svcs
-      status = system("sfn create -d #{SERVICES_NAME} --file sparkleformation/ecs.rb --apply-stack #{VPC_NAME}")
+      status = stream_command("sfn create -d #{SERVICES_NAME} --file sparkleformation/ecs.rb --apply-stack #{VPC_NAME}")
       unless status
         puts 'Failed generating our ECS stack!'
         exit -1
@@ -234,7 +239,7 @@ namespace :cluster do
     end
     puts 'Emptied remote repositories...'
     # then we can be done with all our stacks
-    status = system("sfn destroy #{SERVICES_NAME}; sfn destroy #{VPC_NAME}")
+    status = stream_command("sfn destroy #{SERVICES_NAME}; sfn destroy #{VPC_NAME}")
     writecfg(cfg)
   end
 end
@@ -260,6 +265,6 @@ namespace :test do
                k[:output_key] == 'FrontendAlbDns'
              end.first[:output_value]
 
-    system("ab -r -n 1500 -c 5 http://#{uri}/")
+    stream_command("ab -r -n 1500 -c 5 http://#{uri}/")
   end
 end
