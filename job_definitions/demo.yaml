@@ -9,30 +9,34 @@
     dsl: |
         pipeline {{
           agent any
-          wrap([$class: 'AnsiColorBuildWrapper', 'colorMapName': 'XTerm', 'defaultFg': 1, 'defaultBg': 2]) {{
-            stages {{
+          stages {{
               stage('Build Cluster') {{
                 steps {{
-                  checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: true, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'ssh://git@github.com/gcymbalski/ecs-scaling-demo']]])
-                  sh 'bundle'
-                  sh 'bundle exec rake cluster:init'
-                  sh 'bundle exec rake cluster:remote_artifacts'
-                  sh 'bundle exec rake cluster:build'
+                  wrap([$class: 'AnsiColorBuildWrapper', 'colorMapName': 'XTerm', 'defaultFg': 1, 'defaultBg': 2]) {{
+                    checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: true, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'ssh://git@github.com/gcymbalski/ecs-scaling-demo']]])
+                    sh 'bundle'
+                    sh 'bundle exec rake cluster:init'
+                    sh 'bundle exec rake cluster:remote_artifacts'
+                    sh 'bundle exec rake cluster:build'
+                  }}
                 }}
               }}
               stage('Test Cluster') {{
                 steps {{
-                  sh 'bundle exec rake cluster:test'
+                  wrap([$class: 'AnsiColorBuildWrapper', 'colorMapName': 'XTerm', 'defaultFg': 1, 'defaultBg': 2]) {{
+                    sh 'bundle exec rake cluster:test'
+                  }}
                 }}
               }}
             }}
             post {{
               always {{
-                sh 'bundle exec rake cluster:terminate'
+                wrap([$class: 'AnsiColorBuildWrapper', 'colorMapName': 'XTerm', 'defaultFg': 1, 'defaultBg': 2]) {{
+                  sh 'bundle exec rake cluster:terminate'
+                }}
               }}
             }}
           }}
-        }}
 
 - project:
     name: scalingdemo

@@ -22,7 +22,14 @@ def writecfg(cfg)
 end
 
 def stream_command(cmd)
-  Open3.popen2e(cmd){|i,oe,w| Thread.new{oe.each{|x| puts x}}; i.close; w.value}
+  Open3.popen2e(cmd) do |i,oe,w|
+    Thread.new do
+      until (raw = oe.gets).nil? do 
+        puts raw
+      end
+    end
+    w.value
+  end
 end
 
 def get_stack(_stack_name)
