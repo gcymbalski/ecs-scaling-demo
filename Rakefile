@@ -224,7 +224,8 @@ namespace :cluster do
     cfg = readcfg
     # first, empty our container repos
     ecr = Aws::ECR::Client.new
-    %w(backend frontend).each do |repo|
+    repos = ecr.describe_repositories.repositories.select{|x| %w(frontend backend).include?(x.repository_name)}.collect{|x|x['repositoryName']}
+    repos.each do |repo|
       digests = ecr.describe_images(repository_name: repo)
       if digests
           digests = digests.image_details.collect { |x| { 'image_digest' => x['image_digest'] } }
