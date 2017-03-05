@@ -1,7 +1,7 @@
 require 'json'
 require 'aws-sdk'
 require 'pry'
-require 'open3'
+require 'pty'
 
 CFGFILE = '.clustercfg'.freeze
 DEBUG = ENV['DEBUG'] ? true : false
@@ -22,14 +22,9 @@ def writecfg(cfg)
 end
 
 def stream_command(cmd)
-  Open3.popen2e(cmd) do |i,oe,w|
-    Thread.new do
-      until (raw = oe.gets).nil? do 
-        puts raw
-        STDOUT.flush
-      end
-    end
-    w.value
+  PTY.spawn(cmd) do |o,i,p|
+    o.each {|l| puts l}
+    Process.wait(p)
   end
 end
 
