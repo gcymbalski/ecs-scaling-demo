@@ -3,6 +3,7 @@ require 'aws-sdk'
 require 'pry'
 require 'pty'
 
+STDOUT.sync=true
 CFGFILE = '.clustercfg'.freeze
 DEBUG = ENV['DEBUG'] ? true : false
 VPC_NAME = 'demo-service-vpc-base'.freeze
