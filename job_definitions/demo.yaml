@@ -1,8 +1,11 @@
 - job-template:
     name: '{name}-{env}'
     project-type: pipeline
-    view:
-      - scaling-demo 
+    triggers:
+      - pollscm:
+          cron: "*/5 * * * *"
+    views:
+      - scaling-demo
     dsl: |
         pipeline {{
           agent any
@@ -21,9 +24,11 @@
                 sh 'bundle exec rake cluster:test'
               }}
             }}
-            stage('Destroy Cluster') {{
-              steps {{
-                sh 'bundle exec rake cluster:terminate'
+            post {{
+              stage('Destroy Cluster') {{
+                steps {{
+                  sh 'bundle exec rake cluster:terminate'
+                }}
               }}
             }}
           }}
