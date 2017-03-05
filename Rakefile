@@ -239,7 +239,7 @@ namespace :cluster do
     end
     puts 'Emptied remote repositories...'
     # then we can be done with all our stacks
-    status = stream_command("sfn destroy #{SERVICES_NAME}; sfn destroy #{VPC_NAME}")
+    status = stream_command("sfn destroy -y #{SERVICES_NAME}; sfn destroy -y #{VPC_NAME}")
     writecfg(cfg)
   end
 end
