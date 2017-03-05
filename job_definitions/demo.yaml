@@ -1,18 +1,38 @@
 - job-template:
-    name: '{name}-{env}-{phase}'
-    views:
-      - scaling-demo:
+    name: '{name}-{env}'
+    project-type: pipeline
+    view:
+      - scaling-demo 
+    dsl: |
+        pipeline {{
+          agent any
+          stages {{
+            stage('Build Cluster') {{
+              steps {{
+                checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'ssh://git@github.com/gcymbalski/ecs-scaling-demo']]])
+                sh 'bundle'
+                sh 'bundle exec rake cluster:init'
+                sh 'bundle exec rake cluster:remote_artifacts'
+                sh 'bundle exec rake cluster:build'
+              }}
+            }}
+            stage('Test Cluster') {{
+              steps {{
+                sh 'bundle exec rake cluster:test'
+              }}
+            }}
+            stage('Destroy Cluster') {{
+              steps {{
+                sh 'bundle exec rake cluster:terminate'
+              }}
+            }}
+          }}
+        }}
 
 - project:
     name: scalingdemo
     env:
       - dev
-    phase:
-      - init
-      - remote_artifacts
-      - build
-      - test
-      - terminate
     jobs:
-      - '{name}-{env}-{phase}'
+      - '{name}-{env}'
 

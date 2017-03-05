@@ -1,3 +1,7 @@
+#Read this if you're Starbucks
+
+Maybe read folks' resumes before interviewing them! I just had the most contentious, unprofessional phone screen of my life with these people. 
+
 #What this is
 
 This is an automation-driven approach to the complete lifecycle management of the problem of managing a high-performance, semi-fault tolerant(for a certain value of 'complete') suite of services. It basically tries to minimize the moving pieces involved in first building a test environment in a VPC [which you may want to generate a new IAM user for], the building of deployable containers from well-controlled artifacts, and finally getting those deployed in a monitored/controlled way (for these purposes, load balancer checks over HTTP give us a lot of bang for the buck).
