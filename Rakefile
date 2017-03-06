@@ -1,9 +1,10 @@
 require 'json'
 require 'aws-sdk'
 require 'pry'
-require 'pty'
+require 'backticks'
 
 STDOUT.sync=true
+
 CFGFILE = '.clustercfg'.freeze
 DEBUG = ENV['DEBUG'] ? true : false
 VPC_NAME = 'demo-service-vpc-base'.freeze
@@ -23,10 +24,7 @@ def writecfg(cfg)
 end
 
 def stream_command(cmd)
-  PTY.spawn(cmd) do |o,i,p|
-    o.each {|l| puts l}
-    Process.wait(p)
-  end
+  Backticks::Runner.new(interactive: true).run(cmd).join
 end
 
 def get_stack(_stack_name)

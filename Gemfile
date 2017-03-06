@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'backticks'
 gem 'rb-readline'
 gem 'minitar-cli'
 gem 'pry'
