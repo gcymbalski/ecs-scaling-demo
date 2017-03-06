@@ -217,6 +217,7 @@ namespace :cluster do
         puts 'Failed generating our ECS stack!'
         exit -1
       end
+      svcs = get_stack(SERVICES_NAME)
       uri = svcs[:outputs].select do |k|
                k[:output_key] == 'FrontendAlbDns'
              end.first[:output_value]
