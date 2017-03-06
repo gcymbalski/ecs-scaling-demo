@@ -24,7 +24,8 @@ def writecfg(cfg)
 end
 
 def stream_command(cmd)
-  Backticks::Runner.new(interactive: true).run(cmd).join
+  status = Backticks::Runner.new(interactive: true).run(cmd).join.status
+  status.to_i == 0
 end
 
 def get_stack(_stack_name)
