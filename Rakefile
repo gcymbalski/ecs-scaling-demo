@@ -96,6 +96,7 @@ namespace :cluster do
 
   desc 'Build artifacts remotely for cluster'
   task :remote_artifacts, [:force] do |_t, _args|
+    Rake::Task['cluster:preflight'].invoke
     Rake::Task['cluster:init'].invoke unless get_stack(VPC_NAME)
     manifest = 'container_images/manifest.json'
     if File.exist?(manifest)
