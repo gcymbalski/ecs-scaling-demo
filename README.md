@@ -20,6 +20,9 @@ This shows that some underlying services with a non-ideal failure rate are no re
 Other Reqs
 - Have an AWS IAM user set up with admin permissions, with your local environment variables of AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, and AWS_REGION (n.b. only us-west-2 is supported right now) set appropriately. You'll get yelled at if they aren't filled out. Make sure these match your AWS profile if you've configured the CLI for other stuff, too.
 
+##Jenkins
+If you want to use the provided job definitions, you'll need the bleeding-edgiest version of jenkins-job-builder on Python 3.3.x (this is just what I've found actually works so far). Install it with something like `pip install git+git://github.com/openstack-infra/jenkins-job-builder@master`.
+
 ##Caveat to the above
 AWS_REGION only supports us-west-2 right now; there are too many moving pieces of information about what is available in which region to reasonably handle more cases than needed. Though this does definitely imply a lack of cross-regional failover.
 
